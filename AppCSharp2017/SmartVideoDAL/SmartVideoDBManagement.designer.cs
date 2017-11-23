@@ -30,15 +30,18 @@ namespace SmartVideoDAL
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
+    partial void InsertUser(User instance);
+    partial void UpdateUser(User instance);
+    partial void DeleteUser(User instance);
     partial void InsertHit(Hit instance);
     partial void UpdateHit(Hit instance);
     partial void DeleteHit(Hit instance);
     partial void InsertLocation(Location instance);
     partial void UpdateLocation(Location instance);
     partial void DeleteLocation(Location instance);
-    partial void InsertUser(User instance);
-    partial void UpdateUser(User instance);
-    partial void DeleteUser(User instance);
+    partial void InsertStatistique(Statistique instance);
+    partial void UpdateStatistique(Statistique instance);
+    partial void DeleteStatistique(Statistique instance);
     #endregion
 		
 		public SmartVideoDBManagementDataContext() : 
@@ -71,6 +74,14 @@ namespace SmartVideoDAL
 			OnCreated();
 		}
 		
+		public System.Data.Linq.Table<User> Users
+		{
+			get
+			{
+				return this.GetTable<User>();
+			}
+		}
+		
 		public System.Data.Linq.Table<Hit> Hits
 		{
 			get
@@ -87,12 +98,150 @@ namespace SmartVideoDAL
 			}
 		}
 		
-		public System.Data.Linq.Table<User> Users
+		public System.Data.Linq.Table<Statistique> Statistiques
 		{
 			get
 			{
-				return this.GetTable<User>();
+				return this.GetTable<Statistique>();
 			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[User]")]
+	public partial class User : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _login;
+		
+		private string _password;
+		
+		private string _prenom;
+		
+		private EntitySet<Location> _Locations;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnloginChanging(string value);
+    partial void OnloginChanged();
+    partial void OnpasswordChanging(string value);
+    partial void OnpasswordChanged();
+    partial void OnprenomChanging(string value);
+    partial void OnprenomChanged();
+    #endregion
+		
+		public User()
+		{
+			this._Locations = new EntitySet<Location>(new Action<Location>(this.attach_Locations), new Action<Location>(this.detach_Locations));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_login", DbType="VarChar(100) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string login
+		{
+			get
+			{
+				return this._login;
+			}
+			set
+			{
+				if ((this._login != value))
+				{
+					this.OnloginChanging(value);
+					this.SendPropertyChanging();
+					this._login = value;
+					this.SendPropertyChanged("login");
+					this.OnloginChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_password", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string password
+		{
+			get
+			{
+				return this._password;
+			}
+			set
+			{
+				if ((this._password != value))
+				{
+					this.OnpasswordChanging(value);
+					this.SendPropertyChanging();
+					this._password = value;
+					this.SendPropertyChanged("password");
+					this.OnpasswordChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_prenom", DbType="VarChar(100)")]
+		public string prenom
+		{
+			get
+			{
+				return this._prenom;
+			}
+			set
+			{
+				if ((this._prenom != value))
+				{
+					this.OnprenomChanging(value);
+					this.SendPropertyChanging();
+					this._prenom = value;
+					this.SendPropertyChanged("prenom");
+					this.OnprenomChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Location", Storage="_Locations", ThisKey="login", OtherKey="user_id")]
+		public EntitySet<Location> Locations
+		{
+			get
+			{
+				return this._Locations;
+			}
+			set
+			{
+				this._Locations.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Locations(Location entity)
+		{
+			this.SendPropertyChanging();
+			entity.User = this;
+		}
+		
+		private void detach_Locations(Location entity)
+		{
+			this.SendPropertyChanging();
+			entity.User = null;
 		}
 	}
 	
@@ -104,7 +253,7 @@ namespace SmartVideoDAL
 		
 		private int _id;
 		
-		private string _type;
+		private int _type;
 		
 		private System.DateTime _date;
 		
@@ -116,7 +265,7 @@ namespace SmartVideoDAL
     partial void OnCreated();
     partial void OnidChanging(int value);
     partial void OnidChanged();
-    partial void OntypeChanging(string value);
+    partial void OntypeChanging(int value);
     partial void OntypeChanged();
     partial void OndateChanging(System.DateTime value);
     partial void OndateChanged();
@@ -149,8 +298,8 @@ namespace SmartVideoDAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_type", DbType="VarChar(100) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string type
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_type", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int type
 		{
 			get
 			{
@@ -238,13 +387,13 @@ namespace SmartVideoDAL
 		
 		private int _id;
 		
-		private System.Nullable<int> _film_id;
+		private int _film_id;
 		
 		private string _film_name;
 		
-		private System.Nullable<System.DateTime> _datedebut;
+		private System.DateTime _datedebut;
 		
-		private System.Nullable<System.DateTime> _datefin;
+		private System.DateTime _datefin;
 		
 		private string _user_id;
 		
@@ -256,13 +405,13 @@ namespace SmartVideoDAL
     partial void OnCreated();
     partial void OnidChanging(int value);
     partial void OnidChanged();
-    partial void Onfilm_idChanging(System.Nullable<int> value);
+    partial void Onfilm_idChanging(int value);
     partial void Onfilm_idChanged();
     partial void Onfilm_nameChanging(string value);
     partial void Onfilm_nameChanged();
-    partial void OndatedebutChanging(System.Nullable<System.DateTime> value);
+    partial void OndatedebutChanging(System.DateTime value);
     partial void OndatedebutChanged();
-    partial void OndatefinChanging(System.Nullable<System.DateTime> value);
+    partial void OndatefinChanging(System.DateTime value);
     partial void OndatefinChanged();
     partial void Onuser_idChanging(string value);
     partial void Onuser_idChanged();
@@ -294,8 +443,8 @@ namespace SmartVideoDAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_film_id", DbType="Int")]
-		public System.Nullable<int> film_id
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_film_id", DbType="Int NOT NULL")]
+		public int film_id
 		{
 			get
 			{
@@ -314,7 +463,7 @@ namespace SmartVideoDAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_film_name", DbType="VarChar(100)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_film_name", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
 		public string film_name
 		{
 			get
@@ -334,8 +483,8 @@ namespace SmartVideoDAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_datedebut", DbType="Date")]
-		public System.Nullable<System.DateTime> datedebut
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_datedebut", DbType="Date NOT NULL")]
+		public System.DateTime datedebut
 		{
 			get
 			{
@@ -354,8 +503,8 @@ namespace SmartVideoDAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_datefin", DbType="Date")]
-		public System.Nullable<System.DateTime> datefin
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_datefin", DbType="Date NOT NULL")]
+		public System.DateTime datefin
 		{
 			get
 			{
@@ -374,7 +523,7 @@ namespace SmartVideoDAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_id", DbType="VarChar(100)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_id", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
 		public string user_id
 		{
 			get
@@ -453,180 +602,116 @@ namespace SmartVideoDAL
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[User]")]
-	public partial class User : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Statistiques")]
+	public partial class Statistique : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private string _login;
+		private int _id;
 		
-		private string _password;
+		private System.DateTime _date;
 		
-		private string _prenom;
+		private int _type;
 		
-		private string _nom;
-		
-		private System.Nullable<int> _codepostal;
-		
-		private string _ville;
-		
-		private EntitySet<Location> _Locations;
+		private int _position;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnloginChanging(string value);
-    partial void OnloginChanged();
-    partial void OnpasswordChanging(string value);
-    partial void OnpasswordChanged();
-    partial void OnprenomChanging(string value);
-    partial void OnprenomChanged();
-    partial void OnnomChanging(string value);
-    partial void OnnomChanged();
-    partial void OncodepostalChanging(System.Nullable<int> value);
-    partial void OncodepostalChanged();
-    partial void OnvilleChanging(string value);
-    partial void OnvilleChanged();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void OndateChanging(System.DateTime value);
+    partial void OndateChanged();
+    partial void OntypeChanging(int value);
+    partial void OntypeChanged();
+    partial void OnpositionChanging(int value);
+    partial void OnpositionChanged();
     #endregion
 		
-		public User()
+		public Statistique()
 		{
-			this._Locations = new EntitySet<Location>(new Action<Location>(this.attach_Locations), new Action<Location>(this.detach_Locations));
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_login", DbType="VarChar(100) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string login
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int id
 		{
 			get
 			{
-				return this._login;
+				return this._id;
 			}
 			set
 			{
-				if ((this._login != value))
+				if ((this._id != value))
 				{
-					this.OnloginChanging(value);
+					this.OnidChanging(value);
 					this.SendPropertyChanging();
-					this._login = value;
-					this.SendPropertyChanged("login");
-					this.OnloginChanged();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_password", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
-		public string password
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_date", DbType="Date NOT NULL", IsPrimaryKey=true)]
+		public System.DateTime date
 		{
 			get
 			{
-				return this._password;
+				return this._date;
 			}
 			set
 			{
-				if ((this._password != value))
+				if ((this._date != value))
 				{
-					this.OnpasswordChanging(value);
+					this.OndateChanging(value);
 					this.SendPropertyChanging();
-					this._password = value;
-					this.SendPropertyChanged("password");
-					this.OnpasswordChanged();
+					this._date = value;
+					this.SendPropertyChanged("date");
+					this.OndateChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_prenom", DbType="VarChar(100)")]
-		public string prenom
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_type", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int type
 		{
 			get
 			{
-				return this._prenom;
+				return this._type;
 			}
 			set
 			{
-				if ((this._prenom != value))
+				if ((this._type != value))
 				{
-					this.OnprenomChanging(value);
+					this.OntypeChanging(value);
 					this.SendPropertyChanging();
-					this._prenom = value;
-					this.SendPropertyChanged("prenom");
-					this.OnprenomChanged();
+					this._type = value;
+					this.SendPropertyChanged("type");
+					this.OntypeChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nom", DbType="VarChar(100)")]
-		public string nom
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_position", DbType="Int NOT NULL")]
+		public int position
 		{
 			get
 			{
-				return this._nom;
+				return this._position;
 			}
 			set
 			{
-				if ((this._nom != value))
+				if ((this._position != value))
 				{
-					this.OnnomChanging(value);
+					this.OnpositionChanging(value);
 					this.SendPropertyChanging();
-					this._nom = value;
-					this.SendPropertyChanged("nom");
-					this.OnnomChanged();
+					this._position = value;
+					this.SendPropertyChanged("position");
+					this.OnpositionChanged();
 				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_codepostal", DbType="Int")]
-		public System.Nullable<int> codepostal
-		{
-			get
-			{
-				return this._codepostal;
-			}
-			set
-			{
-				if ((this._codepostal != value))
-				{
-					this.OncodepostalChanging(value);
-					this.SendPropertyChanging();
-					this._codepostal = value;
-					this.SendPropertyChanged("codepostal");
-					this.OncodepostalChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ville", DbType="VarChar(100)")]
-		public string ville
-		{
-			get
-			{
-				return this._ville;
-			}
-			set
-			{
-				if ((this._ville != value))
-				{
-					this.OnvilleChanging(value);
-					this.SendPropertyChanging();
-					this._ville = value;
-					this.SendPropertyChanged("ville");
-					this.OnvilleChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Location", Storage="_Locations", ThisKey="login", OtherKey="user_id")]
-		public EntitySet<Location> Locations
-		{
-			get
-			{
-				return this._Locations;
-			}
-			set
-			{
-				this._Locations.Assign(value);
 			}
 		}
 		
@@ -648,18 +733,6 @@ namespace SmartVideoDAL
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_Locations(Location entity)
-		{
-			this.SendPropertyChanging();
-			entity.User = this;
-		}
-		
-		private void detach_Locations(Location entity)
-		{
-			this.SendPropertyChanging();
-			entity.User = null;
 		}
 	}
 }

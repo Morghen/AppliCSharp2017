@@ -2,29 +2,35 @@
 <ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="SmartVideoDBManagement">
   <DataContextMoniker Name="/SmartVideoDBManagementDataContext" />
   <nestedChildShapes>
-    <classShape Id="829d6793-3881-4863-a85d-c95c569c55d9" absoluteBounds="2.875, 2.25, 2, 1.5785953776041666">
-      <DataClassMoniker Name="/SmartVideoDBManagementDataContext/Hit" />
-      <nestedChildShapes>
-        <elementListCompartment Id="98b38c1f-5795-41ae-91bc-9496d05af048" absoluteBounds="2.89, 2.71, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="d9e98cdf-a6a6-4f21-b31c-7e97886abe34" absoluteBounds="5.5, 0.75, 2, 1.9631982421875">
-      <DataClassMoniker Name="/SmartVideoDBManagementDataContext/Location" />
-      <nestedChildShapes>
-        <elementListCompartment Id="60ddcf67-6dce-4594-8141-cc9fea9e2319" absoluteBounds="5.515, 1.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="ae1eeea9-45c5-4eed-bfd1-2e6ad33978f1" absoluteBounds="5.5, 3.25, 2, 1.9631982421875">
+    <classShape Id="e0a01fb0-9b4c-4e98-b529-8acb4c59f799" absoluteBounds="2.25, 3.25, 2, 1.3862939453125">
       <DataClassMoniker Name="/SmartVideoDBManagementDataContext/User" />
       <nestedChildShapes>
-        <elementListCompartment Id="0efe3d4c-896b-4872-9019-a323582b55ab" absoluteBounds="5.515, 3.71, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="cfce7ad3-1997-4d16-91e4-ff58f8cf390f" absoluteBounds="2.265, 3.71, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(6.5 : 3.25); (6.5 : 2.7131982421875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <classShape Id="fbdb7863-ec75-449c-bb7f-76407454c646" absoluteBounds="0.75, 0.75, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/SmartVideoDBManagementDataContext/Hit" />
+      <nestedChildShapes>
+        <elementListCompartment Id="95bee378-3653-4902-b970-f06131590b1d" absoluteBounds="0.765, 1.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d36f4121-bd7d-4e92-9b45-9fefd122084c" absoluteBounds="5.25, 3.125, 2, 1.9631982421875005">
+      <DataClassMoniker Name="/SmartVideoDBManagementDataContext/Location" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e97e51bf-2824-46b8-883d-d0152b15a825" absoluteBounds="5.265, 3.585, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="dc585029-906a-4167-98be-fb55195db60f" absoluteBounds="3.75, 0.75, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/SmartVideoDBManagementDataContext/Statistique" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e0cf5a01-f247-4017-bbe1-fc81f85e8a01" absoluteBounds="3.765, 1.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(4.25 : 3.94314697265625); (5.25 : 3.94314697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/SmartVideoDBManagementDataContext/User/User_Location" />
       <nodes>
-        <classShapeMoniker Id="ae1eeea9-45c5-4eed-bfd1-2e6ad33978f1" />
-        <classShapeMoniker Id="d9e98cdf-a6a6-4f21-b31c-7e97886abe34" />
+        <classShapeMoniker Id="e0a01fb0-9b4c-4e98-b529-8acb4c59f799" />
+        <classShapeMoniker Id="d36f4121-bd7d-4e92-9b45-9fefd122084c" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>
