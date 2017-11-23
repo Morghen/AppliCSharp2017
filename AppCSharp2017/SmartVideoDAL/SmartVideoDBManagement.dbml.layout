@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="SmartVideoDBManagement">
+  <DataContextMoniker Name="/SmartVideoDBManagementDataContext" />
+  <nestedChildShapes>
+    <classShape Id="5ec89db0-04c6-48a6-b484-83e7cc06205e" absoluteBounds="0.75, 3.75, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/SmartVideoDBManagementDataContext/Hit" />
+      <nestedChildShapes>
+        <elementListCompartment Id="40b62ab2-5ec9-499c-9f8d-34fbaaa10b18" absoluteBounds="0.765, 4.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="77afd9d2-8860-4223-9a12-15e7f39044d1" absoluteBounds="3.5, 0.875, 2, 1.9631982421875">
+      <DataClassMoniker Name="/SmartVideoDBManagementDataContext/Location" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e0966caa-a982-41f4-9c59-5388ccf826a5" absoluteBounds="3.515, 1.335, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="64034860-59fd-4afb-b217-5bb85f5358ca" absoluteBounds="3.75, 3.75, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/SmartVideoDBManagementDataContext/Statistique" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e614ecfc-ccff-4139-8d41-8de40b8a5d9e" absoluteBounds="3.765, 4.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="9875489d-d43c-4907-ad06-2a6f234471ff" absoluteBounds="0.75, 1.25, 2, 1.3862939453125">
+      <DataClassMoniker Name="/SmartVideoDBManagementDataContext/User" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f01d7624-ec0c-4cf9-85eb-f081d99554ee" absoluteBounds="0.765, 1.71, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 1.94314697265625); (3.5 : 1.94314697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SmartVideoDBManagementDataContext/User/User_Location" />
+      <nodes>
+        <classShapeMoniker Id="9875489d-d43c-4907-ad06-2a6f234471ff" />
+        <classShapeMoniker Id="77afd9d2-8860-4223-9a12-15e7f39044d1" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
