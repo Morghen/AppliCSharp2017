@@ -9,7 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AppCSharp2017
+namespace SmartVideoDAL
 {
 	using System.Data.Linq;
 	using System.Data.Linq.Mapping;
@@ -42,7 +42,7 @@ namespace AppCSharp2017
     #endregion
 		
 		public SmartVideoDBManagementDataContext() : 
-				base(global::AppCSharp2017.Properties.Settings.Default.SmartVideoBDConnectionString, mappingSource)
+				base(global::SmartVideoDAL.Properties.Settings.Default.SmartVideoBDConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
