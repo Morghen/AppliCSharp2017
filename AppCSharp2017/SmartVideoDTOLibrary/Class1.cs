@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SmartVideoDAL
+namespace SmartVideoDTOLibrary
 {
     public class Class1
     {
