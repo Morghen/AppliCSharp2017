@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="SmartVideoDBManagement">
+  <DataContextMoniker Name="/SmartVideoDBManagementDataContext" />
+  <nestedChildShapes>
+    <classShape Id="25a1b023-3e94-4493-9915-8495817f9f63" absoluteBounds="1.625, 2.125, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/SmartVideoDBManagementDataContext/Hit" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4303c2ff-b598-46d0-b003-3b0b04404efe" absoluteBounds="1.6400000000000001, 2.585, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6bd776ca-baef-41f1-ae8b-59cde8cd6873" absoluteBounds="4.25, 0.625, 2, 1.9631982421875">
+      <DataClassMoniker Name="/SmartVideoDBManagementDataContext/Location" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d8da77f6-c035-4c10-a031-27bc8e21d913" absoluteBounds="4.265, 1.085, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="dc4fa9ca-f5c6-4941-80d1-c91af09ebb46" absoluteBounds="4.625, 3.125, 2, 1.9631982421875">
+      <DataClassMoniker Name="/SmartVideoDBManagementDataContext/User" />
+      <nestedChildShapes>
+        <elementListCompartment Id="398c4db6-50f6-4867-b410-9479cef94819" absoluteBounds="4.64, 3.585, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.4375 : 3.125); (5.4375 : 2.5881982421875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SmartVideoDBManagementDataContext/User/User_Location" />
+      <nodes>
+        <classShapeMoniker Id="dc4fa9ca-f5c6-4941-80d1-c91af09ebb46" />
+        <classShapeMoniker Id="6bd776ca-baef-41f1-ae8b-59cde8cd6873" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
