@@ -70,7 +70,7 @@ namespace FilmsDAL
         public List<Actor> getActor(int idFilm)
         {
             List<Actor> strlist = new List<Actor>();
-            var result;
+            var result = dc.ExecuteQuery<Actor>(@"SELECT DISTINCT name,dbo.Actor.id,character FROM dbo.Actor JOIN dbo.FilmActor ON dbo.Actor.id = dbo.FilmActor.id_actor WHERE dbo.FilmActor.id_film = {0}", idFilm);
             if (result == null)
                 return null;
             else
@@ -86,7 +86,7 @@ namespace FilmsDAL
         public List<Realisateur> getProducer(int idFilm)
         {
             List<Realisateur> strlist = new List<Realisateur>();
-            var result;
+            var result = dc.ExecuteQuery<Realisateur>(@"SELECT DISTINCT name,dbo.Realisateur.id FROM dbo.Realisateur JOIN dbo.FilmRealisateur ON dbo.Realisateur.id = dbo.FilmRealisateur.id_realisateur WHERE dbo.FilmRealisateur.id_film = {0}", idFilm);
             if (result == null)
                 return null;
             else
