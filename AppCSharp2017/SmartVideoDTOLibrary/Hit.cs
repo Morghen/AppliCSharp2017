@@ -13,10 +13,57 @@ namespace SmartVideoDTOLibrary
         private DateTime date;
         private int hit;
 
-        public int Id { get; set; }
-        public TypeEnum Type { get; set; }
-        public DateTime Date { get; set; }
-        public int Hit { get; set; }
+        public int Id
+        {
+            get
+            {
+                return id;
+            }
+
+            set
+            {
+                id = value;
+            }
+        }
+
+        public TypeEnum Type
+        {
+            get
+            {
+                return type;
+            }
+
+            set
+            {
+                type = value;
+            }
+        }
+
+        public DateTime Date
+        {
+            get
+            {
+                return date;
+            }
+
+            set
+            {
+                date = value;
+            }
+        }
+
+        public int Hit
+        {
+            get
+            {
+                return hit;
+            }
+
+            set
+            {
+                hit = value;
+            }
+        }
 
         public HitDTO(int id, TypeEnum type, DateTime date, int hit)
         {

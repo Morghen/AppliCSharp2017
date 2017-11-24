@@ -13,9 +13,46 @@ namespace SmartVideoDTOLibrary
         private string password;
         private string prenom;
 
-        public string Login { get; set; }
-        public string Password { get; set; }
-        public string Prenom { get; set; }
+        public string Login
+        {
+            get
+            {
+                return login;
+            }
+
+            set
+            {
+                login = value;
+            }
+        }
+
+        public string Password
+        {
+            get
+            {
+                return password;
+            }
+
+            set
+            {
+                password = value;
+            }
+        }
+
+        public string Prenom
+        {
+            get
+            {
+                return prenom;
+            }
+
+            set
+            {
+                prenom = value;
+            }
+        }
+
+
 
         #endregion
         #region constructeur
@@ -28,7 +65,7 @@ namespace SmartVideoDTOLibrary
 
         public override string ToString()
         {
-            return ""+login+" "+password+" "+prenom;
+            return ""+Login+" "+Password+" "+Prenom;
         }
 
         public override bool Equals(object obj)
