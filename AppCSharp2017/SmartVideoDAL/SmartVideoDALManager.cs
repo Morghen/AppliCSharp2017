@@ -12,7 +12,7 @@ namespace SmartVideoDAL
 {
     public class SmartVideoDALManager
     {
-        SmartVideoDBManagementDataContext dc = null;
+        public SmartVideoDBManagementDataContext dc = null;
         private static SmartVideoDALManager _instance;
 
         public static SmartVideoDALManager Singleton(String servername, String dbname)
@@ -58,13 +58,6 @@ namespace SmartVideoDAL
             string typestr = h.Type.ToString();
             Hit newh = new Hit{ id = h.Id,  type = typestr, date = h.Date, hit1 = h.Hit };
             return Add<Hit>(newh, xg => xg.id == h.Id);
-        }
-
-        public bool updateHit(int pid, TypeEnum ptype, DateTime pdt, int phit)
-        {
-            string typestr = ptype.ToString();
-            Hit newh = new Hit { id = pid, type = typestr, date = pdt, hit1 = phit };
-            return Add<Hit>(newh, xg => xg.id == pid);
         }
 
         public List<Hit> getHit()
