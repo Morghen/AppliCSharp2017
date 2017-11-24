@@ -31,7 +31,7 @@ namespace SmartVideoDAL
                 dc = new SmartVideoDBManagementDataContext();
             else
             {
-                String constr = "DataSource = " + servername + " ; Initial Catalog =" + dbname + "; Integrated Security = True";
+                String constr = "Data Source = " + servername + " ; Initial Catalog =" + dbname + "; Integrated Security = True";
                 dc = new SmartVideoDBManagementDataContext(constr);
             }
         }
@@ -42,7 +42,7 @@ namespace SmartVideoDAL
                 dc = new SmartVideoDBManagementDataContext();
             else
             {
-                String constr = "DataSource = " + servername + " ; Initial Catalog = SmartVideoBD; Integrated Security = True";
+                String constr = "Data Source = " + servername + " ; Initial Catalog = SmartVideoBD; Integrated Security = True";
                 dc = new SmartVideoDBManagementDataContext(constr);
             }
         }
@@ -50,7 +50,9 @@ namespace SmartVideoDAL
         public bool addHit(int id, TypeEnum type, DateTime dt)
         {
             HitDTO h = new HitDTO(id, type, dt, 0);
-            return false;
+            string typestr = h.Type.ToString();
+            Hit newh = new Hit { id = h.Id, type = typestr, date = h.Date, hit1 = h.Hit };
+            return Add<Hit>(newh, xg => xg.id == h.Id);
         }
 
         public bool addHit(HitDTO h)
@@ -60,9 +62,9 @@ namespace SmartVideoDAL
             return Add<Hit>(newh, xg => xg.id == h.Id);
         }
 
-        public List<Hit> getHit()
+        public List<HitDTO> getHit()
         {
-            List<Hit> lh = new List<Hit>();
+            List<HitDTO> lh = new List<HitDTO>();
             var result = dc.ExecuteQuery<Hit>(@"SELECT * FROM dbo.Hit");
             if(result == null)
                 return null;
@@ -70,7 +72,7 @@ namespace SmartVideoDAL
             {
                 foreach(Hit h in result)
                 {
-                    lh.Add(h);
+                    lh.Add(new HitDTO(h.id, h.type, h.date, h.hit1));
                 }
                 return lh;
             }
