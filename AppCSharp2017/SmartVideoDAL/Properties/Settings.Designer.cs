@@ -33,5 +33,16 @@ namespace SmartVideoDAL.Properties {
                 return ((string)(this["SmartVideoBDConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(localdb)\\ProjectsV13;Initial Catalog=SmartVideoBD;Integrated Securit" +
+            "y=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True")]
+        public string SmartVideoBDConnectionString1 {
+            get {
+                return ((string)(this["SmartVideoBDConnectionString1"]));
+            }
+        }
     }
 }
