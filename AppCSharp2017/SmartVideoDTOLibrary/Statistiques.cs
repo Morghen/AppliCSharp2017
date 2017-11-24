@@ -10,13 +10,21 @@ namespace SmartVideoDTOLibrary
     {
         private int id;
         private DateTime date;
-        private int type;
+        private TypeEnum type;
         private int position;
 
-        public StatistiquesDTOs(int position, int type, DateTime date, int id)
+        public StatistiquesDTOs(int position, TypeEnum type, DateTime date, int id)
         {
             Position = position;
             Type = type;
+            Date = date;
+            Id = id;
+        }
+
+        public StatistiquesDTOs(int position, string type, DateTime date, int id)
+        {
+            Position = position;
+            Type = (TypeEnum)Enum.Parse(typeof(TypeEnum), type);
             Date = date;
             Id = id;
         }
@@ -28,7 +36,7 @@ namespace SmartVideoDTOLibrary
         }
 
 
-        public int Type
+        public TypeEnum Type
         {
             get { return type; }
             set { type = value; }
@@ -48,5 +56,19 @@ namespace SmartVideoDTOLibrary
             set { id = value; }
         }
 
+        public override bool Equals(object obj)
+        {
+            return base.Equals(obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return ""+Id+" "+Type+" "+Date+" "+Position;
+        }
     }
 }

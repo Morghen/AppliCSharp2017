@@ -14,47 +14,7 @@ namespace SmartVideoDAL
     {
         public SmartVideoDBManagementDataContext dc = null;
         private static SmartVideoDALManager _instance;
-
-        public static SmartVideoDALManager Singleton(String servername, String dbname)
-        {
-            return _instance ?? (_instance = new SmartVideoDALManager(servername, dbname));
-        }
-
-        public static SmartVideoDALManager Singleton(String servername)
-        {
-            return _instance ?? (_instance = new SmartVideoDALManager(servername));
-        }
-
-        public SmartVideoDALManager(String servername, String dbname)
-        {
-            if (dbname == null || dbname == null)
-                dc = new SmartVideoDBManagementDataContext();
-            else
-            {
-                String constr = "Data Source = " + servername + " ; Initial Catalog =" + dbname + "; Integrated Security = True";
-                dc = new SmartVideoDBManagementDataContext(constr);
-            }
-        }
-
-        public SmartVideoDALManager(String servername)
-        {
-            if (servername == null )
-                dc = new SmartVideoDBManagementDataContext();
-            else
-            {
-                String constr = "Data Source = " + servername + " ; Initial Catalog = SmartVideoBD; Integrated Security = True";
-                dc = new SmartVideoDBManagementDataContext(constr);
-            }
-        }
-
-        public bool addHit(int id, TypeEnum type, DateTime dt)
-        {
-            HitDTO h = new HitDTO(id, type, dt, 0);
-            string typestr = h.Type.ToString();
-            Hit newh = new Hit { id = h.Id, type = typestr, date = h.Date, hit1 = h.Hit };
-            return Add<Hit>(newh, xg => xg.id == h.Id);
-        }
-
+        
         public bool addHit(HitDTO h)
         {
             string typestr = h.Type.ToString();
@@ -78,7 +38,83 @@ namespace SmartVideoDAL
             }
         }
 
+        public bool addUser(UserDTO h)
+        {
+            User newh = new User { login = h.Login, password = h.Password, prenom = h.Prenom };
+            return Add<User>(newh, xg => xg.login == h.Login);
+        }
+
+        public List<UserDTO> getUser()
+        {
+            List<UserDTO> lh = new List<UserDTO>();
+            var result = dc.ExecuteQuery<User>(@"SELECT * FROM dbo.User");
+            if (result == null)
+                return null;
+            else
+            {
+                foreach (User h in result)
+                {
+                    lh.Add(new UserDTO(h.login, h.password, h.prenom));
+                }
+                return lh;
+            }
+        }
+
+        public bool addLocation(LocationDTO h)
+        {
+            Location newh = new Location { id = h.Id, film_id = h.FilmId, film_name = h.FilmName, datedebut = h.DateDebut, datefin = h.DateFin, user_id = h.UserId};
+            return Add<Location>(newh, xg => xg.id == h.Id);
+        }
+
+        public List<LocationDTO> getLocation()
+        {
+            List<LocationDTO> lh = new List<LocationDTO>();
+            var result = dc.ExecuteQuery<Location>(@"SELECT * FROM dbo.Location");
+            if (result == null)
+                return null;
+            else
+            {
+                foreach (Location h in result)
+                {
+                    lh.Add(new LocationDTO(h.id, h.film_id, h.film_name, h.datedebut, h.datefin, h.user_id));
+                }
+                return lh;
+            }
+        }
+
         #region truc need pas toucher
+        public static SmartVideoDALManager Singleton(String servername, String dbname)
+        {
+            return _instance ?? (_instance = new SmartVideoDALManager(servername, dbname));
+        }
+
+        public static SmartVideoDALManager Singleton(String servername)
+        {
+            return _instance ?? (_instance = new SmartVideoDALManager(servername));
+        }
+
+        public SmartVideoDALManager(String servername, String dbname)
+        {
+            if (dbname == null || dbname == null)
+                dc = new SmartVideoDBManagementDataContext();
+            else
+            {
+                String constr = "Data Source = " + servername + " ; Initial Catalog =" + dbname + "; Integrated Security = True";
+                dc = new SmartVideoDBManagementDataContext(constr);
+            }
+        }
+
+        public SmartVideoDALManager(String servername)
+        {
+            if (servername == null)
+                dc = new SmartVideoDBManagementDataContext();
+            else
+            {
+                String constr = "Data Source = " + servername + " ; Initial Catalog = SmartVideoBD; Integrated Security = True";
+                dc = new SmartVideoDBManagementDataContext(constr);
+            }
+        }
+
         public bool Add<T>(T rec, Func<T, bool> expr) where T : class
         {
             if (dc == null)

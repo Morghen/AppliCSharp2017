@@ -16,6 +16,7 @@ namespace SmartVideoDTOLibrary
         public string Login { get => login; set => login = value; }
         public string Password { get => password; set => password = value; }
         public string Prenom { get => prenom; set => prenom = value; }
+
         #endregion
         #region constructeur
         public UserDTO(string login, string password, string prenom)
@@ -23,6 +24,21 @@ namespace SmartVideoDTOLibrary
             Login = login;
             Password = password;
             Prenom = prenom;
+        }
+
+        public override string ToString()
+        {
+            return ""+login+" "+password+" "+prenom;
+        }
+
+        public override bool Equals(object obj)
+        {
+            return base.Equals(obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
         #endregion
     }
