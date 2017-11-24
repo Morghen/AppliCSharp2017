@@ -15,7 +15,7 @@ namespace SmartVideoDTOLibrary
         private DateTime dateFin;
         private string userId;
 
-        public LocationDTO(string userId, DateTime dateFin, DateTime dateDebut, string filmName, int filmId, int id)
+        public LocationDTO(int id, int filmId, string filmName, DateTime dateFin, DateTime dateDebut, string userId)
         {
             UserId = userId;
             DateFin = dateFin;
@@ -65,5 +65,19 @@ namespace SmartVideoDTOLibrary
             set { id = value; }
         }
 
+        public override bool Equals(object obj)
+        {
+            return base.Equals(obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return ""+Id+" "+FilmId+" "+FilmName+" "+DateDebut+" "+DateFin+" "+UserId;
+        }
     }
 }
