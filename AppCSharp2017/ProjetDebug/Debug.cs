@@ -17,10 +17,10 @@ namespace ProjetDebug
             Console.WriteLine("+++Test de getGenre+++");
             //FilmsDALManager db = new FilmsDALManager(@"(localdb)\ProjectsV13"); // Toine
             FilmsDALManager db = new FilmsDALManager(@"(localdb)\MSSQLLocalDB");    // Rémy
-            List<Genre> liststr = db.getGenre(11);
-            List<Actor> listact = db.getActor(11);
-            List<Realisateur> listreal = db.getProducer(11);
-            if (liststr == null)
+            List<Genre> liststr = db.getGenre(5);
+            List<Actor> listact = db.getActor(5);
+            List<Realisateur> listreal = db.getProducer(5);
+            if (liststr.Count == 0)
                 Console.WriteLine("Pas de genre");
             else
             {
@@ -29,7 +29,7 @@ namespace ProjetDebug
                     Console.WriteLine(str.name);
                 }
             }
-            if(listact == null)
+            if(listact.Count == 0)
                 Console.WriteLine("Pas d'acteurs");
             else
             {
@@ -38,7 +38,7 @@ namespace ProjetDebug
                     Console.WriteLine(str.name);
                 }
             }
-            if (listreal == null)
+            if (listreal.Count == 0)
                 Console.WriteLine("Pas de realisateur");
             else
             {
@@ -60,7 +60,8 @@ namespace ProjetDebug
 
 
             Console.WriteLine("\n+++Test de Hit+++");
-            SmartVideoDALManager dbSV = new SmartVideoDALManager(@"(localdb)\ProjectsV13");
+            //SmartVideoDALManager dbSV = new SmartVideoDALManager(@"(localdb)\ProjectsV13");
+            SmartVideoDALManager dbSV = new SmartVideoDALManager(@"(localdb)\MSSQLLocalDB");
             HitDTO newh = new HitDTO(11, TypeEnum.Film, DateTime.Now, 6);
             dbSV.addHit(newh);
             List<HitDTO> listHit = dbSV.getHit();
