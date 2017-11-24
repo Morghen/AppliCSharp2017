@@ -45,7 +45,7 @@ namespace SmartVideoDAL
     #endregion
 		
 		public SmartVideoDBManagementDataContext() : 
-				base(global::SmartVideoDAL.Properties.Settings.Default.SmartVideoBDConnectionString, mappingSource)
+				base(global::SmartVideoDAL.Properties.Settings.Default.SmartVideoBDConnectionString1, mappingSource)
 		{
 			OnCreated();
 		}
@@ -115,7 +115,7 @@ namespace SmartVideoDAL
 		
 		private int _id;
 		
-		private int _type;
+		private string _type;
 		
 		private System.DateTime _date;
 		
@@ -127,7 +127,7 @@ namespace SmartVideoDAL
     partial void OnCreated();
     partial void OnidChanging(int value);
     partial void OnidChanged();
-    partial void OntypeChanging(int value);
+    partial void OntypeChanging(string value);
     partial void OntypeChanged();
     partial void OndateChanging(System.DateTime value);
     partial void OndateChanged();
@@ -160,8 +160,8 @@ namespace SmartVideoDAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_type", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int type
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_type", DbType="VarChar(100) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string type
 		{
 			get
 			{
@@ -249,13 +249,13 @@ namespace SmartVideoDAL
 		
 		private int _id;
 		
-		private int _film_id;
+		private System.Nullable<int> _film_id;
 		
 		private string _film_name;
 		
-		private System.DateTime _datedebut;
+		private System.Nullable<System.DateTime> _datedebut;
 		
-		private System.DateTime _datefin;
+		private System.Nullable<System.DateTime> _datefin;
 		
 		private string _user_id;
 		
@@ -267,13 +267,13 @@ namespace SmartVideoDAL
     partial void OnCreated();
     partial void OnidChanging(int value);
     partial void OnidChanged();
-    partial void Onfilm_idChanging(int value);
+    partial void Onfilm_idChanging(System.Nullable<int> value);
     partial void Onfilm_idChanged();
     partial void Onfilm_nameChanging(string value);
     partial void Onfilm_nameChanged();
-    partial void OndatedebutChanging(System.DateTime value);
+    partial void OndatedebutChanging(System.Nullable<System.DateTime> value);
     partial void OndatedebutChanged();
-    partial void OndatefinChanging(System.DateTime value);
+    partial void OndatefinChanging(System.Nullable<System.DateTime> value);
     partial void OndatefinChanged();
     partial void Onuser_idChanging(string value);
     partial void Onuser_idChanged();
@@ -305,8 +305,8 @@ namespace SmartVideoDAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_film_id", DbType="Int NOT NULL")]
-		public int film_id
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_film_id", DbType="Int")]
+		public System.Nullable<int> film_id
 		{
 			get
 			{
@@ -325,7 +325,7 @@ namespace SmartVideoDAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_film_name", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_film_name", DbType="VarChar(100)")]
 		public string film_name
 		{
 			get
@@ -345,8 +345,8 @@ namespace SmartVideoDAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_datedebut", DbType="Date NOT NULL")]
-		public System.DateTime datedebut
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_datedebut", DbType="Date")]
+		public System.Nullable<System.DateTime> datedebut
 		{
 			get
 			{
@@ -365,8 +365,8 @@ namespace SmartVideoDAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_datefin", DbType="Date NOT NULL")]
-		public System.DateTime datefin
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_datefin", DbType="Date")]
+		public System.Nullable<System.DateTime> datefin
 		{
 			get
 			{
@@ -385,7 +385,7 @@ namespace SmartVideoDAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_id", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_id", DbType="VarChar(100)")]
 		public string user_id
 		{
 			get
