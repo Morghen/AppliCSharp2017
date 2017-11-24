@@ -21,7 +21,7 @@ namespace ProjetDebug
             {
                 foreach (Genre str in strlist)
                 {
-                    Console.WriteLine(str.id+" = "+str.name);
+                    Console.WriteLine(str.name);
                 }
             }
             Console.ReadKey();    

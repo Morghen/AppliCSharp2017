@@ -54,7 +54,7 @@ namespace FilmsDAL
         public List<Genre> getGenre(int idFilm)
         {
             List<Genre> strlist = new List<Genre>();
-            var result = dc.ExecuteQuery<Genre>(@"SELECT * FROM dbo.Genre INNER JOIN dbo.FilmGenre ON dbo.Genre.id = dbo.FilmGenre.id_genre INNER JOIN dbo.Film ON dbo.FilmGenre.id_film = dbo.Film.id WHERE dbo.FilmGenre.id_film = {0}",""+idFilm);
+            var result = dc.ExecuteQuery<Genre>(@"SELECT DISTINCT name,dbo.Genre.id FROM dbo.Genre JOIN dbo.FilmGenre ON dbo.Genre.id = dbo.FilmGenre.id_genre WHERE dbo.FilmGenre.id_film = {0}", idFilm);
             if (result == null)
                 return null;
             else
