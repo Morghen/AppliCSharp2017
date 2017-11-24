@@ -17,6 +17,8 @@ namespace ProjetDebug
             Console.WriteLine("+++Test de getGenre+++");
             FilmsDALManager db = new FilmsDALManager(@"(localdb)\ProjectsV13");
             List<Genre> liststr = db.getGenre(11);
+            List<Actor> listact = db.getActor(11);
+            List<Realisateur> listreal = db.getProducer(11);
             if (liststr == null)
                 Console.WriteLine("Pas de genre");
             else
@@ -26,6 +28,36 @@ namespace ProjetDebug
                     Console.WriteLine(str.name);
                 }
             }
+            if(listact == null)
+                Console.WriteLine("Pas d'acteurs");
+            else
+            {
+                foreach (Actor str in listact)
+                {
+                    Console.WriteLine(str.name);
+                }
+            }
+            if (listreal == null)
+                Console.WriteLine("Pas de realisateur");
+            else
+            {
+                foreach (Realisateur str in listreal)
+                {
+                    Console.WriteLine(str.name);
+                }
+            }
+
+
+
+
+
+
+
+      
+
+
+
+
             Console.WriteLine("\n+++Test de Hit+++");
             SmartVideoDALManager dbSV = new SmartVideoDALManager(@"(localdb)\ProjectsV13");
             HitDTO newh = new HitDTO(11, TypeEnum.Film, DateTime.Now, 6);
