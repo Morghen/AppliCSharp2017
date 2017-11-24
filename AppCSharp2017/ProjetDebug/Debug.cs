@@ -15,7 +15,8 @@ namespace ProjetDebug
         {
             Console.WriteLine("=== Outil de test ===");
             Console.WriteLine("+++Test de getGenre+++");
-            FilmsDALManager db = new FilmsDALManager(@"(localdb)\ProjectsV13");
+            //FilmsDALManager db = new FilmsDALManager(@"(localdb)\ProjectsV13"); // Toine
+            FilmsDALManager db = new FilmsDALManager(@"(localdb)\MSSQLLocalDB");    // Rémy
             List<Genre> liststr = db.getGenre(11);
             List<Actor> listact = db.getActor(11);
             List<Realisateur> listreal = db.getProducer(11);
