@@ -17,6 +17,11 @@ namespace SmartVideoDAL
             return _instance ?? (_instance = new SmartVideoDALManager(servername, dbname));
         }
 
+        public static SmartVideoDALManager Singleton(String servername)
+        {
+            return _instance ?? (_instance = new SmartVideoDALManager(servername));
+        }
+
         public SmartVideoDALManager(String servername, String dbname)
         {
             if (dbname == null || dbname == null)
