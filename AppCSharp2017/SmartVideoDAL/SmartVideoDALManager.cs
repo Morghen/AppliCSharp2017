@@ -81,7 +81,6 @@ namespace SmartVideoDAL
                 return lh;
             }
         }
-
         #region truc need pas toucher
         public static SmartVideoDALManager Singleton(String servername, String dbname)
         {
