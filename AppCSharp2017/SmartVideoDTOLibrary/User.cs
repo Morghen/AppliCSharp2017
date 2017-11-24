@@ -13,9 +13,9 @@ namespace SmartVideoDTOLibrary
         private string password;
         private string prenom;
 
-        public string Login { get => login; set => login = value; }
-        public string Password { get => password; set => password = value; }
-        public string Prenom { get => prenom; set => prenom = value; }
+        public string Login { get; set; }
+        public string Password { get; set; }
+        public string Prenom { get; set; }
 
         #endregion
         #region constructeur
