@@ -67,20 +67,38 @@ namespace FilmsDAL
             }
         }
 
-        public String getActor(int idFilm)
+        public List<Actor> getActor(int idFilm)
         {
-
-
-
-            return "actor";
+            List<Actor> strlist = new List<Actor>();
+            var result;
+            if (result == null)
+                return null;
+            else
+            {
+                foreach (Actor str in result)
+                {
+                    strlist.Add(str);
+                }
+                return strlist;
+            }
         }
 
-        public String getProducer(int idFilm)
+        public List<Realisateur> getProducer(int idFilm)
         {
+            List<Realisateur> strlist = new List<Realisateur>();
+            var result;
+            if (result == null)
+                return null;
+            else
+            {
+                foreach (Realisateur str in result)
+                {
+                    strlist.Add(str);
+                }
+                return strlist;
+            }
 
-
-
-            return "producer";
+            return strlist;
         }
     }
 }
