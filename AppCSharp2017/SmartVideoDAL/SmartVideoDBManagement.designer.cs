@@ -131,8 +131,8 @@ namespace SmartVideoDAL
     partial void OntypeChanged();
     partial void OndateChanging(System.DateTime value);
     partial void OndateChanged();
-    partial void Onhit1Changing(int value);
-    partial void Onhit1Changed();
+    partial void OnhitChanging(int value);
+    partial void OnhitChanged();
     #endregion
 		
 		public Hit()
@@ -200,8 +200,8 @@ namespace SmartVideoDAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="hit", Storage="_hit1", DbType="Int NOT NULL")]
-		public int hit1
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_hit1", DbType="Int NOT NULL")]
+		public int hit
 		{
 			get
 			{
@@ -211,14 +211,16 @@ namespace SmartVideoDAL
 			{
 				if ((this._hit1 != value))
 				{
-					this.Onhit1Changing(value);
+					this.OnhitChanging(value);
 					this.SendPropertyChanging();
 					this._hit1 = value;
-					this.SendPropertyChanged("hit1");
-					this.Onhit1Changed();
+					this.SendPropertyChanged("hit");
+					this.OnhitChanged();
 				}
 			}
 		}
+
+        
 		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
@@ -239,7 +241,17 @@ namespace SmartVideoDAL
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
-	}
+
+        public override bool Equals(object obj)
+        {
+            var hit = obj as Hit;
+            //Console.WriteLine(this.date + " == " + (hit.date));
+            return hit != null &&
+                   id == hit.id &&
+                   type == hit.type &&
+                   date.Year == hit.date.Year && date.Month == hit.date.Month && date.Day == hit.date.Day;
+        }
+    }
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Location")]
 	public partial class Location : INotifyPropertyChanging, INotifyPropertyChanged

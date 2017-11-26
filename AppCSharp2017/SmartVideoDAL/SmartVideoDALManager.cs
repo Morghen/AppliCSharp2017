@@ -7,6 +7,7 @@ using System.Linq.Expressions;
 using System.Reflection;
 using System.Threading.Tasks;
 using SmartVideoDTOLibrary;
+using System.Data.Linq.Mapping;
 
 namespace SmartVideoDAL
 {
@@ -17,8 +18,23 @@ namespace SmartVideoDAL
         
         public bool addHit(HitDTO h)
         {
-            Hit newh = new Hit{ id = h.Id,  type = (int)h.Type, date = h.Date, hit1 = h.Hit };
-            return Add<Hit>(newh, xg => xg.id == h.Id && xg.type == (int)h.Type && xg.date == h.Date);
+            Hit newh = new Hit{ id = h.Id,  type = (int)h.Type, date = h.Date, hit = h.Hit };
+            return Add<Hit>(newh, xg => xg.Equals(newh));
+        }
+
+        public bool updateHit(HitDTO h)
+        {
+            Hit newh = new Hit { id = h.Id, type = (int)h.Type, date = h.Date, hit = h.Hit };
+            /*Hit tmph = null;
+            if(dc.Hits.Contains<Hit>(newh))
+            {
+                tmph = dc.Hits.First<Hit>(xg => xg.Equals(newh));
+                tmph.hit = h.Hit;
+                dc.SubmitChanges();
+                return true;
+            }
+            return false;*/
+            return Update<Hit>(newh, xg => xg.Equals(newh));
         }
 
         public List<HitDTO> getHit()
@@ -31,7 +47,7 @@ namespace SmartVideoDAL
             {
                 foreach(Hit h in result)
                 {
-                    lh.Add(new HitDTO(h.id, (TypeEnum)h.type, h.date, h.hit1));
+                    lh.Add(new HitDTO(h.id, (TypeEnum)h.type, h.date, h.hit));
                 }
                 return lh;
             }
@@ -158,6 +174,50 @@ namespace SmartVideoDAL
                 
                 return false;
             }
+        }
+
+
+        /*
+         * if(dc.Hits.Contains<Hit>(newh))
+            {
+                tmph = dc.Hits.First<Hit>(xg => xg.Equals(newh));
+                tmph.hit = h.Hit;
+                dc.SubmitChanges();
+                return true;
+            }
+            return false;
+            */
+        public bool Update<T>(T rec, Func<T, bool> expr) where T : class
+        {
+            if (dc == null)
+                throw new Exception("DAL not connected");
+            //try
+            {
+                T tmp;
+                PropertyInfo[] mi;
+                // Query qui permet d'accéder à l'ensemble des objets d'une table dont le type es passé en paramètre
+                IQueryable<T> query = ((Table<T>)dc.GetType().GetProperty(typeof(T).Name + "s").GetValue(dc));
+                if (((Table<T>)dc.GetType().GetProperty(typeof(T).Name + "s").GetValue(dc)).Contains<T>(rec)) // Vérifie sur base de l'expression que aucun objet ne correspond au critère de recherche
+                {
+                    tmp = ((Table<T>)dc.GetType().GetProperty(typeof(T).Name + "s").GetValue(dc)).First<T>(expr);
+                    mi = tmp.GetType().GetProperties();
+                    foreach(PropertyInfo item in mi)
+                    {
+                        ColumnAttribute ca = (ColumnAttribute)((item.GetCustomAttribute(typeof(ColumnAttribute))));
+                        if (!(ca.IsPrimaryKey))
+                            tmp.GetType().GetProperty(item.Name).SetValue(tmp, (rec.GetType().GetProperty(item.Name)).GetValue(rec));
+                    }
+                    dc.SubmitChanges();
+                    return true;
+                }
+                return false;
+            }
+            /*catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+
+                return false;
+            }*/
         }
 
         public bool Add<T, String, Q>(T rec, string sid) where T : class

@@ -61,7 +61,7 @@ namespace ProjetDebug
 
             // creation des objets de test
             UserDTO newu = new UserDTO("user", "user", "user");
-            HitDTO newh = new HitDTO(11, TypeEnum.Film, DateTime.Now, 1);
+            HitDTO newh = new HitDTO(11, TypeEnum.Film, DateTime.Now, 45);
             LocationDTO newl = new LocationDTO(112, 11, "Star Wars episode IV", DateTime.Now, (DateTime.Now).AddDays(5), "user");
             StatistiqueDTO news = new StatistiqueDTO(11, TypeEnum.Film, DateTime.Now, 1);
 
@@ -87,7 +87,7 @@ namespace ProjetDebug
                         dbSV.addLocation(newl);
                         break;
                     case '4'://ajout hit
-                        dbSV.addHit(newh);
+                        dbSV.updateHit(newh);
                         break;
                     case '5'://list user
                         listUser = dbSV.getUser();

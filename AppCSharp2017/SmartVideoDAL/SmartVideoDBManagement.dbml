@@ -5,7 +5,7 @@
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="type" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="date" Type="System.DateTime" DbType="Date NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="hit" Member="hit1" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="hit" Storage="_hit1" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
   <Table Name="dbo.Location" Member="Locations">
