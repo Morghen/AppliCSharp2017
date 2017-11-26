@@ -73,14 +73,6 @@ namespace SmartVideoDTOLibrary
             Hit = hit;
         }
 
-        public HitDTO(int id, string type, DateTime date, int hit)
-        {
-            Id = id;
-            Type = (TypeEnum) Enum.Parse(typeof(TypeEnum),type);
-            Date = date;
-            Hit = hit;
-        }
-
         public override string ToString()
         {
             return ""+Id+" "+Type+" "+Date+" "+Hit;

@@ -8,6 +8,6 @@ namespace SmartVideoDTOLibrary
 {
     public enum TypeEnum
     {
-        Film,Actor
+        Film=0,Actor=1
     };
 }

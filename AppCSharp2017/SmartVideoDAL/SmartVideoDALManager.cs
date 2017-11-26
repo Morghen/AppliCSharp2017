@@ -17,22 +17,21 @@ namespace SmartVideoDAL
         
         public bool addHit(HitDTO h)
         {
-            string typestr = h.Type.ToString();
-            Hit newh = new Hit{ id = h.Id,  type = typestr, date = h.Date, hit1 = h.Hit };
-            return Add<Hit>(newh, xg => xg.id == h.Id);
+            Hit newh = new Hit{ id = h.Id,  type = (int)h.Type, date = h.Date, hit1 = h.Hit };
+            return Add<Hit>(newh, xg => xg.id == h.Id && xg.type == (int)h.Type && xg.date == h.Date);
         }
 
         public List<HitDTO> getHit()
         {
             List<HitDTO> lh = new List<HitDTO>();
-            var result = dc.ExecuteQuery<Hit>(@"SELECT * FROM dbo.Hit");
+            var result = dc.ExecuteQuery<Hit>(@"SELECT * FROM [dbo].[Hit]");
             if(result == null)
-                return null;
+                return lh;
             else
             {
                 foreach(Hit h in result)
                 {
-                    lh.Add(new HitDTO(h.id, h.type, h.date, h.hit1));
+                    lh.Add(new HitDTO(h.id, (TypeEnum)h.type, h.date, h.hit1));
                 }
                 return lh;
             }
@@ -47,7 +46,7 @@ namespace SmartVideoDAL
         public List<UserDTO> getUser()
         {
             List<UserDTO> lh = new List<UserDTO>();
-            var result = dc.ExecuteQuery<User>(@"SELECT * FROM dbo.User");
+            var result = dc.ExecuteQuery<User>(@"SELECT * FROM [dbo].[User]");
             if (result == null)
                 return null;
             else
@@ -69,7 +68,7 @@ namespace SmartVideoDAL
         public List<LocationDTO> getLocation()
         {
             List<LocationDTO> lh = new List<LocationDTO>();
-            var result = dc.ExecuteQuery<Location>(@"SELECT * FROM dbo.Location");
+            var result = dc.ExecuteQuery<Location>(@"SELECT * FROM [dbo].[Location]");
             if (result == null)
                 return null;
             else
@@ -81,6 +80,29 @@ namespace SmartVideoDAL
                 return lh;
             }
         }
+
+        public bool addStatistique(StatistiqueDTO h)
+        {
+            Statistique newh = new Statistique { id = h.Id, date = h.Date, type = (int)h.Type, position = h.Position };
+            return Add<Statistique>(newh, xg => xg.id == h.Id && xg.type == (int)h.Type && xg.date == h.Date);
+        }
+
+        public List<StatistiqueDTO> getStatistique()
+        {
+            List<StatistiqueDTO> lh = new List<StatistiqueDTO>();
+            var result = dc.ExecuteQuery<Statistique>(@"SELECT * FROM [dbo].[Statistiques]");
+            if (result == null)
+                return null;
+            else
+            {
+                foreach (Statistique h in result)
+                {
+                    lh.Add(new StatistiqueDTO(h.id, (TypeEnum)h.type, h.date, h.position));
+                }
+                return lh;
+            }
+        }
+
         #region truc need pas toucher
         public static SmartVideoDALManager Singleton(String servername, String dbname)
         {
@@ -133,6 +155,7 @@ namespace SmartVideoDAL
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
+                
                 return false;
             }
         }

@@ -115,7 +115,7 @@ namespace SmartVideoDAL
 		
 		private int _id;
 		
-		private string _type;
+		private int _type;
 		
 		private System.DateTime _date;
 		
@@ -127,7 +127,7 @@ namespace SmartVideoDAL
     partial void OnCreated();
     partial void OnidChanging(int value);
     partial void OnidChanged();
-    partial void OntypeChanging(string value);
+    partial void OntypeChanging(int value);
     partial void OntypeChanged();
     partial void OndateChanging(System.DateTime value);
     partial void OndateChanged();
@@ -160,8 +160,8 @@ namespace SmartVideoDAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_type", DbType="VarChar(100) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string type
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_type", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int type
 		{
 			get
 			{

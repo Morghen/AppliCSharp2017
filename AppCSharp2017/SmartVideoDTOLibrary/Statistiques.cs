@@ -6,25 +6,17 @@ using System.Threading.Tasks;
 
 namespace SmartVideoDTOLibrary
 {
-    public class StatistiquesDTOs
+    public class StatistiqueDTO
     {
         private int id;
         private DateTime date;
         private TypeEnum type;
         private int position;
 
-        public StatistiquesDTOs(int position, TypeEnum type, DateTime date, int id)
+        public StatistiqueDTO(int id, TypeEnum type, DateTime date, int position)
         {
             Position = position;
             Type = type;
-            Date = date;
-            Id = id;
-        }
-
-        public StatistiquesDTOs(int position, string type, DateTime date, int id)
-        {
-            Position = position;
-            Type = (TypeEnum)Enum.Parse(typeof(TypeEnum), type);
             Date = date;
             Id = id;
         }

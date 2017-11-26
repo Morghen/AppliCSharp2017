@@ -3,7 +3,7 @@
   <Table Name="dbo.Hit" Member="Hits">
     <Type Name="Hit">
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="type" Type="System.String" DbType="VarChar(100) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="type" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="date" Type="System.DateTime" DbType="Date NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="hit" Member="hit1" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
     </Type>
