@@ -52,7 +52,7 @@ namespace ProjetDebug
                 }
             }*/
 
-            Console.WriteLine("\n+++Test de Hit+++");
+            Console.WriteLine("\n+++Test de Hit+++ ");
             SmartVideoDALManager dbSV;
             if (VERSION == 1)
                 dbSV = new SmartVideoDALManager(@"(localdb)\ProjectsV13");
@@ -87,7 +87,7 @@ namespace ProjetDebug
                         dbSV.addLocation(newl);
                         break;
                     case '4'://ajout hit
-                        dbSV.updateHit(newh);
+                        dbSV.addHit(newh);
                         break;
                     case '5'://list user
                         listUser = dbSV.getUser();

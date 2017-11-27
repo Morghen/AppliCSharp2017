@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using SmartVideoDTOLibrary;
 using System.Data.Linq.Mapping;
 
+#pragma warning disable IDE1006
+
 namespace SmartVideoDAL
 {
     public class SmartVideoDALManager
@@ -25,15 +27,6 @@ namespace SmartVideoDAL
         public bool updateHit(HitDTO h)
         {
             Hit newh = new Hit { id = h.Id, type = (int)h.Type, date = h.Date, hit = h.Hit };
-            /*Hit tmph = null;
-            if(dc.Hits.Contains<Hit>(newh))
-            {
-                tmph = dc.Hits.First<Hit>(xg => xg.Equals(newh));
-                tmph.hit = h.Hit;
-                dc.SubmitChanges();
-                return true;
-            }
-            return false;*/
             return Update<Hit>(newh, xg => xg.Equals(newh));
         }
 
@@ -52,11 +45,17 @@ namespace SmartVideoDAL
                 return lh;
             }
         }
-
+        
         public bool addUser(UserDTO h)
         {
             User newh = new User { login = h.Login, password = h.Password, prenom = h.Prenom };
-            return Add<User>(newh, xg => xg.login == h.Login);
+            return Add<User>(newh, xg => xg.Equals(newh));
+        }
+
+        public bool updateUser(UserDTO h)
+        {
+            User newh = new User { login = h.Login, password = h.Password, prenom = h.Prenom };
+            return Update<User>(newh, xg => xg.Equals(newh));
         }
 
         public List<UserDTO> getUser()
@@ -78,7 +77,13 @@ namespace SmartVideoDAL
         public bool addLocation(LocationDTO h)
         {
             Location newh = new Location { id = h.Id, film_id = h.FilmId, film_name = h.FilmName, datedebut = h.DateDebut, datefin = h.DateFin, user_id = h.UserId};
-            return Add<Location>(newh, xg => xg.id == h.Id);
+            return Add<Location>(newh, xg => xg.Equals(newh));
+        }
+
+        public bool updateLocation(LocationDTO h)
+        {
+            Location newh = new Location { id = h.Id, film_id = h.FilmId, film_name = h.FilmName, datedebut = h.DateDebut, datefin = h.DateFin, user_id = h.UserId };
+            return Update<Location>(newh, xg => xg.Equals(newh));
         }
 
         public List<LocationDTO> getLocation()
@@ -100,7 +105,13 @@ namespace SmartVideoDAL
         public bool addStatistique(StatistiqueDTO h)
         {
             Statistique newh = new Statistique { id = h.Id, date = h.Date, type = (int)h.Type, position = h.Position };
-            return Add<Statistique>(newh, xg => xg.id == h.Id && xg.type == (int)h.Type && xg.date == h.Date);
+            return Add<Statistique>(newh, xg => xg.Equals(newh));
+        }
+
+        public bool updateStatistique(StatistiqueDTO h)
+        {
+            Statistique newh = new Statistique { id = h.Id, date = h.Date, type = (int)h.Type, position = h.Position };
+            return Update<Statistique>(newh, xg => xg.Equals(newh));
         }
 
         public List<StatistiqueDTO> getStatistique()
@@ -176,17 +187,6 @@ namespace SmartVideoDAL
             }
         }
 
-
-        /*
-         * if(dc.Hits.Contains<Hit>(newh))
-            {
-                tmph = dc.Hits.First<Hit>(xg => xg.Equals(newh));
-                tmph.hit = h.Hit;
-                dc.SubmitChanges();
-                return true;
-            }
-            return false;
-            */
         public bool Update<T>(T rec, Func<T, bool> expr) where T : class
         {
             if (dc == null)
@@ -212,12 +212,6 @@ namespace SmartVideoDAL
                 }
                 return false;
             }
-            /*catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-
-                return false;
-            }*/
         }
 
         public bool Add<T, String, Q>(T rec, string sid) where T : class
@@ -262,3 +256,6 @@ namespace SmartVideoDAL
         #endregion
     }
 }
+#pragma warning restore IDE1006 // Naming Styles
+
+
