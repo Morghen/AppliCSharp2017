@@ -15,44 +15,8 @@ namespace ProjetDebug
         static void Main(string[] args)
         {
             Console.WriteLine("=== Outil de test ===");
-            /*Console.WriteLine("+++Test de Film+++");
-            FilmsDALManager db;
-            if (VERSION == 1)
-                 db = new FilmsDALManager(@"(localdb)\ProjectsV13"); // Toine
-            else
-                db = new FilmsDALManager(@"(localdb)\MSSQLLocalDB");    // Rémy
-            List<Genre> liststr = db.getGenre(5);
-            List<Actor> listact = db.getActor(5);
-            List<Realisateur> listreal = db.getProducer(5);
-            if (liststr.Count == 0)
-                Console.WriteLine("Pas de genre");
-            else
-            {
-                foreach (Genre str in liststr)
-                {
-                    Console.WriteLine(str.name);
-                }
-            }
-            if(listact.Count == 0)
-                Console.WriteLine("Pas d'acteurs");
-            else
-            {
-                foreach (Actor str in listact)
-                {
-                    Console.WriteLine(str.name);
-                }
-            }
-            if (listreal.Count == 0)
-                Console.WriteLine("Pas de realisateur");
-            else
-            {
-                foreach (Realisateur str in listreal)
-                {
-                    Console.WriteLine(str.name);
-                }
-            }*/
 
-            Console.WriteLine("\n+++Test de Hit+++ ");
+            Console.WriteLine("+++Test de Hit+++ ");
             SmartVideoDALManager dbSV;
             if (VERSION == 1)
                 dbSV = new SmartVideoDALManager(@"(localdb)\ProjectsV13");
