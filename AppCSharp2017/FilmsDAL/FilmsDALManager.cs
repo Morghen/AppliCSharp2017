@@ -49,58 +49,28 @@ namespace FilmsDAL
             }
         }
 
-        public List<FilmDTO> getFilm(int idFilm)
+        public FilmDTO getFilm(int idFilm)
         {
-            List<FilmDTO> lf = new List<FilmDTO>();
-            foreach (Film tmp in getList<Film>(xg => xg.id == idFilm))
-            {
-                FilmDTO fd = new FilmDTO(tmp.id, tmp.title,tmp.original_title, tmp.runtime??0, tmp.posterpath);
-                lf.Add(fd);
-            }
-            return lf;
+            Film tmp = getList<Film>(xg => xg.id == idFilm).First();
+            return new FilmDTO(tmp.id, tmp.title,tmp.original_title, tmp.runtime??0, tmp.posterpath);
         }
 
-        public List<GenreDTO> getGenre(int idGenre)
+        public GenreDTO getGenre(int idGenre)
         {
-            List<GenreDTO> lf = new List<GenreDTO>();
-            foreach (Genre tmp in getList<Genre>(xg => xg.id == idGenre))
-            {
-                GenreDTO fd = new GenreDTO(tmp.id, tmp.name);
-                lf.Add(fd);
-            }
-            return lf;
+            Genre tmp = getList<Genre>(xg => xg.id == idGenre).First();
+            return new GenreDTO(tmp.id, tmp.name);
         }
 
-        public List<Actor> getActor(int idFilm)
+        public ActorDTO getActor(int idActor)
         {
-            List<Actor> strlist = new List<Actor>();
-            var result = dc.ExecuteQuery<Actor>(@"SELECT DISTINCT name,dbo.Actor.id,character FROM dbo.Actor JOIN dbo.FilmActor ON dbo.Actor.id = dbo.FilmActor.id_actor WHERE dbo.FilmActor.id_film = {0}", idFilm);
-            if (result == null)
-                return null;
-            else
-            {
-                foreach (Actor str in result)
-                {
-                    strlist.Add(str);
-                }
-                return strlist;
-            }
+            Actor tmp = getList<Actor>(xg => xg.id == idActor).First();
+            return new ActorDTO(tmp.id, tmp.name, tmp.character);
         }
 
-        public List<Realisateur> getProducer(int idFilm)
+        public RealisateurDTO getProducer(int idProducer)
         {
-            List<Realisateur> strlist = new List<Realisateur>();
-            var result = dc.ExecuteQuery<Realisateur>(@"SELECT DISTINCT name,dbo.Realisateur.id FROM dbo.Realisateur JOIN dbo.FilmRealisateur ON dbo.Realisateur.id = dbo.FilmRealisateur.id_realisateur WHERE dbo.FilmRealisateur.id_film = {0}", idFilm);
-            if (result == null)
-                return null;
-            else
-            {
-                foreach (Realisateur str in result)
-                {
-                    strlist.Add(str);
-                }
-                return strlist;
-            }
+            Realisateur tmp = getList<Realisateur>(xg => xg.id == idProducer).First();
+            return new RealisateurDTO(tmp.id, tmp.name);
         }
 
         public List<T> getList<T>(Func<T, bool> expr) where T : class
