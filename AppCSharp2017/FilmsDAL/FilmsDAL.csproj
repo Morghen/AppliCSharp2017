@@ -74,6 +74,12 @@
       <DependentUpon>FilmsDBManagement.dbml</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FilmsDTO\FilmsDTO.csproj">
+      <Project>{130b87c9-7def-47b8-b071-49d4f9b111bf}</Project>
+      <Name>FilmsDTO</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
