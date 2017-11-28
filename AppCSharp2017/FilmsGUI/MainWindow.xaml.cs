@@ -58,6 +58,11 @@ namespace FilmsGUI
         {
             MainGrid.Items.Clear();
             dtolist = dc.getFilmList(offset, nbr);
+            if(dtolist.Count == 0)
+            {
+                MessageBox.Show("Fin des résultats", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             foreach (FilmDTO obj in dtolist)
             {
                 res = dc.getFilmInfos(obj);
