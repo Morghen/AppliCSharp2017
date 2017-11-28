@@ -1,4 +1,5 @@
 ﻿using FilmsDAL;
+using FilmsDTO;
 using SmartVideoDAL;
 using SmartVideoDTOLibrary;
 using System;
@@ -17,23 +18,38 @@ namespace ProjetDebug
             Console.WriteLine("=== Outil de test ===");
 
             Console.WriteLine("+++Test de Hit+++ ");
+            FilmsDALManager dbF;
             SmartVideoDALManager dbSV;
             if (VERSION == 1)
+            {
                 dbSV = new SmartVideoDALManager(@"(localdb)\ProjectsV13");
+                dbF = new FilmsDALManager(@"(localdb)\ProjectsV13");
+            }
             else
+            {
                 dbSV = new SmartVideoDALManager(@"(localdb)\MSSQLLocalDB");
-
+                dbF = new FilmsDALManager(@"(localdb)\MSSQLLocalDB");
+            }
+           
             // creation des objets de test
             UserDTO newu = new UserDTO("user", "user", "user");
             HitDTO newh = new HitDTO(11, TypeEnum.Film, DateTime.Now, 45);
             LocationDTO newl = new LocationDTO(112, 11, "Star Wars episode IV", DateTime.Now, (DateTime.Now).AddDays(5), "user");
             StatistiqueDTO news = new StatistiqueDTO(11, TypeEnum.Film, DateTime.Now, 1);
+            FilmDTO newf = null;
 
             //recupere les objet dans la BD
             List<HitDTO> listHit;
             List<StatistiqueDTO> listStat;
             List<UserDTO> listUser;
             List<LocationDTO> listLoca;
+            List<FilmDTO> listFilm = new List<FilmDTO>();
+
+            listFilm = dbF.getList<FilmDTO>(1, 10);
+            foreach(FilmDTO film in listFilm)
+            {
+                Console.WriteLine(film.ToString());
+            }
 
             ConsoleKeyInfo cki = Console.ReadKey();
             while (cki.KeyChar != 'q')
