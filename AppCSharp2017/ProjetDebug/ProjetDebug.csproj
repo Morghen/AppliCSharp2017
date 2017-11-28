@@ -50,6 +50,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FilmsBLL\FilmsBLL.csproj">
+      <Project>{17de82b9-13cc-464d-afdf-71c9973e9876}</Project>
+      <Name>FilmsBLL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FilmsDAL\FilmsDAL.csproj">
       <Project>{cef0cddc-dc1b-4017-b51a-43f15259b62c}</Project>
       <Name>FilmsDAL</Name>

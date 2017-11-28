@@ -5,8 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FilmsGUI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
-    </Grid>
+        Title="Fenêtre de contrôle des films" Height="720" Width="1080">
+    <StackPanel>
+        <DataGrid Name="MainGrid" HorizontalAlignment="Left" Margin="10,10,0,0" Height="592" Width="1054" DataContext="{Binding DataItem}" ItemsSource="{Binding DataItem}" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn MinWidth="100" Header="ID" Binding="{Binding Id}"/>
+                <DataGridTextColumn MinWidth="100" Header="Titre" Binding="{Binding Title}"/>
+                <DataGridTextColumn MinWidth="100" Header="Titre original" Binding="{Binding OriginalTitle}"/>
+                <DataGridTextColumn MinWidth="100" Header="Durée" Binding="{Binding Runtime}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="buttonSuiv" Content="Suivant" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20" Height="50" Width="125"/>
+    </StackPanel>
 </Window>

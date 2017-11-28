@@ -1,5 +1,6 @@
 ﻿using FilmsDAL;
 using FilmsDTO;
+using FilmsBLL;
 using SmartVideoDAL;
 using SmartVideoDTOLibrary;
 using System;
@@ -46,13 +47,15 @@ namespace ProjetDebug
 
             Console.WriteLine("Liste Film");
 
-            listFilm = dbF.getFilm(11, 10);
+            FilmsBLLManager bll = new FilmsBLLManager();
+            FilmDTO testF = dbF.getFilm(11);
 
-            foreach(FilmDTO film in listFilm)
+            List<string> info = bll.getFilmInfos(testF);
+            foreach(String str in info)
             {
-                Console.WriteLine(film.ToString());
+                Console.WriteLine(str);
             }
-            Console.WriteLine("fin film");
+
 
             ConsoleKeyInfo cki = Console.ReadKey();
             while (cki.KeyChar != 'q')

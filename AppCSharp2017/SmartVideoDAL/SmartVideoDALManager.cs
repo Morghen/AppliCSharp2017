@@ -96,7 +96,7 @@ namespace SmartVideoDAL
             {
                 foreach (Location h in result)
                 {
-                    lh.Add(new LocationDTO(h.id, h.film_id.GetValueOrDefault(), h.film_name, h.datedebut.GetValueOrDefault(), h.datefin.GetValueOrDefault(), h.user_id));
+                    lh.Add(new LocationDTO(h.id, h.film_id??0, h.film_name, h.datedebut.GetValueOrDefault(), h.datefin.GetValueOrDefault(), h.user_id));
                 }
                 return lh;
             }
