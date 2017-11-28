@@ -96,7 +96,7 @@ namespace FilmsDAL
             return list;
         }
 
-        public List<T> getList<T>(Func<T, bool> expr, int debut, int nbr) where T : class
+        public List<T> getList<T>( int debut, int nbr) where T : class
         {
             if (dc == null)
                 throw new Exception("DAL not connected");
@@ -105,7 +105,7 @@ namespace FilmsDAL
             {
                 // Query qui permet d'accéder à l'ensemble des objets d'une table dont le type es passé en paramètre
                 IQueryable<T> query = ((Table<T>)dc.GetType().GetProperty(typeof(T).Name + "s").GetValue(dc));
-                foreach (T tmp in query.Where(expr).Skip(debut).Take(nbr)) // Vérifie sur base de l'expression que aucun objet ne correspond au critère de recherche
+                foreach (T tmp in query.Skip(debut).Take(nbr)) // Vérifie sur base de l'expression que aucun objet ne correspond au critère de recherche
                 {
                     list.Add(tmp);
                 }
