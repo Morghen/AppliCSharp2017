@@ -1,4 +1,6 @@
-﻿namespace FilmsDTO
+﻿using System.Reflection;
+
+namespace FilmsDTO
 {
     public class FilmGenreDTO
     {
@@ -43,6 +45,15 @@
             return dTO != null &&
                    Id == dTO.Id;
         }
-
+        public override string ToString()
+        {
+            string str = "";
+            PropertyInfo[] pi = this.GetType().GetProperties();
+            foreach (PropertyInfo t in pi)
+            {
+                str += "" + this.GetType().GetProperty(t.Name).GetValue(this) + " ";
+            }
+            return str;
+        }
     }
 }

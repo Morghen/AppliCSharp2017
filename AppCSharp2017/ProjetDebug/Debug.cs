@@ -12,7 +12,7 @@ namespace ProjetDebug
 {
     class Debug
     {
-        public static int VERSION = 0;
+        public static int VERSION = 1;
         static void Main(string[] args)
         {
             Console.WriteLine("=== Outil de test ===");
@@ -36,20 +36,21 @@ namespace ProjetDebug
             HitDTO newh = new HitDTO(11, TypeEnum.Film, DateTime.Now, 45);
             LocationDTO newl = new LocationDTO(112, 11, "Star Wars episode IV", DateTime.Now, (DateTime.Now).AddDays(5), "user");
             StatistiqueDTO news = new StatistiqueDTO(11, TypeEnum.Film, DateTime.Now, 1);
-            FilmDTO newf = null;
 
             //recupere les objet dans la BD
             List<HitDTO> listHit;
             List<StatistiqueDTO> listStat;
             List<UserDTO> listUser;
             List<LocationDTO> listLoca;
-            List<FilmDTO> listFilm = new List<FilmDTO>();
+            List<FilmDTO> listFilm;
 
-            listFilm = dbF.getList<FilmDTO>(1, 10);
+            Console.WriteLine("Liste Film");
+            listFilm = dbF.getFilm(0, 10);
             foreach(FilmDTO film in listFilm)
             {
                 Console.WriteLine(film.ToString());
             }
+            Console.WriteLine("fin film");
 
             ConsoleKeyInfo cki = Console.ReadKey();
             while (cki.KeyChar != 'q')

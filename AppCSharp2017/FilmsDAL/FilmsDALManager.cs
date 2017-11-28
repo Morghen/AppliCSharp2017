@@ -52,7 +52,7 @@ namespace FilmsDAL
         public FilmDTO getFilm(int idFilm)
         {
             Film tmp = getList<Film>(xg => xg.id == idFilm).First();
-            return new FilmDTO(tmp.id, tmp.title,tmp.original_title, tmp.runtime??0, tmp.posterpath);
+            return new FilmDTO(tmp.id, tmp.title,tmp.original_title, tmp.runtime??0, tmp.posterpath, tmp.url);
         }
 
         public GenreDTO getGenre(int idGenre)
@@ -71,6 +71,70 @@ namespace FilmsDAL
         {
             Realisateur tmp = getList<Realisateur>(xg => xg.id == idProducer).First();
             return new RealisateurDTO(tmp.id, tmp.name);
+        }
+
+        public List<FilmDTO> getFilm(int debut, int nbr)
+        {
+            List<FilmDTO> lh = new List<FilmDTO>();
+            List<Film> t = getList<Film>(debut, nbr);
+            if (t == null)
+                return null;
+            else
+            {
+                foreach (Film tmp in t)
+                {
+                    lh.Add(new FilmDTO(tmp.id, tmp.title, tmp.original_title, tmp.runtime ?? 0, tmp.posterpath, tmp.url));
+                }
+                return lh;
+            }
+        }
+
+        public List<GenreDTO> getGenre(int debut, int nbr)
+        {
+            List<GenreDTO> lh = new List<GenreDTO>();
+            List<Genre> t = getList<Genre>(debut, nbr);
+            if (t == null)
+                return null;
+            else
+            {
+                foreach (Genre tmp in t)
+                {
+                    lh.Add(new GenreDTO(tmp.id, tmp.name));
+                }
+                return lh;
+            }
+        }
+
+        public List<ActorDTO> getActor( int debut, int nbr)
+        {
+            List<ActorDTO> lh = new List<ActorDTO>();
+            List<Actor> t = getList<Actor>(debut, nbr);
+            if (t == null)
+                return null;
+            else
+            {
+                foreach (Actor tmp in t)
+                {
+                    lh.Add(new ActorDTO(tmp.id, tmp.name, tmp.character));
+                }
+                return lh;
+            }
+        }
+
+        public List<RealisateurDTO> getProducer(int debut, int nbr)
+        {
+            List<RealisateurDTO> lh = new List<RealisateurDTO>();
+            List<Realisateur> t = getList<Realisateur>(debut, nbr);
+            if (t == null)
+                return null;
+            else
+            {
+                foreach (Realisateur tmp in t)
+                {
+                    lh.Add(new RealisateurDTO(tmp.id, tmp.name));
+                }
+                return lh;
+            }
         }
 
         public List<T> getList<T>(Func<T, bool> expr) where T : class
@@ -105,7 +169,8 @@ namespace FilmsDAL
             {
                 // Query qui permet d'accéder à l'ensemble des objets d'une table dont le type es passé en paramètre
                 IQueryable<T> query = ((Table<T>)dc.GetType().GetProperty(typeof(T).Name + "s").GetValue(dc));
-                foreach (T tmp in query.Skip(debut).Take(nbr)) // Vérifie sur base de l'expression que aucun objet ne correspond au critère de recherche
+                IQueryable<T> t = query.Skip(debut).Take(nbr);
+                foreach (T tmp in t) // Vérifie sur base de l'expression que aucun objet ne correspond au critère de recherche
                 {
                     list.Add(tmp);
                 }

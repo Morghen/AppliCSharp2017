@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -39,17 +40,26 @@ namespace FilmsDTO
         }
         private string poster_path;
 
+        private string url;
+
+        public string Url
+        {
+            get { return url; }
+            set { url = value; }
+        }
+
         public FilmDTO()
         {
         }
 
-        public FilmDTO(int id, string title, string originalTitle, int runtime, string posterPath)
+        public FilmDTO(int id, string title, string originalTitle, int runtime, string posterPath, string url)
         {
             Id = id;
             Title = title;
             OriginalTitle = originalTitle;
             Runtime = runtime;
             PosterPath = posterPath;
+            Url = url;
         }
 
         public string PosterPath
@@ -62,6 +72,17 @@ namespace FilmsDTO
             var dTO = obj as FilmDTO;
             return dTO != null &&
                    Id == dTO.Id;
+        }
+
+        public override string ToString()
+        {
+            string str = "";
+            PropertyInfo[] pi = this.GetType().GetProperties();
+            foreach (PropertyInfo t in pi)
+            {
+                str += "" + this.GetType().GetProperty(t.Name).GetValue(this) + " ";
+            }
+            return str;
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -46,6 +47,15 @@ namespace FilmsDTO
             return dTO != null &&
                    Id == dTO.Id;
         }
-
+        public override string ToString()
+        {
+            string str = "";
+            PropertyInfo[] pi = this.GetType().GetProperties();
+            foreach (PropertyInfo t in pi)
+            {
+                str += "" + this.GetType().GetProperty(t.Name).GetValue(this) + " ";
+            }
+            return str;
+        }
     }
 }
