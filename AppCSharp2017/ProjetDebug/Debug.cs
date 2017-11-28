@@ -12,7 +12,7 @@ namespace ProjetDebug
 {
     class Debug
     {
-        public static int VERSION = 1;
+        public static int VERSION = 2;
         static void Main(string[] args)
         {
             Console.WriteLine("=== Outil de test ===");
@@ -45,7 +45,9 @@ namespace ProjetDebug
             List<FilmDTO> listFilm;
 
             Console.WriteLine("Liste Film");
-            listFilm = dbF.getFilm(0, 10);
+
+            listFilm = dbF.getFilm(11, 10);
+
             foreach(FilmDTO film in listFilm)
             {
                 Console.WriteLine(film.ToString());
