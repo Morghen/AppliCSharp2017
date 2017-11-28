@@ -70,7 +70,9 @@ namespace SmartVideoDTOLibrary
 
         public override bool Equals(object obj)
         {
-            return base.Equals(obj);
+            if (!(obj is UserDTO))
+                return false;
+            return Login == ((UserDTO) obj).Login;
         }
 
         public override int GetHashCode()
