@@ -11,7 +11,7 @@ namespace ProjetDebug
 {
     class Debug
     {
-        public static int VERSION = 1;
+        public static int VERSION = 0;
         static void Main(string[] args)
         {
             Console.WriteLine("=== Outil de test ===");
