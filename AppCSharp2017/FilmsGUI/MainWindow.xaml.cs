@@ -43,7 +43,13 @@ namespace FilmsGUI
         {
             InitializeComponent();
             buttonSuiv.Click += ButtonSuiv_Click;
+            buttonPrec.Click += ButtonPrec_Click;
             Init();
+        }
+
+        private void ButtonPrec_Click(object sender, RoutedEventArgs e)
+        {
+            Prec();
         }
 
         public void Init()
@@ -54,11 +60,17 @@ namespace FilmsGUI
             Next();
         }
 
-        public void Next()
+        public void Prec()
         {
+            if (offset - 50 < 0)
+            {
+                MessageBox.Show("Pas de films disponibles", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             MainGrid.Items.Clear();
+            offset = offset - 50;
             dtolist = dc.getFilmList(offset, nbr);
-            if(dtolist.Count == 0)
+            if (dtolist.Count == 0)
             {
                 MessageBox.Show("Fin des résultats", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
@@ -68,7 +80,24 @@ namespace FilmsGUI
                 res = dc.getFilmInfos(obj);
                 MainGrid.Items.Add(new DataItem { Id = res[0], Title = res[1], OriginalTitle = res[2], Runtime = res[3] });
             }
+        }
+
+        public void Next()
+        {
+            dtolist = dc.getFilmList(offset, nbr);
+            if(dtolist.Count == 0)
+            {
+                MessageBox.Show("Fin des résultats", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            MainGrid.Items.Clear();
             offset = offset + 50;
+            foreach (FilmDTO obj in dtolist)
+            {
+                res = dc.getFilmInfos(obj);
+                MainGrid.Items.Add(new DataItem { Id = res[0], Title = res[1], OriginalTitle = res[2], Runtime = res[3] });
+            }
+            
         }
 
         private void ButtonSuiv_Click(object sender, RoutedEventArgs e)
