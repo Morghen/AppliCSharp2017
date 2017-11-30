@@ -13,13 +13,22 @@ namespace FilmsBLL
     public class FilmsBLLManager
     {
         #region VARIABLES MEMBRES
-        private static int _version = 2;
+        private static int _version = 2;// 2 remy   1 antoine
         private FilmsDALManager _db;
         #endregion
         
         public FilmsBLLManager()
         {
-            if (Version == 1)
+            if (Environment.MachineName == "TOINE")
+            {
+                Console.WriteLine("TOINE");
+                _version = 1;
+            }
+            else
+            {
+                _version = 2;
+            }
+            if (Version == 2)
                 Db = new FilmsDALManager(@"(localdb)\MSSQLLocalDB", "FilmDB");
             else
                 Db = new FilmsDALManager(@"(localdb)\ProjectsV13", "FilmDB");

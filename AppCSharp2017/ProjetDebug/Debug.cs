@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SmartVideoBLL;
 
 namespace ProjetDebug
 {
@@ -18,25 +19,17 @@ namespace ProjetDebug
         {
             Console.WriteLine("=== Outil de test ===");
 
-            Console.WriteLine("+++Test de Hit+++ ");
+            Console.WriteLine("+++Test de Hit+++ "+System.Environment.MachineName);
             FilmsDALManager dbF;
-            SmartVideoDALManager dbSV;
-            if (VERSION == 1)
-            {
-                dbSV = new SmartVideoDALManager(@"(localdb)\ProjectsV13");
-                dbF = new FilmsDALManager(@"(localdb)\ProjectsV13");
-            }
-            else
-            {
-                dbSV = new SmartVideoDALManager(@"(localdb)\MSSQLLocalDB");
-                dbF = new FilmsDALManager(@"(localdb)\MSSQLLocalDB");
-            }
+            SmartVideoBLLManager svBll = new SmartVideoBLLManager();
+            SmartVideoDALManager dbSV = svBll.svDal;
+            
            
             // creation des objets de test
             UserDTO newu = new UserDTO("user", "user", "user");
-            HitDTO newh = new HitDTO(11, TypeEnum.Film, DateTime.Now, 45);
-            LocationDTO newl = new LocationDTO(112, 11, "Star Wars episode IV", DateTime.Now, (DateTime.Now).AddDays(5), "user");
-            StatistiqueDTO news = new StatistiqueDTO(11, TypeEnum.Film, DateTime.Now, 1);
+            HitDTO newh = new HitDTO(11, TypeEnum.Film, DateTime.Today, 45);
+            LocationDTO newl = new LocationDTO(112, 11, "Star Wars episode IV", DateTime.Today, (DateTime.Today).AddDays(5), "user");
+            StatistiqueDTO news = new StatistiqueDTO(11, TypeEnum.Film, DateTime.Today, 1);
 
             //recupere les objet dans la BD
             List<HitDTO> listHit;
@@ -48,13 +41,13 @@ namespace ProjetDebug
             Console.WriteLine("Liste Film");
 
             FilmsBLLManager bll = new FilmsBLLManager();
-            FilmDTO testF = dbF.getFilm(11);
+            /*FilmDTO testF = dbF.getFilm(11);
 
             List<string> info = bll.getFilmInfos(testF);
             foreach(String str in info)
             {
                 Console.WriteLine(str);
-            }
+            }*/
 
 
             ConsoleKeyInfo cki = Console.ReadKey();
@@ -73,7 +66,7 @@ namespace ProjetDebug
                         dbSV.addLocation(newl);
                         break;
                     case '4'://ajout hit
-                        dbSV.addHit(newh);
+                        svBll.incHitFilm(11);
                         break;
                     case '5'://list user
                         listUser = dbSV.getUser();
@@ -115,7 +108,6 @@ namespace ProjetDebug
                         dbSV.addUser(newu);
                         dbSV.addStatistique(news);
                         dbSV.addLocation(newl);
-                        dbSV.addHit(newh);
                         break;
                 }
                 cki = Console.ReadKey();

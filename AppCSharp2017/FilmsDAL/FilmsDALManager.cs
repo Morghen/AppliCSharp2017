@@ -52,24 +52,33 @@ namespace FilmsDAL
         public FilmDTO getFilm(int idFilm)
         {
             Film tmp = getList<Film>(xg => xg.id == idFilm).First();
+            
+            if (tmp == null)
+                return null;
             return new FilmDTO(tmp.id, tmp.title,tmp.original_title, tmp.runtime??0, tmp.posterpath, tmp.url);
         }
 
         public GenreDTO getGenre(int idGenre)
         {
             Genre tmp = getList<Genre>(xg => xg.id == idGenre).First();
+            if (tmp == null)
+                return null;
             return new GenreDTO(tmp.id, tmp.name);
         }
 
         public ActorDTO getActor(int idActor)
         {
             Actor tmp = getList<Actor>(xg => xg.id == idActor).First();
+            if (tmp == null)
+                return null;
             return new ActorDTO(tmp.id, tmp.name, tmp.character);
         }
 
         public RealisateurDTO getProducer(int idProducer)
         {
             Realisateur tmp = getList<Realisateur>(xg => xg.id == idProducer).First();
+            if (tmp == null)
+                return null;
             return new RealisateurDTO(tmp.id, tmp.name);
         }
 
@@ -79,14 +88,11 @@ namespace FilmsDAL
             List<Film> t = getList<Film>(debut, nbr);
             if (t == null)
                 return null;
-            else
+            foreach (Film tmp in t)
             {
-                foreach (Film tmp in t)
-                {
-                    lh.Add(new FilmDTO(tmp.id, tmp.title, tmp.original_title, tmp.runtime ?? 0, tmp.posterpath, tmp.url));
-                }
-                return lh;
+                lh.Add(new FilmDTO(tmp.id, tmp.title, tmp.original_title, tmp.runtime ?? 0, tmp.posterpath, tmp.url));
             }
+            return lh;
         }
 
         public List<GenreDTO> getGenre(int debut, int nbr)

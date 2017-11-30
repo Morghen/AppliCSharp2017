@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -7,28 +8,29 @@ using System.Threading.Tasks;
 
 namespace FilmsDTO
 {
-    public class FilmDTO
+    public class FilmDTO : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
         private int id;
 
         public int Id
         {
             get { return id; }
-            set { id = value; }
+            set { id = value; PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Id")); }
         }
         private string title;
 
         public string Title
         {
             get { return title; }
-            set { title = value; }
+            set { title = value; PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Title")); }
         }
         private string original_title;
 
         public string OriginalTitle
         {
             get { return original_title; }
-            set { original_title = value; }
+            set { original_title = value; PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("OriginalTitle")); }
         }
 
         private int runtime;
@@ -36,7 +38,7 @@ namespace FilmsDTO
         public int Runtime
         {
             get { return runtime; }
-            set { runtime = value; }
+            set { runtime = value; PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Runtime")); }
         }
         private string poster_path;
 

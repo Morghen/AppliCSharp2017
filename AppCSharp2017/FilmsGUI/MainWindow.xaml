@@ -7,15 +7,28 @@
         mc:Ignorable="d"
         Title="Fenêtre de contrôle des films" Height="830.4" Width="1080">
     <StackPanel>
-        <DataGrid Name="MainGrid" HorizontalAlignment="Left" Margin="10,10,0,0" Height="592" Width="1054" DataContext="{Binding DataItem}" ItemsSource="{Binding DataItem}" AutoGenerateColumns="False">
+        <DataGrid Name="MainGrid" HorizontalAlignment="Left" Margin="10,10,0,0" Height="592" Width="1054" IsReadOnly="True" ItemsSource="{Binding dtolist}" AutoGenerateColumns="False">
+            <DataGrid.DataContext>
+                <local:DataGridFilmViewModel/>
+            </DataGrid.DataContext>
             <DataGrid.Columns>
                 <DataGridTextColumn MinWidth="100" Header="ID" Binding="{Binding Id}"/>
                 <DataGridTextColumn MinWidth="100" Header="Titre" Binding="{Binding Title}"/>
                 <DataGridTextColumn MinWidth="100" Header="Titre original" Binding="{Binding OriginalTitle}"/>
                 <DataGridTextColumn MinWidth="100" Header="Durée" Binding="{Binding Runtime}"/>
+                <DataGridTextColumn MinWidth="100" Header="PosterPath" Binding="{Binding PosterPath}"/>
+                <DataGridTextColumn MinWidth="100" Header="ul" Binding="{Binding Url}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="buttonSuiv" Content="Suivant" Height="50" Width="125" Margin="20" Click="ButtonSuiv_Click"/>
-        <Button x:Name="buttonPrec" Content="Précédent" Height="50" Width="125" Margin="20" Click="ButtonPrec_Click"/>
+        <Button x:Name="buttonSuiv" Content="Suivant" Height="50" Width="125" Margin="20" Command="{Binding commandNext}">
+            <Button.DataContext>
+                <local:DataGridFilmViewModel/>
+            </Button.DataContext>
+        </Button>
+        <Button x:Name="buttonPrec" Content="Précédent" Height="50" Width="125" Margin="20" Command="{Binding commandPrec}">
+            <Button.DataContext>
+                <local:DataGridFilmViewModel/>
+            </Button.DataContext>
+        </Button>
     </StackPanel>
 </Window>

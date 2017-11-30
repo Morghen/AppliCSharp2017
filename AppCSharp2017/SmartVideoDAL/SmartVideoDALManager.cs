@@ -45,6 +45,21 @@ namespace SmartVideoDAL
                 return lh;
             }
         }
+
+        public HitDTO getHit(int tid, TypeEnum tte, DateTime tdt)
+        {
+            List<Hit> lt = getList<Hit>(xg => xg.Equals(new Hit() {id = tid, type = (int) tte, date = tdt, hit = 0}));
+            if (lt.Count < 1)
+            {
+                return null;
+            }
+            Hit newh = lt.First();
+            if (newh == null)
+            {
+                return null;
+            }
+            return new HitDTO(newh.id, (TypeEnum)newh.type, newh.date, newh.hit);
+        }
         
         public bool addUser(UserDTO h)
         {
@@ -185,6 +200,29 @@ namespace SmartVideoDAL
                 
                 return false;
             }
+        }
+
+        public List<T> getList<T>(Func<T, bool> expr) where T : class
+        {
+            if (dc == null)
+                throw new Exception("DAL not connected");
+            List<T> list = new List<T>();
+            try
+            {
+                // Query qui permet d'accéder à l'ensemble des objets d'une table dont le type es passé en paramètre
+                IQueryable<T> query = ((Table<T>)dc.GetType().GetProperty(typeof(T).Name + "s").GetValue(dc));
+                foreach (T tmp in query.Where(expr)) // Vérifie sur base de l'expression que aucun objet ne correspond au critère de recherche
+                {
+                    list.Add(tmp);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+
+                return null;
+            }
+            return list;
         }
 
         public bool Update<T>(T rec, Func<T, bool> expr) where T : class

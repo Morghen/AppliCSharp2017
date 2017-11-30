@@ -62,6 +62,10 @@
       <Project>{130b87c9-7def-47b8-b071-49d4f9b111bf}</Project>
       <Name>FilmsDTO</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SmartVideoBLL\SmartVideoBLL.csproj">
+      <Project>{9726d07e-6713-4055-a6f7-67f7c1b8df39}</Project>
+      <Name>SmartVideoBLL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SmartVideoDAL\SmartVideoDAL.csproj">
       <Project>{40675be4-7de9-4314-b983-05d9ae5c6484}</Project>
       <Name>SmartVideoDAL</Name>
@@ -69,6 +73,10 @@
     <ProjectReference Include="..\SmartVideoDTOLibrary\SmartVideoDTOLibrary.csproj">
       <Project>{9a37e7ea-b518-4aad-9a8d-538d1544e135}</Project>
       <Name>SmartVideoDTOLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SmartWCFService\SmartWCFService.csproj">
+      <Project>{4b2383a9-bc51-488d-9ab0-f58763e47d48}</Project>
+      <Name>SmartWCFService</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
