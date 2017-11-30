@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace SmartVideoBLL
 {
-    public class Class1
+    class SmartVideoBLLManager
     {
+        //LouerFilm(idFilm, durée)
+
+        //
     }
 }

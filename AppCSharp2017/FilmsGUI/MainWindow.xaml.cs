@@ -42,8 +42,6 @@ namespace FilmsGUI
         public MainWindow()
         {
             InitializeComponent();
-            buttonSuiv.Click += ButtonSuiv_Click;
-            buttonPrec.Click += ButtonPrec_Click;
             Init();
         }
 
@@ -62,13 +60,13 @@ namespace FilmsGUI
 
         public void Prec()
         {
-            if (offset - 50 < 0)
+            if (offset - nbr < 0)
             {
                 MessageBox.Show("Pas de films disponibles", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             MainGrid.Items.Clear();
-            offset = offset - 50;
+            offset = offset - nbr;
             dtolist = dc.getFilmList(offset, nbr);
             if (dtolist.Count == 0)
             {
@@ -91,7 +89,7 @@ namespace FilmsGUI
                 return;
             }
             MainGrid.Items.Clear();
-            offset = offset + 50;
+            offset = offset + nbr;
             foreach (FilmDTO obj in dtolist)
             {
                 res = dc.getFilmInfos(obj);

@@ -15,7 +15,7 @@
                 <DataGridTextColumn MinWidth="100" Header="Durée" Binding="{Binding Runtime}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="buttonSuiv" Content="Suivant" Height="50" Width="125" Margin="20"/>
-        <Button x:Name="buttonPrec" Content="Précédent" Height="50" Width="125" Margin="20"/>
+        <Button x:Name="buttonSuiv" Content="Suivant" Height="50" Width="125" Margin="20" Click="ButtonSuiv_Click"/>
+        <Button x:Name="buttonPrec" Content="Précédent" Height="50" Width="125" Margin="20" Click="ButtonPrec_Click"/>
     </StackPanel>
 </Window>
