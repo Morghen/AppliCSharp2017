@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-
+#pragma warning disable IDE1006
 namespace FilmsGUI
 {
     public class ButtonCommand : ICommand
@@ -42,3 +42,4 @@ namespace FilmsGUI
         public event EventHandler CanExecuteChanged;
     }
 }
+#pragma warning restore IDE1006

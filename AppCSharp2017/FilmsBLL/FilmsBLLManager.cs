@@ -49,50 +49,23 @@ namespace FilmsBLL
         }
 
         */
-
-
-
-
-        public string getFilmTitle(FilmDTO obj)
-        {
-            return obj.Title;
-        }
-        public string getFilmId(FilmDTO obj)
-        {
-            return obj.Id.ToString();
-        }
-        public string getFilmOriginalTitle(FilmDTO obj)
-        {
-            return obj.OriginalTitle;
-        }
-        public string getFilmRuntime(FilmDTO obj)
-        {
-            return obj.Runtime.ToString();
-        }
-        public string getFilmPosterpath(FilmDTO obj)
-        {
-            return obj.PosterPath;
-        }
-        public string getFilmURL(FilmDTO obj)
-        {
-            return obj.Url;
-        }
-        public List<string> getFilmInfos(FilmDTO obj)
-        {
-            List<string> objlist = new List<string>();
-            objlist.Add(getFilmId(obj));
-            objlist.Add(getFilmTitle(obj));
-            objlist.Add(getFilmOriginalTitle(obj));
-            objlist.Add(getFilmRuntime(obj));
-            objlist.Add(getFilmPosterpath(obj));
-            objlist.Add(getFilmURL(obj));
-            return objlist;
-        }
         public List<FilmDTO> getFilmList(int offset,int nbr)
         {
             return Db.getFilm(offset, nbr);
         }
 
+        public int CountFilm()
+        {
+            return Db.getCountFilm();
+        }
+
+        public Boolean UpdateFilm(int idFilm, string url)
+        {
+            FilmDTO f = new FilmDTO();
+            f.Id = idFilm;
+            f.Url = url;
+            return Db.updateFilm(f);
+        }
 
         public int Version
         {

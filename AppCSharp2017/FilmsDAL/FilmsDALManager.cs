@@ -58,6 +58,12 @@ namespace FilmsDAL
             return new FilmDTO(tmp.id, tmp.title,tmp.original_title, tmp.runtime??0, tmp.posterpath, tmp.url);
         }
 
+        public Boolean updateFilm(FilmDTO tmp)
+        {
+            Film f = new Film(){id = tmp.Id, title = tmp.Title, original_title = tmp.OriginalTitle, runtime = tmp.Runtime, posterpath = tmp.PosterPath, url = tmp.Url};
+            return Update(f, xg => xg.id == f.id);
+        }
+
         public GenreDTO getGenre(int idGenre)
         {
             Genre tmp = getList<Genre>(xg => xg.id == idGenre).First();
@@ -93,6 +99,11 @@ namespace FilmsDAL
                 lh.Add(new FilmDTO(tmp.id, tmp.title, tmp.original_title, tmp.runtime ?? 0, tmp.posterpath, tmp.url));
             }
             return lh;
+        }
+
+        public int getCountFilm()
+        {
+            return getCount<Film>();
         }
 
         public List<GenreDTO> getGenre(int debut, int nbr)
@@ -166,6 +177,26 @@ namespace FilmsDAL
             return list;
         }
 
+        public int getCount<T>() where T : class
+        {
+            if (dc == null)
+                throw new Exception("DAL not connected");
+            int count=0;
+            try
+            {
+                // Query qui permet d'accéder à l'ensemble des objets d'une table dont le type es passé en paramètre
+                IQueryable<T> query = ((Table<T>)dc.GetType().GetProperty(typeof(T).Name + "s").GetValue(dc));
+                count = query.Count();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+
+                return -1;
+            }
+            return count;
+        }
+
         public List<T> getList<T>( int debut, int nbr) where T : class
         {
             if (dc == null)
@@ -206,9 +237,13 @@ namespace FilmsDAL
                     mi = tmp.GetType().GetProperties();
                     foreach (PropertyInfo item in mi)
                     {
-                        ColumnAttribute ca = (ColumnAttribute)((item.GetCustomAttribute(typeof(ColumnAttribute))));
-                        if (!(ca.IsPrimaryKey))
-                            tmp.GetType().GetProperty(item.Name).SetValue(tmp, (rec.GetType().GetProperty(item.Name)).GetValue(rec));
+                        if (item.Name == "Url")
+                        {
+                            ColumnAttribute ca = (ColumnAttribute) ((item.GetCustomAttribute(typeof(ColumnAttribute))));
+                            if (!(ca.IsPrimaryKey))
+                                tmp.GetType().GetProperty(item.Name).SetValue(tmp,
+                                    (rec.GetType().GetProperty(item.Name)).GetValue(rec));
+                        }
                     }
                     dc.SubmitChanges();
                     return true;

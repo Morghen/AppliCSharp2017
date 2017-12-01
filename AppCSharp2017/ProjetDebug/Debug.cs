@@ -19,8 +19,7 @@ namespace ProjetDebug
         {
             Console.WriteLine("=== Outil de test ===");
 
-            Console.WriteLine("+++Test de Hit+++ "+System.Environment.MachineName);
-            FilmsDALManager dbF;
+            Console.WriteLine("+++Test de Hit+++ "+Environment.MachineName);
             SmartVideoBLLManager svBll = new SmartVideoBLLManager();
             SmartVideoDALManager dbSV = svBll.svDal;
             
@@ -36,7 +35,6 @@ namespace ProjetDebug
             List<StatistiqueDTO> listStat;
             List<UserDTO> listUser;
             List<LocationDTO> listLoca;
-            List<FilmDTO> listFilm;
 
             Console.WriteLine("Liste Film");
 

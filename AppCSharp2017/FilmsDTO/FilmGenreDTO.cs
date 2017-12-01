@@ -1,5 +1,5 @@
 ﻿using System.Reflection;
-
+#pragma warning disable CS0659
 namespace FilmsDTO
 {
     public class FilmGenreDTO

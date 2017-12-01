@@ -20,9 +20,9 @@ namespace SmartVideoDAL
 	using System.Linq.Expressions;
 	using System.ComponentModel;
 	using System;
-	
-	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="SmartVideoBD")]
+#pragma warning disable 0659
+
+    [global::System.Data.Linq.Mapping.DatabaseAttribute(Name="SmartVideoBD")]
 	public partial class SmartVideoDBManagementDataContext : System.Data.Linq.DataContext
 	{
 		

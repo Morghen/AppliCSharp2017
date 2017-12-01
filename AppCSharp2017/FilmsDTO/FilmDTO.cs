@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
-
+#pragma warning disable 0659
 namespace FilmsDTO
 {
     public class FilmDTO : INotifyPropertyChanged
@@ -68,6 +69,24 @@ namespace FilmsDTO
         {
             get { return poster_path; }
             set { poster_path = value; }
+        }
+
+        public string FullPosterPath // http://image.tmdb.org/t/p/w300
+        {
+            get
+            {
+                return PosterPath != "" ? "http://image.tmdb.org/t/p/w300"+PosterPath: "";
+            }
+        }
+        public Uri UriPoster
+        {
+            get { return new Uri(FullPosterPath, UriKind.Relative); }
+        }
+
+
+        public Uri UriUrl
+        {
+            get { return new Uri( "https://www.youtube.com/watch?v=OAQ7l33UF3E", UriKind.Absolute); }
         }
         public override bool Equals(object obj)
         {

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using FilmsBLL;
 using FilmsDTO;
-
+#pragma warning disable IDE1006
 namespace FilmsGUI
 {
     class DataGridFilmViewModel : INotifyPropertyChanged
@@ -20,7 +20,7 @@ namespace FilmsGUI
         public ButtonCommand commandPrec { get; set; }
 
         public static int offset = 0;
-        public static int nbr = 50;
+        public static int nbr = 20;
 
         public DataGridFilmViewModel()
         {
@@ -32,12 +32,13 @@ namespace FilmsGUI
 
         public bool CanDoPrec()
         {
-            return offset > nbr ? true: false;
+            return offset >= nbr ? true: false;
         }
 
         public bool CanDoNext()
         {
             return true;
+            return (offset < dc.CountFilm());
         }
 
         public void Prec()
@@ -67,11 +68,10 @@ namespace FilmsGUI
             }
             offset = offset + nbr;
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("dtolist"));
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Id"));
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Title"));
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
         
     }
 }
+#pragma warning restore IDE1006

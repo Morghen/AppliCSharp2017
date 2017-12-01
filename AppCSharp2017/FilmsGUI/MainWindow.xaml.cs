@@ -28,5 +28,21 @@ namespace FilmsGUI
         {
             InitializeComponent();
         }
+
+        private void MainGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
+        }
+
+        private void MainGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (MainGrid.SelectedIndex >= 0)
+            {
+                FilmDetails fd = new FilmDetails();
+                fd.fb = (FilmsBLLManager)DataContext.GetType().GetProperty("dc").GetValue(DataContext);
+                fd.DataContext =((List<FilmDTO>) DataContext.GetType().GetProperty("dtolist").GetValue(DataContext))[MainGrid.SelectedIndex];
+                fd.ShowDialog();
+            }
+        }
     }
 }
