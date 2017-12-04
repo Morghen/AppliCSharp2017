@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjetDebug", "ProjetDebug\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackupFilmSmartVideoWPF", "BackupFilmSmartVideoWPF\BackupFilmSmartVideoWPF.csproj", "{CFDC543A-2A9C-4825-AB3D-4AE671D869BE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartWCFWindowService", "SmartWCFWindowService\SmartWCFWindowService.csproj", "{7269671C-DD60-4935-B145-8B0E6BC23BCA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,10 @@ Global
 		{CFDC543A-2A9C-4825-AB3D-4AE671D869BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CFDC543A-2A9C-4825-AB3D-4AE671D869BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CFDC543A-2A9C-4825-AB3D-4AE671D869BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7269671C-DD60-4935-B145-8B0E6BC23BCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7269671C-DD60-4935-B145-8B0E6BC23BCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7269671C-DD60-4935-B145-8B0E6BC23BCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7269671C-DD60-4935-B145-8B0E6BC23BCA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

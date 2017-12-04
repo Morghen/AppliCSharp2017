@@ -1,24 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Diagnostics;
 using System.Linq;
 using System.ServiceModel;
 using System.ServiceProcess;
-using System.Web;
+using System.Text;
+using System.Threading.Tasks;
+using SmartWCFService;
 
-namespace SmartWCFService
+namespace SmartWCFWindowService
 {
-    public class SmartWcfService : ServiceBase
+    public partial class SmartWcfService : ServiceBase
     {
         public ServiceHost serviceHost = null;
         public SmartWcfService()
         {
+            InitializeComponent();
             ServiceName = "SmartWcfService";
-        }
-
-        public static void Main()
-        {
-            ServiceBase.Run(new SmartWcfService());
         }
 
         protected override void OnStart(string[] args)
