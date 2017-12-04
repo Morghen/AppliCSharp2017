@@ -8,13 +8,15 @@ using System.Threading.Tasks;
 using System.Windows;
 using FilmsBLL;
 using FilmsDTO;
+using SmartWCFService;
+
 #pragma warning disable IDE1006
 namespace FilmsGUI
 {
     class DataGridFilmViewModel : INotifyPropertyChanged
     {
+        SmartWcfService ser = new SmartWcfService();
         public List<FilmDTO> dtolist { get; set; }
-        public FilmsBLLManager dc { get; set; }
 
         public ButtonCommand commandNext { get; set; }
         public ButtonCommand commandPrec { get; set; }
@@ -24,10 +26,16 @@ namespace FilmsGUI
 
         public DataGridFilmViewModel()
         {
-            dc = new FilmsBLLManager();
-            dtolist = dc.getFilmList(0,nbr);
+            dtolist = ser.getFilmList(0,nbr);
             commandNext = new ButtonCommand(Next, CanDoNext, this);
             commandPrec = new ButtonCommand(Prec, CanDoPrec, this);
+        }
+
+        public bool Refresh()
+        {
+            dtolist = ser.getFilmList(0, nbr);
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("dtolist"));
+            return true;
         }
 
         public bool CanDoPrec()
@@ -37,19 +45,15 @@ namespace FilmsGUI
 
         public bool CanDoNext()
         {
-            return true;
-            return (offset < dc.CountFilm());
+            //return true;
+            return (offset < ser.CountFilm());
         }
 
         public void Prec()
         {
-            if (offset - nbr < 0)
-            {
-                MessageBox.Show("Pas de films disponibles", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
             offset = offset - nbr;
-            dtolist = dc.getFilmList(offset, nbr);
+            dtolist = null;
+            dtolist = ser.getFilmList(offset, nbr);
             if (dtolist.Count == 0)
             {
                 MessageBox.Show("Fin des résultats", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -60,7 +64,8 @@ namespace FilmsGUI
 
         public void Next()
         {
-            dtolist = dc.getFilmList(offset, nbr);
+            dtolist = null;
+            dtolist = ser.getFilmList(offset, nbr);
             if (dtolist.Count == 0)
             {
                 MessageBox.Show("Fin des résultats", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);

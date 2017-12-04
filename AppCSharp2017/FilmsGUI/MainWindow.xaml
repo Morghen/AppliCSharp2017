@@ -16,7 +16,7 @@
                 <DataGridTextColumn MinWidth="50" Header="Titre" Binding="{Binding Title}"/>
                 <DataGridTextColumn MinWidth="50" Header="Titre original" Binding="{Binding OriginalTitle}"/>
                 <DataGridTextColumn MinWidth="50" Header="Durée" Binding="{Binding Runtime}"/>
-                <DataGridTextColumn MinWidth="50" Header="ul" Binding="{Binding Url}"/>
+                <DataGridTextColumn MinWidth="50" Header="url" Binding="{Binding Url}"/>
             </DataGrid.Columns>
         </DataGrid>
         <Button x:Name="buttonSuiv" Content="Suivant" Command="{Binding commandNext}" Margin="651,469,285,27" RenderTransformOrigin="3.83,0.621" />

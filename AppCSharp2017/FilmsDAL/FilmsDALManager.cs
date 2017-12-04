@@ -15,7 +15,7 @@ namespace FilmsDAL
     {
         private static FilmsDALManager _instance;
         public FilmsDBManagementDataContext dc = null;
-        public List<String> lf = null;
+        
 
         public static FilmsDALManager Singleton(String servername, String dbname)
         {
@@ -158,11 +158,13 @@ namespace FilmsDAL
         {
             if (dc == null)
                 throw new Exception("DAL not connected");
+            
             List<T> list = new List<T>();
             try
             {
                 // Query qui permet d'accéder à l'ensemble des objets d'une table dont le type es passé en paramètre
                 IQueryable<T> query = ((Table<T>)dc.GetType().GetProperty(typeof(T).Name + "s").GetValue(dc));
+                //dc.Refresh(RefreshMode.OverwriteCurrentValues, query);
                 foreach (T tmp in query.Where(expr)) // Vérifie sur base de l'expression que aucun objet ne correspond au critère de recherche
                 {
                     list.Add(tmp);
@@ -206,7 +208,9 @@ namespace FilmsDAL
             {
                 // Query qui permet d'accéder à l'ensemble des objets d'une table dont le type es passé en paramètre
                 IQueryable<T> query = ((Table<T>)dc.GetType().GetProperty(typeof(T).Name + "s").GetValue(dc));
+                
                 IQueryable<T> t = query.Skip(debut).Take(nbr);
+                dc.Refresh(RefreshMode.OverwriteCurrentValues, t);
                 foreach (T tmp in t) // Vérifie sur base de l'expression que aucun objet ne correspond au critère de recherche
                 {
                     list.Add(tmp);
@@ -219,6 +223,30 @@ namespace FilmsDAL
                 return null;
             }
             return list;
+        }
+
+        public bool Refresh<T>(Func<T, bool> expr) where T : class
+        {
+            if (dc == null)
+                throw new Exception("DAL not connected");
+            //try
+            {
+                IEnumerable<T> tmp;
+                PropertyInfo[] mi;
+                // Query qui permet d'accéder à l'ensemble des objets d'une table dont le type es passé en paramètre
+                try
+                {
+                    IQueryable<T> query = ((Table<T>)dc.GetType().GetProperty(typeof(T).Name + "s").GetValue(dc));
+                    tmp = query.Where(expr);
+                    dc.Refresh(RefreshMode.OverwriteCurrentValues, tmp);
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                }
+                return false;
+            }
         }
 
         public bool Update<T>(T rec, Func<T, bool> expr) where T : class
@@ -237,7 +265,7 @@ namespace FilmsDAL
                     mi = tmp.GetType().GetProperties();
                     foreach (PropertyInfo item in mi)
                     {
-                        if (item.Name == "Url")
+                        if (item.Name == "url")
                         {
                             ColumnAttribute ca = (ColumnAttribute) ((item.GetCustomAttribute(typeof(ColumnAttribute))));
                             if (!(ca.IsPrimaryKey))
@@ -246,6 +274,7 @@ namespace FilmsDAL
                         }
                     }
                     dc.SubmitChanges();
+                    dc.Refresh(RefreshMode.OverwriteCurrentValues, tmp);
                     return true;
                 }
                 return false;

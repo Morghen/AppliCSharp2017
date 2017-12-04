@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartVideoDAL", "SmartVideoDAL\SmartVideoDAL.csproj", "{40675BE4-7DE9-4314-B983-05D9AE5C6484}"
 EndProject
@@ -26,6 +26,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FilmsGUI", "FilmsGUI\FilmsGUI.csproj", "{FAC8F304-A62B-4B31-B5CF-7F04242E26EB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjetDebug", "ProjetDebug\ProjetDebug.csproj", "{926E34F9-EE1F-4766-86AC-A0E4A5BB3D10}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackupFilmSmartVideoWPF", "BackupFilmSmartVideoWPF\BackupFilmSmartVideoWPF.csproj", "{CFDC543A-2A9C-4825-AB3D-4AE671D869BE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +83,10 @@ Global
 		{926E34F9-EE1F-4766-86AC-A0E4A5BB3D10}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{926E34F9-EE1F-4766-86AC-A0E4A5BB3D10}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{926E34F9-EE1F-4766-86AC-A0E4A5BB3D10}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFDC543A-2A9C-4825-AB3D-4AE671D869BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFDC543A-2A9C-4825-AB3D-4AE671D869BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFDC543A-2A9C-4825-AB3D-4AE671D869BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFDC543A-2A9C-4825-AB3D-4AE671D869BE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

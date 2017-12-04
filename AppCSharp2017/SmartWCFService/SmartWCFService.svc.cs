@@ -5,13 +5,38 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using FilmsBLL;
+using FilmsDTO;
 
 namespace SmartWCFService
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in code, svc and config file together.
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
-    public class Service1 : IService1
+    public class SmartWcfService : ISmartWcfService
     {
+        FilmsBLLManager fm = new FilmsBLLManager();
+
+
+        public List<FilmDTO> getFilmList(int offset, int nbr)
+        {
+            return fm.getFilmList(offset, nbr);
+        }
+
+        public int CountFilm()
+        {
+            return fm.CountFilm();
+        }
+
+        public bool UpdateFilm(int idFilm, string url)
+        {
+            return fm.UpdateFilm(idFilm, url);
+        }
+
+        public FilmDTO RefreshFilm(int idFilm)
+        {
+            return fm.RefreshFilm(idFilm);
+        }
+
         public string GetData(int value)
         {
             return string.Format("You entered: {0}", value);

@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using FilmsBLL;
+using SmartWCFService;
 
 namespace FilmsGUI
 {
@@ -21,7 +22,7 @@ namespace FilmsGUI
     /// </summary>
     public partial class FilmDetails : Window
     {
-        public  FilmsBLLManager fb;
+        public SmartWcfService ser = new SmartWcfService();
         public FilmDetails()
         {
             InitializeComponent();
@@ -29,9 +30,10 @@ namespace FilmsGUI
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if(fb== null)
+            if(ser== null)
                 return;
-            fb.UpdateFilm(int.Parse( (string)IdLabel.Content), UrlLabel.Text);
+            ser.UpdateFilm((int) IdLabel.Content, UrlLabel.Text);
+            DataContext = ser.RefreshFilm((int) IdLabel.Content);
         }
     }
 }

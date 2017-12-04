@@ -22,6 +22,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -91,14 +92,14 @@
   <ItemGroup>
     <Content Include="scripts\ai.0.22.9-build00167.js" />
     <Content Include="scripts\ai.0.22.9-build00167.min.js" />
-    <Content Include="Service1.svc" />
+    <Content Include="SmartWcfService.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Service1.svc.cs">
-      <DependentUpon>Service1.svc</DependentUpon>
+    <Compile Include="SmartWcfService.svc.cs">
+      <DependentUpon>SmartWcfService.svc</DependentUpon>
     </Compile>
-    <Compile Include="IService1.cs" />
+    <Compile Include="ISmartWcfService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -115,6 +116,20 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FilmsBLL\FilmsBLL.csproj">
+      <Project>{17de82b9-13cc-464d-afdf-71c9973e9876}</Project>
+      <Name>FilmsBLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FilmsDAL\FilmsDAL.csproj">
+      <Project>{cef0cddc-dc1b-4017-b51a-43f15259b62c}</Project>
+      <Name>FilmsDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FilmsDTO\FilmsDTO.csproj">
+      <Project>{130b87c9-7def-47b8-b071-49d4f9b111bf}</Project>
+      <Name>FilmsDTO</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

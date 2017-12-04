@@ -20,7 +20,7 @@
         <Label Content="{Binding FullPosterPath}" HorizontalAlignment="Left" Margin="135,134,0,0" VerticalAlignment="Top"/>
         <TextBox Name="UrlLabel" Text="{Binding Url}" HorizontalAlignment="Left" Margin="135,165,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <Image Source="{Binding FullPosterPath}" HorizontalAlignment="Left" Height="181" Margin="369,196,0,0" VerticalAlignment="Top" Width="191"/>
-        <MediaElement Source="{Binding Url}" HorizontalAlignment="Left" Height="208" Margin="10,196,0,0" VerticalAlignment="Top" Width="299"/>
+        <!--<MediaElement Source="{Binding Url}" HorizontalAlignment="Left" Height="208" Margin="10,196,0,0" VerticalAlignment="Top" Width="299"/> -->
         <Button Content="Update Film" HorizontalAlignment="Left" Margin="243,428,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
 
     </Grid>

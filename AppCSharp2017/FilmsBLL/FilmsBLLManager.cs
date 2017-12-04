@@ -59,12 +59,18 @@ namespace FilmsBLL
             return Db.getCountFilm();
         }
 
-        public Boolean UpdateFilm(int idFilm, string url)
+        public bool UpdateFilm(int idFilm, string url)
         {
             FilmDTO f = new FilmDTO();
             f.Id = idFilm;
             f.Url = url;
             return Db.updateFilm(f);
+        }
+
+        public FilmDTO RefreshFilm(int idFilm)
+        {
+            Db.Refresh <Film>(xg => xg.id == idFilm);
+            return Db.getFilm(idFilm);
         }
 
         public int Version
