@@ -71,6 +71,8 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -92,15 +94,24 @@
   <ItemGroup>
     <Content Include="scripts\ai.0.22.9-build00167.js" />
     <Content Include="scripts\ai.0.22.9-build00167.min.js" />
-    <Content Include="SmartWcfService.svc" />
+    <Content Include="SmartWcf.svc" />
     <Content Include="Web.config" />
+    <None Include="App.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SmartWcfService.svc.cs">
-      <DependentUpon>SmartWcfService.svc</DependentUpon>
+    <Compile Include="SmartWcfInstaller.cs">
+      <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ISmartWcfService.cs" />
+    <Compile Include="SmartWcf.svc.cs">
+      <DependentUpon>SmartWcf.svc</DependentUpon>
+    </Compile>
+    <Compile Include="ISmartWcf.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SmartWcfService.cs">
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

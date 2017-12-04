@@ -15,7 +15,7 @@ namespace FilmsGUI
 {
     class DataGridFilmViewModel : INotifyPropertyChanged
     {
-        SmartWcfService ser = new SmartWcfService();
+        SmartWcf ser = new SmartWcf();
         public List<FilmDTO> dtolist { get; set; }
 
         public ButtonCommand commandNext { get; set; }

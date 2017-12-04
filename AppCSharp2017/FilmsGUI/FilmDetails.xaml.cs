@@ -22,7 +22,7 @@ namespace FilmsGUI
     /// </summary>
     public partial class FilmDetails : Window
     {
-        public SmartWcfService ser = new SmartWcfService();
+        public SmartWcf ser = new SmartWcf();
         public FilmDetails()
         {
             InitializeComponent();

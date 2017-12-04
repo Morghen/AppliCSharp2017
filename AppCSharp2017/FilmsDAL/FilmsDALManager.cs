@@ -232,7 +232,6 @@ namespace FilmsDAL
             //try
             {
                 IEnumerable<T> tmp;
-                PropertyInfo[] mi;
                 // Query qui permet d'accéder à l'ensemble des objets d'une table dont le type es passé en paramètre
                 try
                 {
