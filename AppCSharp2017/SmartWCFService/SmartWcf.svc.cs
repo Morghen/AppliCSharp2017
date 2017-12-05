@@ -18,13 +18,13 @@ namespace SmartWCFService
     public class SmartWcf : ISmartWcf
     {
         private FilmsBLLManager fm;
-        private string path;
-        private StreamWriter sw;
+       // private string path;
+        //private StreamWriter sw;
         public SmartWcf()
         {
             fm = new FilmsBLLManager();
-            path = @"D:\Cours\csharp\dump\log.txt";
-            sw = new StreamWriter(path);
+            //path = @"D:\Cours\csharp\dump\log.txt";
+            //sw = new StreamWriter(path);
         }
 
         public List<FilmDTO> getFilmList(int offset, int nbr)
@@ -72,7 +72,7 @@ namespace SmartWCFService
         public void write(string s)
         {
             Console.WriteLine(""+DateTime.Now +" "+ s);
-            sw.WriteLine(""+DateTime.Now +" "+ s);
+            //sw.WriteLine(""+DateTime.Now +" "+ s);
         }
     }
 }
