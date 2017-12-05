@@ -29,6 +29,7 @@ namespace SmartWCFWindowService
             }
             serviceHost = new ServiceHost(typeof(SmartWcf));
             serviceHost.Open();
+            
             EventLog.WriteEntry("Démarrage de mon service", EventLogEntryType.Information);
         }
 

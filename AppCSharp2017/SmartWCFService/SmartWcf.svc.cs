@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
@@ -17,28 +18,36 @@ namespace SmartWCFService
     public class SmartWcf : ISmartWcf
     {
         private FilmsBLLManager fm;
+        private string path;
+        private StreamWriter sw;
         public SmartWcf()
         {
             fm = new FilmsBLLManager();
+            path = @"D:\Cours\csharp\dump\log.txt";
+            sw = new StreamWriter(path);
         }
 
         public List<FilmDTO> getFilmList(int offset, int nbr)
         {
+            write("list film"+offset+" "+nbr);
             return fm.getFilmList(offset, nbr);
         }
 
         public int CountFilm()
         {
+            write("count film");
             return fm.CountFilm();
         }
 
         public bool UpdateFilm(int idFilm, string url)
         {
+            write("update film"+idFilm+" "+url);
             return fm.UpdateFilm(idFilm, url);
         }
 
         public FilmDTO RefreshFilm(int idFilm)
         {
+            write("refresh film"+idFilm);
             return fm.RefreshFilm(idFilm);
         }
 
@@ -58,6 +67,12 @@ namespace SmartWCFService
                 composite.StringValue += "Suffix";
             }
             return composite;
+        }
+
+        public void write(string s)
+        {
+            Console.WriteLine(""+DateTime.Now +" "+ s);
+            sw.WriteLine(""+DateTime.Now +" "+ s);
         }
     }
 }
