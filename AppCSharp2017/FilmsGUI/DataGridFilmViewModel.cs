@@ -23,6 +23,8 @@ namespace FilmsGUI
         public ButtonCommand commandNext { get; set; }
         public ButtonCommand commandPrec { get; set; }
 
+        public FilmDTO Movie { get; set; }
+
         public static int offset = 0;
         public static int nbr = 20;
 

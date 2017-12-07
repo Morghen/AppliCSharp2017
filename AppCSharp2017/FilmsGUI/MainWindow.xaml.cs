@@ -39,10 +39,8 @@ namespace FilmsGUI
         {
             if (MainGrid.SelectedIndex >= 0)
             {
-                FilmDetails fd = new FilmDetails();
-                //fd.fb = (FilmsBLLManager)DataContext.GetType().GetProperty("dc").GetValue(DataContext);
-                fd.DataContext =((List<FilmDTO>) DataContext.GetType().GetProperty("dtolist").GetValue(DataContext))[MainGrid.SelectedIndex];
-                fd.ShowDialog();
+                FilmDetails ff = new FilmDetails(DgfViewModel.Movie);
+                ff.ShowDialog();
                 ((DataGridFilmViewModel) DataContext).Refresh();
             }
         }

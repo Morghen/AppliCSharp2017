@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using FilmsBLL;
+using FilmsDTO;
 using SmartWCFService;
 
 namespace FilmsGUI
@@ -23,9 +24,10 @@ namespace FilmsGUI
     public partial class FilmDetails : Window
     {
         public SmartWcf ser = new SmartWcf();
-        public FilmDetails()
+        public FilmDetails(FilmDTO tmp)
         {
             InitializeComponent();
+            DataContext = tmp;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

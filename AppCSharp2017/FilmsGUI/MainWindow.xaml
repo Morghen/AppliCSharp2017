@@ -6,11 +6,11 @@
         xmlns:local="clr-namespace:FilmsGUI"
         mc:Ignorable="d"
         Title="Fenêtre de contrôle des films" Height="649.28" Width="1080">
-    <Window.DataContext>
-        <local:DataGridFilmViewModel/>
+    <Window.DataContext >
+        <local:DataGridFilmViewModel x:Name="DgfViewModel"/>
     </Window.DataContext>
     <Grid Margin="0,0,-0.4,50">
-        <DataGrid x:Name="MainGrid" HorizontalAlignment="Left" Margin="10,10,0,134" Width="1054" IsReadOnly="True" ItemsSource="{Binding dtolist}" AutoGenerateColumns="False" SelectionChanged="MainGrid_SelectionChanged" MouseDoubleClick="MainGrid_MouseDoubleClick">
+        <DataGrid x:Name="MainGrid" HorizontalAlignment="Left" Margin="10,10,0,134" Width="1054" IsReadOnly="True" ItemsSource="{Binding dtolist}" SelectedItem="{Binding Movie}" AutoGenerateColumns="False" SelectionChanged="MainGrid_SelectionChanged" MouseDoubleClick="MainGrid_MouseDoubleClick">
             <DataGrid.Columns>
                 <DataGridTextColumn MinWidth="10" Header="ID" Binding="{Binding Id}"/>
                 <DataGridTextColumn MinWidth="50" Header="Titre" Binding="{Binding Title}"/>
