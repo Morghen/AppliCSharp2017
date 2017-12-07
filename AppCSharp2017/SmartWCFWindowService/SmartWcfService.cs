@@ -18,7 +18,7 @@ namespace SmartWCFWindowService
         public SmartWcfService()
         {
             InitializeComponent();
-            ServiceName = "SmartWcfService";
+            ServiceName = "ServiceReference.SmartWcfClient";
         }
 
         protected override void OnStart(string[] args)
@@ -27,7 +27,7 @@ namespace SmartWCFWindowService
             {
                 serviceHost.Close();
             }
-            serviceHost = new ServiceHost(typeof(SmartWcf));
+            serviceHost = new ServiceHost(typeof(ServiceReference.SmartWcfClient));
             serviceHost.Open();
             
             EventLog.WriteEntry("Démarrage de mon service", EventLogEntryType.Information);
