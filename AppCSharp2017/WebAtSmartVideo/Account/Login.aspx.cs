@@ -35,8 +35,9 @@ namespace WebAtSmartVideo.Account
                 if (res)
                 {
                     FormsAuthentication.SetAuthCookie(LoginString.Text, true);
-                    FormsAuthentication.RedirectFromLoginPage(LoginString.Text, RememberMe.Checked);
-                    IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
+                    //FormsAuthentication.RedirectFromLoginPage(LoginString.Text, RememberMe.Checked);
+                    //Response.Redirect("/Default.aspx");
+                   // IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
                 }
                 else
                 {
