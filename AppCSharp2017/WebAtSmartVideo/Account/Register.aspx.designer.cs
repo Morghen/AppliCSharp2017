@@ -22,7 +22,7 @@ namespace WebAtSmartVideo.Account {
         protected global::System.Web.UI.WebControls.Literal ErrorMessage;
         
         /// <summary>
-        /// Email control.
+        /// Login control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.

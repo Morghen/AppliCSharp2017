@@ -17,6 +17,14 @@ namespace WebAtSmartVideo.Account
         {
             SmartVideoBLLManager sv = new SmartVideoBLLManager();
             UserDTO user = new UserDTO(Login.Text, Password.Text, Login.Text);
+            if (sv.register(user))
+            {
+                IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
+            }
+            else
+            {
+                ErrorMessage.Text = "error login";
+            }
             /*var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
             var signInManager = Context.GetOwinContext().Get<ApplicationSignInManager>();
             var user = new ApplicationUser() { UserName = Email.Text, Email = Email.Text };
