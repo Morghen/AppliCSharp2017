@@ -26,6 +26,7 @@ namespace WebAtSmartVideo
                 grid.DataSource = _filmList;
                 grid.DataBind();
                 buttonPrec.Enabled = false;
+                buttonNext.Enabled = true;
             }
             else
             {
