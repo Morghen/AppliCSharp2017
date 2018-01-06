@@ -2,6 +2,6 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <h2><%: Title %>.</h2>
-    <h3>Your application description page.</h3>
-    <p>Use this area to provide additional information.</p>
+    <h3>Ce site est fournis par l'équipe Brajkovic-Mauhin</h3>
+    <p>Fait dans le cadre du cours de C# - HEPL 2017-2018</p>
 </asp:Content>
