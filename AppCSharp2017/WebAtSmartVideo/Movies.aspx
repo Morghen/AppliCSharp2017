@@ -1,14 +1,10 @@
 ﻿<%@ Page Title="Movies" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Movies.aspx.cs" Inherits="WebAtSmartVideo.Movies" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <h2><%: Title %>.</h2>
     <h3>Movie list</h3>
-    <!-- Ici charger la liste de tous les films -->
-    <asp:gridview id="grid" runat="server" backcolor="White" bordercolor="#E7E7FF" AutoGenerateColumns="true"
-    
-    borderstyle="None" borderwidth="1px" cellpadding="3" font-names="Calibri" font-size="Larger"
-
-    gridlines="Horizontal">
+    <asp:TextBox runat="server" ID="numberList" Text="15" TextMode="Number"/>
+    <asp:gridview id="grid" runat="server" backcolor="White" bordercolor="#E7E7FF" borderstyle="None" borderwidth="1px" 
+        cellpadding="3" font-names="Calibri" font-size="Larger" gridlines="Horizontal" AutoGenerateColumns="False">
 
     <AlternatingRowStyle BackColor="#F7F7F7" />
 
@@ -29,7 +25,14 @@
     <SortedDescendingCellStyle BackColor="#D8D8F0" />
 
     <SortedDescendingHeaderStyle BackColor="#3E3277" />
-
+    <Columns>
+        <asp:BoundField ReadOnly="True" HeaderText="id" InsertVisible="False" DataField="id" SortExpression="id"/>
+        <asp:BoundField ReadOnly="True" HeaderText="Title" InsertVisible="False" DataField="Title" SortExpression="Title"/>
+        <asp:BoundField ReadOnly="True" HeaderText="Original Title" InsertVisible="False" DataField="OriginalTitle" SortExpression="OriginalTitle"/>
+        <asp:BoundField ReadOnly="True" HeaderText="Runtime" InsertVisible="False" DataField="Runtime" SortExpression="Runtime"/>
+        <asp:BoundField ReadOnly="True" HeaderText="Url" InsertVisible="False" DataField="Url" SortExpression="Url"/>
+        <asp:BoundField ReadOnly="True" HeaderText="Poster Path" InsertVisible="False" DataField="FullPosterPath" SortExpression="FullPosterPath"/>
+    </Columns>
     </asp:gridview>
 
     <asp:Button ID="buttonPrec" runat="server" Text="Précédent" OnClick="buttonPrec_Click"/>

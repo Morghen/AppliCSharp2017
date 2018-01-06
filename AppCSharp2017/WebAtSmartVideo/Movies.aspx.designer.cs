@@ -13,6 +13,15 @@ namespace WebAtSmartVideo {
     public partial class Movies {
         
         /// <summary>
+        /// numberList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox numberList;
+        
+        /// <summary>
         /// grid control.
         /// </summary>
         /// <remarks>
