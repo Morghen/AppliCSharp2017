@@ -5,6 +5,8 @@ using System.Web.UI;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Owin;
+using SmartVideoBLL;
+using SmartVideoDTOLibrary;
 using WebAtSmartVideo.Models;
 
 namespace WebAtSmartVideo.Account
@@ -13,7 +15,9 @@ namespace WebAtSmartVideo.Account
     {
         protected void CreateUser_Click(object sender, EventArgs e)
         {
-            var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            SmartVideoBLLManager sv = new SmartVideoBLLManager();
+            UserDTO user = new UserDTO(Login.Text, Password.Text, Login.Text);
+            /*var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
             var signInManager = Context.GetOwinContext().Get<ApplicationSignInManager>();
             var user = new ApplicationUser() { UserName = Email.Text, Email = Email.Text };
             IdentityResult result = manager.Create(user, Password.Text);
@@ -30,7 +34,7 @@ namespace WebAtSmartVideo.Account
             else 
             {
                 ErrorMessage.Text = result.Errors.FirstOrDefault();
-            }
+            }*/
         }
     }
 }
