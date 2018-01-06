@@ -19,14 +19,7 @@ namespace WebAtSmartVideo
             _countfilm = _cli.CountFilm();
             grid.DataSource = _filmList;
             grid.DataBind();
-            if (_offset == 0)
-                buttonPrec.Enabled = false;
-            else
-                buttonPrec.Enabled = true;
-            if (_offset >= _countfilm)
-                buttonNext.Enabled = false;
-            else
-                buttonNext.Enabled = true;           
+            buttonPrec.Enabled = false;          
         }
 
         protected void buttonPrec_Click(object sender, EventArgs e)
