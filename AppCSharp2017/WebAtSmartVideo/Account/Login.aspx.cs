@@ -35,6 +35,7 @@ namespace WebAtSmartVideo.Account
                 {
                     var signinManager = Context.GetOwinContext().GetUserManager<ApplicationSignInManager>();
                     HttpSessionState httpses = HttpContext.Current.Session;
+                    httpses.Add("username",sv.getUser(LoginString.Text));
                     IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
                 }
                 else

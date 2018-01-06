@@ -45,6 +45,11 @@ namespace SmartVideoBLL
             return svDal.addUser(user);
         }
 
+        public UserDTO getUser(String username)
+        {
+            return svDal.getUser().FindLast(dto => dto.Login == username);
+        }
+
         public bool incHitFilm(int idFilm)
         {
             HitDTO h = svDal.getHit(idFilm, TypeEnum.Film, DateTime.Today);
