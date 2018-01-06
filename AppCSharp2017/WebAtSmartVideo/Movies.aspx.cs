@@ -30,19 +30,19 @@ namespace WebAtSmartVideo
             }
             else
             {
-                _offset = (int)Session["offset"];
+                _offset = int.Parse((string)Session["offset"]);
                 _filmList = new List<FilmDTO>(_cli.getFilmList(_offset, _nbfilm));
                 grid.DataSource = _filmList;
                 grid.DataBind();
-                buttonNext.Enabled = (bool)Session["nextState"];
-                buttonPrec.Enabled = (bool)Session["precState"];
+                buttonNext.Enabled = bool.Parse((string)Session["nextState"]);
+                buttonPrec.Enabled = bool.Parse((string)Session["precState"]);
             }
 
         }
 
         protected void buttonPrec_Click(object sender, EventArgs e)
         {
-            _offset = (int)Session["offset"];
+            _offset = int.Parse((string)Session["offset"]);
             if (_offset <= 0)
                 Session["precState"] = false.ToString();
             else
@@ -55,7 +55,7 @@ namespace WebAtSmartVideo
 
         protected void buttonNext_Click(object sender, EventArgs e)
         {
-            _offset = (int)Session["offset"];
+            _offset = int.Parse((string)Session["offset"]);
             if ((_offset + 20) >= _nbfilm)
                 Session["nextState"] = false.ToString();
             else
