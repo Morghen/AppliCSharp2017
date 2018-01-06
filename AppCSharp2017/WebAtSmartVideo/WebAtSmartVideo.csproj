@@ -445,6 +445,10 @@
       <Project>{130b87c9-7def-47b8-b071-49d4f9b111bf}</Project>
       <Name>FilmsDTO</Name>
     </ProjectReference>
+    <ProjectReference Include="..\FilmsGUI\FilmsGUI.csproj">
+      <Project>{FAC8F304-A62B-4B31-B5CF-7F04242E26EB}</Project>
+      <Name>FilmsGUI</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SmartVideoBLL\SmartVideoBLL.csproj">
       <Project>{9726d07e-6713-4055-a6f7-67f7c1b8df39}</Project>
       <Name>SmartVideoBLL</Name>
