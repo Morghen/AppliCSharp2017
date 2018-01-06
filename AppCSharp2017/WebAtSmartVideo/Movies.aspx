@@ -31,4 +31,7 @@
     <SortedDescendingHeaderStyle BackColor="#3E3277" />
 
     </asp:gridview>
+
+    <asp:Button ID="buttonPrec" runat="server" Text="Précédent" OnClick="buttonPrec_Click"/>
+    <asp:Button ID="buttonNext" runat="server" Text="Suivant" OnClick="buttonNext_Click"/>
 </asp:Content>
