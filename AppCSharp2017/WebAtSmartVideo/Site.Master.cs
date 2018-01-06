@@ -69,13 +69,23 @@ namespace WebAtSmartVideo
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //loginview.
+            try
+            {
+                if (! (bool)Session["islogged"])
+                {
+                    Session.Add("username", "not logged");
+                }
+            }
+            catch (Exception ex)
+            {
+                Session["islogged"] = false;
+                Session["username"] = "not logged";
+            }
         }
 
-        protected void Unnamed_LoggingOut(object sender, LoginCancelEventArgs e)
+        protected void LoggingOut(object sender, EventArgs e)
         {
-            Context.GetOwinContext().Authentication.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            
+            Session["islogged"] = false;
         }
     }
 

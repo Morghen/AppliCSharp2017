@@ -34,13 +34,19 @@ namespace WebAtSmartVideo.Account
                 bool res  = sv.Login(LoginString.Text, Password.Text);
                 if (res)
                 {
-                    FormsAuthentication.SetAuthCookie(LoginString.Text, true);
+                    //Session.Add("logged", false);
+                    //Session.Add("username",LoginString.Text);
+                    Session["islogged"] = true;
+                    Session["username"] = LoginString.Text;
+                    Response.Redirect("/Default.aspx");
                     //FormsAuthentication.RedirectFromLoginPage(LoginString.Text, RememberMe.Checked);
                     //Response.Redirect("/Default.aspx");
                    // IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
                 }
                 else
                 {
+                    Session["islogged"] = false;
+                    Session["username"] = "not logged";
                     FailureText.Text = "Invalid login attempt";
                     ErrorMessage.Visible = true;
                 }
