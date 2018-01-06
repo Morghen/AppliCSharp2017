@@ -4,7 +4,7 @@
     <h2><%: Title %>.</h2>
     <h3>Movie list</h3>
     <!-- Ici charger la liste de tous les films -->
-    <asp:gridview id="grid" runat="server" backcolor="White" bordercolor="#E7E7FF"
+    <asp:gridview id="grid" runat="server" backcolor="White" bordercolor="#E7E7FF" AutoGenerateColumns="false"
 
     borderstyle="None" borderwidth="1px" cellpadding="3" font-names="Calibri" font-size="Larger"
 

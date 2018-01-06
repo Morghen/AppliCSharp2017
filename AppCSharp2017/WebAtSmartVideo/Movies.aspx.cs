@@ -32,12 +32,15 @@ namespace WebAtSmartVideo
 
         protected void buttonPrec_Click(object sender, EventArgs e)
         {
-            _offset -= 20;
+            _offset = _offset - 20;
+            grid.DataBind();
+
         }
 
         protected void buttonNext_Click(object sender, EventArgs e)
         {
-            _offset += 20;
+            _offset = _offset + 20;
+            grid.DataBind();
         }
     }
 }
