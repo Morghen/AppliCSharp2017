@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Schema;
 using SmartVideoDAL;
 using SmartVideoDTOLibrary;
 
@@ -34,13 +35,14 @@ namespace SmartVideoBLL
 
         public bool Login(String username, String password)
         {
-
-            return false;
+            List<UserDTO> luser = svDal.getUser();
+            UserDTO user = new UserDTO(username, password, username);
+            return luser.Exists(dto => dto.Login == user.Login && dto.Password == user.Password);
         }
 
         public bool register(UserDTO user)
         {
-            return false;
+            return svDal.addUser(user);
         }
 
         public bool incHitFilm(int idFilm)
