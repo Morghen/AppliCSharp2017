@@ -24,6 +24,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -421,6 +422,40 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FilmsBLL\FilmsBLL.csproj">
+      <Project>{17de82b9-13cc-464d-afdf-71c9973e9876}</Project>
+      <Name>FilmsBLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FilmsDAL\FilmsDAL.csproj">
+      <Project>{cef0cddc-dc1b-4017-b51a-43f15259b62c}</Project>
+      <Name>FilmsDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FilmsDTO\FilmsDTO.csproj">
+      <Project>{130b87c9-7def-47b8-b071-49d4f9b111bf}</Project>
+      <Name>FilmsDTO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SmartVideoBLL\SmartVideoBLL.csproj">
+      <Project>{9726d07e-6713-4055-a6f7-67f7c1b8df39}</Project>
+      <Name>SmartVideoBLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SmartVideoDAL\SmartVideoDAL.csproj">
+      <Project>{40675be4-7de9-4314-b983-05d9ae5c6484}</Project>
+      <Name>SmartVideoDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SmartVideoDTOLibrary\SmartVideoDTOLibrary.csproj">
+      <Project>{9a37e7ea-b518-4aad-9a8d-538d1544e135}</Project>
+      <Name>SmartVideoDTOLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SmartWCFService\SmartWCFService.csproj">
+      <Project>{4b2383a9-bc51-488d-9ab0-f58763e47d48}</Project>
+      <Name>SmartWCFService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SmartWCFWindowService\SmartWCFWindowService.csproj">
+      <Project>{7269671c-dd60-4935-b145-8b0e6bc23bca}</Project>
+      <Name>SmartWCFWindowService</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
