@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web;
+using System.Web.Security;
 using System.Web.SessionState;
 using System.Web.UI;
 using Microsoft.AspNet.Identity;
@@ -33,9 +34,7 @@ namespace WebAtSmartVideo.Account
                 bool res  = sv.Login(LoginString.Text, Password.Text);
                 if (res)
                 {
-                    var signinManager = Context.GetOwinContext().GetUserManager<ApplicationSignInManager>();
-                    HttpSessionState httpses = HttpContext.Current.Session;
-                    httpses.Add("username",sv.getUser(LoginString.Text));
+                    FormsAuthentication.RedirectFromLoginPage(LoginString.Text, RememberMe.Checked);
                     IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
                 }
                 else
