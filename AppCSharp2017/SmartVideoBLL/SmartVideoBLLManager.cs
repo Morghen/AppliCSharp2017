@@ -32,6 +32,17 @@ namespace SmartVideoBLL
             return false;
         }
 
+        public bool Login(String username, String password)
+        {
+
+            return false;
+        }
+
+        public bool register(UserDTO user)
+        {
+            return false;
+        }
+
         public bool incHitFilm(int idFilm)
         {
             HitDTO h = svDal.getHit(idFilm, TypeEnum.Film, DateTime.Today);
