@@ -26,13 +26,14 @@ namespace WebAtSmartVideo
             if (_offset >= _countfilm)
                 buttonNext.Enabled = false;
             else
-                buttonNext.Enabled = true;
-            
+                buttonNext.Enabled = true;           
         }
 
         protected void buttonPrec_Click(object sender, EventArgs e)
         {
             _offset = _offset - 20;
+            _filmList = new List<FilmDTO>(_cli.getFilmList(_offset, _nbfilm));
+            grid.DataSource = _filmList;
             grid.DataBind();
 
         }
@@ -40,6 +41,8 @@ namespace WebAtSmartVideo
         protected void buttonNext_Click(object sender, EventArgs e)
         {
             _offset = _offset + 20;
+            _filmList = new List<FilmDTO>(_cli.getFilmList(_offset, _nbfilm));
+            grid.DataSource = _filmList;
             grid.DataBind();
         }
     }
