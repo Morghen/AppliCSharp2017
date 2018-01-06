@@ -34,6 +34,7 @@ namespace WebAtSmartVideo.Account
                 bool res  = sv.Login(LoginString.Text, Password.Text);
                 if (res)
                 {
+                    FormsAuthentication.SetAuthCookie(LoginString.Text, true);
                     FormsAuthentication.RedirectFromLoginPage(LoginString.Text, RememberMe.Checked);
                     IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
                 }
