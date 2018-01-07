@@ -4,6 +4,10 @@
     <div>
         <label id="searchLabel" runat="server">Entrez un titre ou un acteur : </label>
         <asp:TextBox ID="searchBox" runat="server">Rechercher...</asp:TextBox>
+        <asp:DropDownList ID="dropMenu" runat="server">
+            <asp:ListItem Text="Acteur"></asp:ListItem>
+            <asp:ListItem Text="Films"></asp:ListItem>
+        </asp:DropDownList>
         <asp:Button ID="searchButton" runat="server" Text="Rechercher" OnClick="searchButton_Click"/>
     </div>
     <div>

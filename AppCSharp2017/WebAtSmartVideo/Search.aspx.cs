@@ -21,7 +21,7 @@ namespace WebAtSmartVideo
 
         protected void searchButton_Click(object sender, EventArgs e)
         {
-            //Lancer la recherche film et acteur avec cle mot-clé
+            //Lancer la recherche film et acteur avec le mot-clé
 
 
 
