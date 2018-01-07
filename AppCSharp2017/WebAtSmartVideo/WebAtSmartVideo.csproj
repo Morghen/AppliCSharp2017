@@ -212,6 +212,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Details.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -220,6 +221,8 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Properties\DataSources\FilmsDTO.FilmDTO.datasource" />
+    <Content Include="Properties\DataSources\SmartWCFService.CompositeType.datasource" />
     <None Include="Connected Services\ServiceReference\SmartWcf.wsdl" />
     <None Include="Connected Services\ServiceReference\SmartWcf.xsd">
       <SubType>Designer</SubType>
@@ -233,8 +236,6 @@
     <None Include="Connected Services\ServiceReference\SmartWcf3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Properties\DataSources\FilmsDTO.FilmDTO.datasource" />
-    <Content Include="Properties\DataSources\SmartWCFService.CompositeType.datasource" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Movies.aspx" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
@@ -422,6 +423,13 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Details.aspx.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Details.aspx.designer.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -494,7 +502,7 @@
       <Name>SmartWCFService</Name>
     </ProjectReference>
     <ProjectReference Include="..\SmartWCFWindowService\SmartWCFWindowService.csproj">
-      <Project>{7269671c-dd60-4935-b145-8b0e6bc23bca}</Project>
+      <Project>{7269671C-DD60-4935-B145-8B0E6BC23BCA}</Project>
       <Name>SmartWCFWindowService</Name>
     </ProjectReference>
   </ItemGroup>

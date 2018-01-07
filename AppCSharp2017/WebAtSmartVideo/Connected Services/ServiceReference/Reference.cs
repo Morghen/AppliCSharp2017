@@ -39,6 +39,12 @@ namespace WebAtSmartVideo.ServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISmartWcf/RefreshFilm", ReplyAction="http://tempuri.org/ISmartWcf/RefreshFilmResponse")]
         System.Threading.Tasks.Task<FilmsDTO.FilmDTO> RefreshFilmAsync(int idFilm);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISmartWcf/GetFilmDetails", ReplyAction="http://tempuri.org/ISmartWcf/GetFilmDetailsResponse")]
+        FilmsDTO.FilmDTO GetFilmDetails(int idfilm);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISmartWcf/GetFilmDetails", ReplyAction="http://tempuri.org/ISmartWcf/GetFilmDetailsResponse")]
+        System.Threading.Tasks.Task<FilmsDTO.FilmDTO> GetFilmDetailsAsync(int idfilm);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISmartWcf/GetData", ReplyAction="http://tempuri.org/ISmartWcf/GetDataResponse")]
         string GetData(int value);
         
@@ -109,6 +115,14 @@ namespace WebAtSmartVideo.ServiceReference {
         
         public System.Threading.Tasks.Task<FilmsDTO.FilmDTO> RefreshFilmAsync(int idFilm) {
             return base.Channel.RefreshFilmAsync(idFilm);
+        }
+        
+        public FilmsDTO.FilmDTO GetFilmDetails(int idfilm) {
+            return base.Channel.GetFilmDetails(idfilm);
+        }
+        
+        public System.Threading.Tasks.Task<FilmsDTO.FilmDTO> GetFilmDetailsAsync(int idfilm) {
+            return base.Channel.GetFilmDetailsAsync(idfilm);
         }
         
         public string GetData(int value) {

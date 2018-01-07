@@ -33,6 +33,19 @@ namespace SmartWCFService
             return fm.getFilmList(offset, nbr);
         }
 
+        public FilmDTO GetFilmDetails(int idfilm)
+        {
+            try
+            {
+                FilmDTO film = fm.getFilmDetails(idfilm);
+                return film;
+            }
+            catch (Exception ex)
+            {
+                throw new System.ServiceModel.FaultException(ex.Message);
+            }
+        }
+
         public int CountFilm()
         {
             write("count film");
