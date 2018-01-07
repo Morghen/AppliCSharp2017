@@ -58,6 +58,15 @@ namespace FilmsDAL
             return new FilmDTO(tmp.id, tmp.title,tmp.original_title, tmp.runtime??0, tmp.posterpath, tmp.url);
         }
 
+        public List<FilmDTO> searchFilmTitle(string text)
+        {
+            List<FilmDTO> lh = new List<FilmDTO>();
+
+
+
+            return lh;
+        }
+
         public Boolean updateFilm(FilmDTO tmp)
         {
             Film f = new Film(){id = tmp.Id, title = tmp.Title, original_title = tmp.OriginalTitle, runtime = tmp.Runtime, posterpath = tmp.PosterPath, url = tmp.Url};

@@ -21,12 +21,14 @@ namespace WebAtSmartVideo
 
         protected void searchButton_Click(object sender, EventArgs e)
         {
-            //Lancer la recherche film et acteur avec le mot-clé
+            if(dropMenu.Text.Equals("Acteur"))
+            {
+                
+            }
+            else
+            {
 
-
-
-
-
+            }
             //S'il y a au moins un résultat, insérer dans la table de hit
 
 
