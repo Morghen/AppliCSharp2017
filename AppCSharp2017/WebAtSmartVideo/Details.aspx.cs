@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using SmartVideoBLL;
 using WebAtSmartVideo.ServiceReference;
 
 
@@ -13,12 +14,14 @@ namespace WebAtSmartVideo
     public partial class Details : System.Web.UI.Page
     {
         private SmartWcfClient _cli;
+        private SmartVideoBLLManager sv;
         private FilmDTO film;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 _cli = new SmartWcfClient();
+                sv = new SmartVideoBLLManager();
             }
             film = _cli.GetFilmDetails(Convert.ToInt32(Request.QueryString["idfilm"]));
             FilmDetails.Text = film.ToString();
@@ -31,7 +34,7 @@ namespace WebAtSmartVideo
             {
                 if ((bool)Session["islogged"])
                 {
-
+                    sv.LouerFilm(film.Id, DateTime.Now.AddMonths(3));
                 }
                 else
                 {

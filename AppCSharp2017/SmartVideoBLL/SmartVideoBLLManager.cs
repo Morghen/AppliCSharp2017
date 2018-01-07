@@ -27,7 +27,7 @@ namespace SmartVideoBLL
             svDal = new SmartVideoDALManager(@"(localdb)\"+(_version == 1 ? "ProjectsV13" : "MSSQLLocalDB"));
         }
 
-        public bool LouerFilm(int idFilm, int durée)
+        public bool LouerFilm(int idFilm, DateTime duree)
         {
 
             return false;

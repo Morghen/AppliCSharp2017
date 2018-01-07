@@ -3,7 +3,7 @@
     <div>
         <asp:Label runat="server" ID="filmName"></asp:Label>
     </div>
-    <div>
+    <div style="height: 146px">
         <asp:Label runat="server" ID="FilmDetails"></asp:Label>
     </div>
     <div>
