@@ -13,6 +13,24 @@ namespace WebAtSmartVideo {
     public partial class Details {
         
         /// <summary>
+        /// FilmDetails control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label FilmDetails;
+        
+        /// <summary>
+        /// id control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label id;
+        
+        /// <summary>
         /// filmName control.
         /// </summary>
         /// <remarks>
@@ -22,13 +40,40 @@ namespace WebAtSmartVideo {
         protected global::System.Web.UI.WebControls.Label filmName;
         
         /// <summary>
-        /// FilmDetails control.
+        /// runtime control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label FilmDetails;
+        protected global::System.Web.UI.WebControls.Label runtime;
+        
+        /// <summary>
+        /// posterPath control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label posterPath;
+        
+        /// <summary>
+        /// trailerPath control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label trailerPath;
+        
+        /// <summary>
+        /// image control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image image;
         
         /// <summary>
         /// rentButton control.
