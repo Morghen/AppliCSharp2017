@@ -28,6 +28,10 @@ namespace WebAtSmartVideo
                 _filmList = new List<FilmDTO>(_cli.searchFilm(searchBox.Text, "Acteur"));
                 if(_filmList.Count != 0)
                 {
+                    foreach (FilmDTO tmp in _filmList)
+                    {
+
+                    }
                     gridSearch.DataSource = _filmList;
                     gridSearch.DataBind();
                 }            
