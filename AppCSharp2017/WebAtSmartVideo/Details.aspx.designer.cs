@@ -10,42 +10,33 @@
 namespace WebAtSmartVideo {
     
     
-    public partial class Movies {
+    public partial class Details {
         
         /// <summary>
-        /// numberList control.
+        /// filmName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox numberList;
+        protected global::System.Web.UI.WebControls.Label filmName;
         
         /// <summary>
-        /// buttonPrec control.
+        /// FilmDetails control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button buttonPrec;
+        protected global::System.Web.UI.WebControls.Label FilmDetails;
         
         /// <summary>
-        /// buttonNext control.
+        /// rentButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button buttonNext;
-        
-        /// <summary>
-        /// grid control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grid;
+        protected global::System.Web.UI.WebControls.Button rentButton;
     }
 }

@@ -3,6 +3,9 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <h3>Movie list</h3>
     <asp:TextBox runat="server" ID="numberList" Text="15" TextMode="Number"/>
+
+    <asp:Button ID="buttonPrec" runat="server" Text="Précédent" OnClick="buttonPrec_Click"/>
+    <asp:Button ID="buttonNext" runat="server" Text="Suivant" OnClick="buttonNext_Click"/>
     <asp:gridview id="grid" runat="server" backcolor="White" bordercolor="#E7E7FF" borderstyle="None" borderwidth="1px" 
         cellpadding="3" font-names="Calibri" font-size="Larger" gridlines="Horizontal" AutoGenerateColumns="False">
 
@@ -32,9 +35,8 @@
         <asp:BoundField ReadOnly="True" HeaderText="Runtime" InsertVisible="False" DataField="Runtime" SortExpression="Runtime"/>
         <asp:BoundField ReadOnly="True" HeaderText="Url" InsertVisible="False" DataField="Url" SortExpression="Url"/>
         <asp:BoundField ReadOnly="True" HeaderText="Poster Path" InsertVisible="False" DataField="FullPosterPath" SortExpression="FullPosterPath"/>
+        
     </Columns>
     </asp:gridview>
 
-    <asp:Button ID="buttonPrec" runat="server" Text="Précédent" OnClick="buttonPrec_Click"/>
-    <asp:Button ID="buttonNext" runat="server" Text="Suivant" OnClick="buttonNext_Click"/>
-</asp:Content>
+    </asp:Content>
