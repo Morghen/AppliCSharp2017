@@ -23,13 +23,13 @@ namespace WebAtSmartVideo
         {
             if(dropMenu.Text.Equals("Acteur"))
             {
-                _filmList = _cli.searchFilm(searchBox.Text, "Acteur");
+                _filmList = new List<FilmDTO>(_cli.searchFilm(searchBox.Text, "Acteur"));
                 gridSearch.DataSource = _filmList;
                 gridSearch.DataBind();
             }
             else
             {
-                _filmList = _cli.searchFilm(searchBox.Text, "Film");
+                _filmList = new List<FilmDTO>(_cli.searchFilm(searchBox.Text, "Film"));
                 gridSearch.DataSource = _filmList;
                 gridSearch.DataBind();
             }

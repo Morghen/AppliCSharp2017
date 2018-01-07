@@ -20,6 +20,12 @@
   <wsdl:message name="ISmartWcf_CountFilm_OutputMessage">
     <wsdl:part name="parameters" element="tns:CountFilmResponse" />
   </wsdl:message>
+  <wsdl:message name="ISmartWcf_searchFilm_InputMessage">
+    <wsdl:part name="parameters" element="tns:searchFilm" />
+  </wsdl:message>
+  <wsdl:message name="ISmartWcf_searchFilm_OutputMessage">
+    <wsdl:part name="parameters" element="tns:searchFilmResponse" />
+  </wsdl:message>
   <wsdl:message name="ISmartWcf_UpdateFilm_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdateFilm" />
   </wsdl:message>
@@ -31,6 +37,12 @@
   </wsdl:message>
   <wsdl:message name="ISmartWcf_RefreshFilm_OutputMessage">
     <wsdl:part name="parameters" element="tns:RefreshFilmResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISmartWcf_GetFilmDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFilmDetails" />
+  </wsdl:message>
+  <wsdl:message name="ISmartWcf_GetFilmDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFilmDetailsResponse" />
   </wsdl:message>
   <wsdl:message name="ISmartWcf_GetData_InputMessage">
     <wsdl:part name="parameters" element="tns:GetData" />
@@ -53,6 +65,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ISmartWcf/CountFilm" message="tns:ISmartWcf_CountFilm_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISmartWcf/CountFilmResponse" message="tns:ISmartWcf_CountFilm_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="searchFilm">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISmartWcf/searchFilm" message="tns:ISmartWcf_searchFilm_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISmartWcf/searchFilmResponse" message="tns:ISmartWcf_searchFilm_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="UpdateFilm">
       <wsdl:input wsaw:Action="http://tempuri.org/ISmartWcf/UpdateFilm" message="tns:ISmartWcf_UpdateFilm_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISmartWcf/UpdateFilmResponse" message="tns:ISmartWcf_UpdateFilm_OutputMessage" />
@@ -60,6 +76,10 @@
     <wsdl:operation name="RefreshFilm">
       <wsdl:input wsaw:Action="http://tempuri.org/ISmartWcf/RefreshFilm" message="tns:ISmartWcf_RefreshFilm_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISmartWcf/RefreshFilmResponse" message="tns:ISmartWcf_RefreshFilm_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFilmDetails">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISmartWcf/GetFilmDetails" message="tns:ISmartWcf_GetFilmDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISmartWcf/GetFilmDetailsResponse" message="tns:ISmartWcf_GetFilmDetails_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetData">
       <wsdl:input wsaw:Action="http://tempuri.org/ISmartWcf/GetData" message="tns:ISmartWcf_GetData_InputMessage" />
@@ -90,6 +110,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="searchFilm">
+      <soap:operation soapAction="http://tempuri.org/ISmartWcf/searchFilm" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="UpdateFilm">
       <soap:operation soapAction="http://tempuri.org/ISmartWcf/UpdateFilm" style="document" />
       <wsdl:input>
@@ -101,6 +130,15 @@
     </wsdl:operation>
     <wsdl:operation name="RefreshFilm">
       <soap:operation soapAction="http://tempuri.org/ISmartWcf/RefreshFilm" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFilmDetails">
+      <soap:operation soapAction="http://tempuri.org/ISmartWcf/GetFilmDetails" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
