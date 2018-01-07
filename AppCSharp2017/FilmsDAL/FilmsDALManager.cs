@@ -94,6 +94,7 @@ namespace FilmsDAL
             
             return lh;
         }
+        
 
         public Boolean updateFilm(FilmDTO tmp)
         {
@@ -170,6 +171,25 @@ namespace FilmsDAL
                 foreach (Actor tmp in t)
                 {
                     lh.Add(new ActorDTO(tmp.id, tmp.name, tmp.character));
+                }
+                return lh;
+            }
+        }
+        public List<ActorDTO> getActor(string text)
+        {
+            List<ActorDTO> lh = new List<ActorDTO>();
+            List<Actor> t = getList<Actor>(xg=> xg.name.ToLower().Contains(text.ToLower()));
+            if (t == null)
+                return null;
+            else
+            {
+                foreach (Actor a in t)
+                {
+                    List<FilmActor> lfa = new List<FilmActor>(getList<FilmActor>(xg => xg.id_actor == a.id));
+                    foreach (FilmActor fa in lfa)
+                    {
+                        lh.Add(new ActorDTO(a.id, a.name, a.character));
+                    }
                 }
                 return lh;
             }

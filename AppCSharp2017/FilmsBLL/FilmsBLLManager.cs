@@ -72,6 +72,11 @@ namespace FilmsBLL
             }
         }
 
+        public List<ActorDTO> searchActor(string name)
+        {
+            return Db.getActor(name);
+        }
+
         public int CountFilm()
         {
             return Db.getCountFilm();
