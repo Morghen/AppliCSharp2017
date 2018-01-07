@@ -221,6 +221,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Locations.aspx" />
     <Content Include="Properties\DataSources\FilmsDTO.FilmDTO.datasource" />
     <Content Include="Properties\DataSources\SmartWCFService.CompositeType.datasource" />
     <None Include="Connected Services\ServiceReference\SmartWcf.wsdl" />
@@ -433,6 +434,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Locations.aspx.cs">
+      <DependentUpon>Locations.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Locations.aspx.designer.cs">
+      <DependentUpon>Locations.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Movies.aspx.cs">
