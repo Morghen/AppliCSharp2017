@@ -51,7 +51,7 @@ namespace FilmsDAL
 
         public FilmDTO getFilm(int idFilm)
         {
-            Film tmp = getList<Film>(xg => xg.id == idFilm).First();
+            Film tmp = getList<Film>(xg => xg.id == idFilm).SingleOrDefault();
             
             if (tmp == null)
                 return null;

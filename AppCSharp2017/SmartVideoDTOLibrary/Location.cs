@@ -14,8 +14,9 @@ namespace SmartVideoDTOLibrary
         private DateTime dateDebut;
         private DateTime dateFin;
         private string userId;
+        private string url;
 
-        public LocationDTO(int id, int filmId, string filmName, DateTime dateDebut, DateTime dateFin, string userId)
+        public LocationDTO(int id, int filmId, string filmName, DateTime dateDebut, DateTime dateFin, string userId, string url)
         {
             UserId = userId;
             DateFin = dateFin;
@@ -23,7 +24,9 @@ namespace SmartVideoDTOLibrary
             FilmName = filmName;
             FilmId = filmId;
             Id = id;
+            Url = url;
         }
+        public string Url { get; set; }
 
         public string UserId
         {

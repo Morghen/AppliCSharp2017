@@ -13,18 +13,13 @@ namespace WebAtSmartVideo
 {
     public partial class Details : System.Web.UI.Page
     {
-        private SmartWcfClient _cli;
-        private SmartVideoBLLManager sv;
+        private SmartWcfClient _cli = new SmartWcfClient();
+        private SmartVideoBLLManager sv = new SmartVideoBLLManager();
         private FilmDTO film;
         private int idFilm;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                _cli = new SmartWcfClient();
-                sv = new SmartVideoBLLManager();
-            }
             try
             {
                 film = _cli.GetFilmDetails(Convert.ToInt32(Request.QueryString["idfilm"]));
@@ -49,10 +44,9 @@ namespace WebAtSmartVideo
             {
                 if ((bool)Session["islogged"])
                 {
-                    if(_cli == null)
-                        _cli = new SmartWcfClient();
-                    film = _cli.GetFilmDetails(idFilm);
-                    sv.LouerFilm((String)Session["username"],film.Id, film.Title, DateTime.Now.AddMonths(3));
+                    film = _cli.GetFilmDetails(Convert.ToInt32(Request.QueryString["idfilm"]));
+                    DateTime dt = DateTime.Today.AddMonths(3);
+                    sv.LouerFilm((String)Session["username"],film.Id, film.Title, DateTime.Now.AddMonths(3), film.Url);
                 }
                 else
                 {

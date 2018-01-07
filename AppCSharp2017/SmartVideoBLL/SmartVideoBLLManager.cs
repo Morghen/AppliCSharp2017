@@ -27,9 +27,18 @@ namespace SmartVideoBLL
             svDal = new SmartVideoDALManager(@"(localdb)\"+(_version == 1 ? "ProjectsV13" : "MSSQLLocalDB"));
         }
 
-        public bool LouerFilm(String iduser, int idFilm, String filmname,DateTime duree)
+        public bool LouerFilm(String iduser, int idFilm, String filmname,DateTime duree, String url)
         {
-            LocationDTO l = new LocationDTO(svDal.getLocation().Last().Id+1,idFilm,filmname, DateTime.Now, duree,iduser);
+            int idLoca = 0;
+            try
+            {
+                idLoca = svDal.getLocation().LastOrDefault().Id + 1;
+            }
+            catch (Exception ex)
+            {
+                idLoca = 0;
+            }
+            LocationDTO l = new LocationDTO(idLoca,idFilm,filmname, DateTime.Now, duree,iduser, url);
             return svDal.addLocation(l);
         }
 
@@ -50,9 +59,9 @@ namespace SmartVideoBLL
             return svDal.getUser().FindLast(dto => dto.Login == username);
         }
 
-        public List<LocationDTO> getLocation(int iduser)
+        public List<LocationDTO> getLocation(String iduser)
         {
-            return new List<LocationDTO>(svDal.getLocation().Where(xg=>xg.Id == iduser));
+            return new List<LocationDTO>(svDal.getLocation().Where(xg=>xg.UserId == iduser));
         }
 
         public List<StatistiqueDTO> getStatistique()

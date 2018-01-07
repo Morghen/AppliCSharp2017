@@ -22,11 +22,11 @@ namespace WebAtSmartVideo
         {
             if (!IsPostBack)
             {
-                lStat = sv.getStatistique(DateTime.Now);
+                lStat = sv.getStatistique(DateTime.Today);
             }
             else
             {
-                lStat = sv.getStatistique(DateTime.Now);
+                lStat = sv.getStatistique(DateTime.Today);
             }
             grid.DataSource = lStat;
             grid.DataBind();

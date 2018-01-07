@@ -25,11 +25,11 @@ namespace WebAtSmartVideo
                     Response.Redirect("/Default.aspx");
                 if (!IsPostBack)
                 {
-                    llocation = new List<LocationDTO>();
+                    llocation = new List<LocationDTO>(sv.getLocation((String)Session["username"]));
                 }
                 else
                 {
-                    llocation = new List<LocationDTO>();
+                    llocation = new List<LocationDTO>(sv.getLocation((String)Session["username"]));
                 }
                 grid.DataSource = llocation;
                 grid.DataBind();

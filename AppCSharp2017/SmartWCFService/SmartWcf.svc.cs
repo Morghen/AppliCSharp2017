@@ -37,7 +37,7 @@ namespace SmartWCFService
         {
             try
             {
-                FilmDTO film = new FilmDTO(fm.getFilmDetails(idfilm));
+                FilmDTO film = fm.getFilmDetails(idfilm);
                 return film;
             }
             catch (Exception ex)
