@@ -46,7 +46,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <img id="imageLogo" alt="" src="logo.png" height="128" width="128"/>
+                    <img id="imageLogo" alt="" src="logo.png" height="32" width="32"/>
                     <a class="navbar-brand" runat="server" href="~/">Web@SmartVideo</a>
                 </div>
                 <div class="navbar-collapse collapse">

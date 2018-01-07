@@ -23,9 +23,21 @@ namespace WebAtSmartVideo
                 _cli = new SmartWcfClient();
                 sv = new SmartVideoBLLManager();
             }
-            film = _cli.GetFilmDetails(Convert.ToInt32(Request.QueryString["idfilm"]));
-            FilmDetails.Text = film.ToString();
-
+            try
+            {
+                film = _cli.GetFilmDetails(Convert.ToInt32(Request.QueryString["idfilm"]));
+                FilmDetails.Text = " ";
+                filmName.Text = "Title : " + film.Title;
+                posterPath.Text = "PosterPath : " + film.FullPosterPath;
+                trailerPath.Text = "Trailer url : " + film.Url;
+                id.Text = "id : "+film.Id.ToString();
+                runtime.Text = "Durée : " + film.Runtime.ToString()+"minutes";
+                image.ImageUrl = film.FullPosterPath;
+            }
+            catch (Exception ex)
+            {
+                FilmDetails.Text = "ERREUR FILMS " + ex.Message;
+            }
         }
 
         protected void rentButton_OnClick(object sender, EventArgs e)
