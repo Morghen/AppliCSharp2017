@@ -27,6 +27,12 @@ namespace WebAtSmartVideo.ServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISmartWcf/CountFilm", ReplyAction="http://tempuri.org/ISmartWcf/CountFilmResponse")]
         System.Threading.Tasks.Task<int> CountFilmAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISmartWcf/searchFilm", ReplyAction="http://tempuri.org/ISmartWcf/searchFilmResponse")]
+        FilmsDTO.FilmDTO[] searchFilm(string reference, string type);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISmartWcf/searchFilm", ReplyAction="http://tempuri.org/ISmartWcf/searchFilmResponse")]
+        System.Threading.Tasks.Task<FilmsDTO.FilmDTO[]> searchFilmAsync(string reference, string type);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISmartWcf/UpdateFilm", ReplyAction="http://tempuri.org/ISmartWcf/UpdateFilmResponse")]
         bool UpdateFilm(int idFilm, string url);
         
@@ -38,6 +44,12 @@ namespace WebAtSmartVideo.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISmartWcf/RefreshFilm", ReplyAction="http://tempuri.org/ISmartWcf/RefreshFilmResponse")]
         System.Threading.Tasks.Task<FilmsDTO.FilmDTO> RefreshFilmAsync(int idFilm);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISmartWcf/GetFilmDetails", ReplyAction="http://tempuri.org/ISmartWcf/GetFilmDetailsResponse")]
+        FilmsDTO.FilmDTO GetFilmDetails(int idfilm);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISmartWcf/GetFilmDetails", ReplyAction="http://tempuri.org/ISmartWcf/GetFilmDetailsResponse")]
+        System.Threading.Tasks.Task<FilmsDTO.FilmDTO> GetFilmDetailsAsync(int idfilm);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISmartWcf/GetData", ReplyAction="http://tempuri.org/ISmartWcf/GetDataResponse")]
         string GetData(int value);
@@ -95,6 +107,14 @@ namespace WebAtSmartVideo.ServiceReference {
             return base.Channel.CountFilmAsync();
         }
         
+        public FilmsDTO.FilmDTO[] searchFilm(string reference, string type) {
+            return base.Channel.searchFilm(reference, type);
+        }
+        
+        public System.Threading.Tasks.Task<FilmsDTO.FilmDTO[]> searchFilmAsync(string reference, string type) {
+            return base.Channel.searchFilmAsync(reference, type);
+        }
+        
         public bool UpdateFilm(int idFilm, string url) {
             return base.Channel.UpdateFilm(idFilm, url);
         }
@@ -109,6 +129,14 @@ namespace WebAtSmartVideo.ServiceReference {
         
         public System.Threading.Tasks.Task<FilmsDTO.FilmDTO> RefreshFilmAsync(int idFilm) {
             return base.Channel.RefreshFilmAsync(idFilm);
+        }
+        
+        public FilmsDTO.FilmDTO GetFilmDetails(int idfilm) {
+            return base.Channel.GetFilmDetails(idfilm);
+        }
+        
+        public System.Threading.Tasks.Task<FilmsDTO.FilmDTO> GetFilmDetailsAsync(int idfilm) {
+            return base.Channel.GetFilmDetailsAsync(idfilm);
         }
         
         public string GetData(int value) {
