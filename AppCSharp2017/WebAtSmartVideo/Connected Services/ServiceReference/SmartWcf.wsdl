@@ -32,12 +32,6 @@
   <wsdl:message name="ISmartWcf_RefreshFilm_OutputMessage">
     <wsdl:part name="parameters" element="tns:RefreshFilmResponse" />
   </wsdl:message>
-  <wsdl:message name="ISmartWcf_GetFilmDetails_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetFilmDetails" />
-  </wsdl:message>
-  <wsdl:message name="ISmartWcf_GetFilmDetails_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetFilmDetailsResponse" />
-  </wsdl:message>
   <wsdl:message name="ISmartWcf_GetData_InputMessage">
     <wsdl:part name="parameters" element="tns:GetData" />
   </wsdl:message>
@@ -66,10 +60,6 @@
     <wsdl:operation name="RefreshFilm">
       <wsdl:input wsaw:Action="http://tempuri.org/ISmartWcf/RefreshFilm" message="tns:ISmartWcf_RefreshFilm_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISmartWcf/RefreshFilmResponse" message="tns:ISmartWcf_RefreshFilm_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetFilmDetails">
-      <wsdl:input wsaw:Action="http://tempuri.org/ISmartWcf/GetFilmDetails" message="tns:ISmartWcf_GetFilmDetails_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ISmartWcf/GetFilmDetailsResponse" message="tns:ISmartWcf_GetFilmDetails_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetData">
       <wsdl:input wsaw:Action="http://tempuri.org/ISmartWcf/GetData" message="tns:ISmartWcf_GetData_InputMessage" />
@@ -111,15 +101,6 @@
     </wsdl:operation>
     <wsdl:operation name="RefreshFilm">
       <soap:operation soapAction="http://tempuri.org/ISmartWcf/RefreshFilm" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetFilmDetails">
-      <soap:operation soapAction="http://tempuri.org/ISmartWcf/GetFilmDetails" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

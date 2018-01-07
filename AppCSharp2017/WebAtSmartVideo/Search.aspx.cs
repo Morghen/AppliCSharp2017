@@ -23,11 +23,11 @@ namespace WebAtSmartVideo
         {
             if(dropMenu.Text.Equals("Acteur"))
             {
-                _filmList = _cli.
+                _filmList = _cli.searchFilm(searchBox.Text, "Acteur");
             }
             else
             {
-
+                _filmList = _cli.searchFilm(searchBox.Text, "Film");
             }
             //S'il y a au moins un résultat, insérer dans la table de hit
 

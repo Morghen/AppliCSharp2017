@@ -20,6 +20,9 @@ namespace SmartWCFService
         int CountFilm();
 
         [OperationContract]
+        List<FilmDTO> searchFilm(string reference, string type);
+
+        [OperationContract]
         bool UpdateFilm(int idFilm, string url);
 
         [OperationContract]
