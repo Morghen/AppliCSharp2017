@@ -50,14 +50,30 @@ namespace SmartVideoBLL
             return svDal.getUser().FindLast(dto => dto.Login == username);
         }
 
-        public bool incHitFilm(int idFilm)
+        public bool incHitFilm(int idFilm,string type)
         {
-            HitDTO h = svDal.getHit(idFilm, TypeEnum.Film, DateTime.Today);
+            HitDTO h = null;
+            if (type.Equals("Film"))
+            {
+                h = svDal.getHit(idFilm, TypeEnum.Film, DateTime.Today);
+            } 
+            else
+            {
+                h = svDal.getHit(idFilm, TypeEnum.Actor, DateTime.Today);
+            }            
             if (h == null)
             {
-                //hit non existant faut ajouter
-                h = new HitDTO(idFilm, TypeEnum.Film, DateTime.Today, 1);
-                return svDal.addHit(h);
+                if(type.Equals("Film"))
+                {
+                    //hit non existant faut ajouter
+                    h = new HitDTO(idFilm, TypeEnum.Film, DateTime.Today, 1);
+                    return svDal.addHit(h);
+                }
+                else
+                {
+                    h = new HitDTO(idFilm, TypeEnum.Actor, DateTime.Today, 1);
+                    return svDal.addHit(h);
+                }           
             }
             h.Hit++;
             return svDal.updateHit(h); ;

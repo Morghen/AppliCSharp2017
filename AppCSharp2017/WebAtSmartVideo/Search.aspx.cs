@@ -39,7 +39,7 @@ namespace WebAtSmartVideo
                 {
                     foreach (FilmDTO tmp in _filmList)
                     {
-                        _db.incHitFilm(tmp.Id);
+                        _db.incHitFilm(tmp.Id,"Film");
                     }
                     gridSearch.DataSource = _filmList;
                     gridSearch.DataBind();
