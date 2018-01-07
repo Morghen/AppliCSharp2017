@@ -61,7 +61,7 @@ namespace FilmsDAL
         public List<FilmDTO> searchFilmTitle(string text)
         {
             List<FilmDTO> lh = new List<FilmDTO>();
-            List<Film> tmp = getList<Film>(xg => xg.title == text);
+            List<Film> tmp = getList<Film>(xg => xg.title.ToLower().Contains(text.ToLower()));
             if (tmp == null)
                 return null;
             foreach (Film flm in tmp)
