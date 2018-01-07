@@ -4,6 +4,7 @@
     <div>
         <label id="searchLabel" runat="server">Entrez un titre ou un acteur : </label>
         <asp:TextBox ID="searchBox" runat="server">Rechercher...</asp:TextBox>
+        <asp:Button ID="searchButton" runat="server" Text="Rechercher" OnClick="searchButton_Click"/>
     </div>
     <div>
         <asp:GridView ID="gridSearch" runat="server" backcolor="White" bordercolor="#E7E7FF" borderstyle="None" borderwidth="1px" 
