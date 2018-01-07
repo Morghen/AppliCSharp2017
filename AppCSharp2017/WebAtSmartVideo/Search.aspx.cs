@@ -1,4 +1,5 @@
 ﻿using FilmsDTO;
+using SmartVideoBLL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace WebAtSmartVideo
     public partial class Search : System.Web.UI.Page
     {
         private SmartWcfClient _cli = new SmartWcfClient();
+        private SmartVideoBLLManager _db = new SmartVideoBLLManager();
         private List<FilmDTO> _filmList;
 
         protected void Page_Load(object sender, EventArgs e)
@@ -24,22 +26,26 @@ namespace WebAtSmartVideo
             if(dropMenu.Text.Equals("Acteur"))
             {
                 _filmList = new List<FilmDTO>(_cli.searchFilm(searchBox.Text, "Acteur"));
-                gridSearch.DataSource = _filmList;
-                gridSearch.DataBind();
+                if(_filmList.Count != 0)
+                {
+                    gridSearch.DataSource = _filmList;
+                    gridSearch.DataBind();
+                }            
             }
             else
             {
                 _filmList = new List<FilmDTO>(_cli.searchFilm(searchBox.Text, "Film"));
-                gridSearch.DataSource = _filmList;
-                gridSearch.DataBind();
+                if(_filmList.Count != 0)
+                {
+                    foreach (FilmDTO tmp in _filmList)
+                    {
+                        _db.incHitFilm(tmp.Id);
+                    }
+                    gridSearch.DataSource = _filmList;
+                    gridSearch.DataBind();
+                }
+                
             }
-            //S'il y a au moins un résultat, insérer dans la table de hit
-
-
-
-
-
-
         }
     }
 }

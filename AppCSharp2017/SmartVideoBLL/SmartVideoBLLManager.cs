@@ -63,6 +63,5 @@ namespace SmartVideoBLL
             return svDal.updateHit(h); ;
         }
         
-        
     }
 }
