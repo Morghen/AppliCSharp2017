@@ -1,9 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Locations.aspx.cs" Inherits="WebAtSmartVideo.Locations" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <h3>Movie list</h3>
+    <h3>List des locations</h3>
     <asp:gridview id="grid" runat="server" backcolor="White" bordercolor="#E7E7FF" borderstyle="None" borderwidth="1px" 
-        cellpadding="3" font-names="Calibri" font-size="Larger" gridlines="Horizontal" AutoGenerateColumns="False" OnRowCommand="grid_RowCommand">
+        cellpadding="3" font-names="Calibri" font-size="Larger" gridlines="Horizontal" AutoGenerateColumns="True" OnRowCommand="grid_RowCommand">
 
     <AlternatingRowStyle BackColor="#F7F7F7" />
 
@@ -24,10 +24,5 @@
     <SortedDescendingCellStyle BackColor="#D8D8F0" />
 
     <SortedDescendingHeaderStyle BackColor="#3E3277" />
-    <Columns>
-        <%
-            
-        %>
-    </Columns>
     </asp:gridview>
 </asp:Content>

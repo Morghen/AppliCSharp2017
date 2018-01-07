@@ -55,6 +55,13 @@
                         <li><a runat="server" href="~/Movies">Movies</a></li>
                         <li><a runat="server" href="~/Search">Search</a></li>
                         <li><a runat="server" href="~/Stat">Statistiqyes</a></li>
+                        <%
+                        if( (bool)Session["islogged"])
+                        {%>
+                            <li><a runat="server" href="~/Locations.aspx">Locations</a></li>
+                        <%
+                        }
+                        %>
                         <li><a runat="server" href="~/About">About</a></li>
                         <li><a runat="server" href="~/Contact">Contact</a></li>
                     </ul>

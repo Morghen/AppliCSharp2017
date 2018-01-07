@@ -55,6 +55,16 @@ namespace FilmsDTO
         {
         }
 
+        public FilmDTO(FilmDTO f)
+        {
+            Id = f.Id;
+            Title = f.Title;
+            OriginalTitle = f.OriginalTitle;
+            Runtime = f.Runtime;
+            PosterPath = f.PosterPath;
+            Url = f.Url;
+        }
+
         public FilmDTO(int id, string title, string originalTitle, int runtime, string posterPath, string url)
         {
             Id = id;

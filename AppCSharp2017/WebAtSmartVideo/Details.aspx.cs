@@ -16,6 +16,8 @@ namespace WebAtSmartVideo
         private SmartWcfClient _cli;
         private SmartVideoBLLManager sv;
         private FilmDTO film;
+        private int idFilm;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -26,6 +28,7 @@ namespace WebAtSmartVideo
             try
             {
                 film = _cli.GetFilmDetails(Convert.ToInt32(Request.QueryString["idfilm"]));
+                idFilm = film.Id;
                 FilmDetails.Text = " ";
                 filmName.Text = "Title : " + film.Title;
                 posterPath.Text = "PosterPath : " + film.FullPosterPath;
@@ -46,7 +49,10 @@ namespace WebAtSmartVideo
             {
                 if ((bool)Session["islogged"])
                 {
-                    sv.LouerFilm(film.Id, DateTime.Now.AddMonths(3));
+                    if(_cli == null)
+                        _cli = new SmartWcfClient();
+                    film = _cli.GetFilmDetails(idFilm);
+                    sv.LouerFilm((String)Session["username"],film.Id, film.Title, DateTime.Now.AddMonths(3));
                 }
                 else
                 {
@@ -55,7 +61,9 @@ namespace WebAtSmartVideo
             }
             catch (Exception ex)
             {
-                erreurRent.Text = "vous n'etes pas connectez" + ex.Message;
+                erreurRent.Text = Request.QueryString["idfilm"] + " error "+Session["username"]+" "+ex.Message+ex.GetType();
+                if(film != null)
+                    erreurRent.Text += " " + film.ToString();
             }
         }
     }

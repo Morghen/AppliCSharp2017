@@ -4,20 +4,39 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using FilmsDTO;
+using SmartVideoBLL;
+using SmartVideoDTOLibrary;
+using WebAtSmartVideo.ServiceReference;
 
 namespace WebAtSmartVideo
 {
     public partial class Locations : System.Web.UI.Page
     {
+        private SmartWcfClient _cli = new SmartWcfClient();
+        private SmartVideoBLLManager sv = new SmartVideoBLLManager();
+        private List<LocationDTO> llocation;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            try
             {
-                
+                if(!(bool)Session["islogged"])
+                    Response.Redirect("/Default.aspx");
+                if (!IsPostBack)
+                {
+                    llocation = new List<LocationDTO>();
+                }
+                else
+                {
+                    llocation = new List<LocationDTO>();
+                }
+                grid.DataSource = llocation;
+                grid.DataBind();
             }
-            else
+            catch (Exception ex)
             {
-                
+                Response.Redirect("/Default.aspx");
             }
         }
 
