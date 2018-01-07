@@ -28,9 +28,10 @@ namespace WebAtSmartVideo
                 _filmList = new List<FilmDTO>(_cli.searchFilm(searchBox.Text, "Acteur"));
                 if(_filmList.Count != 0)
                 {
-                    foreach (FilmDTO tmp in _filmList)
+                    List<ActorDTO> tmp = new List<ActorDTO>(_cli.searchActor(searchBox.Text));
+                    foreach(ActorDTO act in tmp)
                     {
-
+                        _db.incHitFilm(act.Id, "Acteur");
                     }
                     gridSearch.DataSource = _filmList;
                     gridSearch.DataBind();

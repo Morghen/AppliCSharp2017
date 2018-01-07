@@ -52,6 +52,12 @@ namespace SmartWCFService
             return tmp;
         }
 
+        public List<ActorDTO> searchActor(string name)
+        {
+            List<ActorDTO> tmp = fm.searchActor(name);
+            return tmp;
+        }
+
         public int CountFilm()
         {
             write("count film");

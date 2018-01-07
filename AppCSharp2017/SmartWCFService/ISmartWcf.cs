@@ -35,6 +35,9 @@ namespace SmartWCFService
         string GetData(int value);
 
         [OperationContract]
+        List<ActorDTO> searchActor(string name);
+
+        [OperationContract]
         CompositeType GetDataUsingDataContract(CompositeType composite);
 
         // TODO: Add your service operations here

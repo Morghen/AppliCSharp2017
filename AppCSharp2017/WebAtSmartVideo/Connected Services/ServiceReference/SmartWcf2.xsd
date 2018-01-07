@@ -17,4 +17,18 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="FilmDTO" nillable="true" type="tns:FilmDTO" />
+  <xs:complexType name="ArrayOfActorDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ActorDTO" nillable="true" type="tns:ActorDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfActorDTO" nillable="true" type="tns:ArrayOfActorDTO" />
+  <xs:complexType name="ActorDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Character" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ActorDTO" nillable="true" type="tns:ActorDTO" />
 </xs:schema>
