@@ -23,7 +23,7 @@ namespace WebAtSmartVideo
         {
             if(dropMenu.Text.Equals("Acteur"))
             {
-                
+                _filmList = _cli.
             }
             else
             {

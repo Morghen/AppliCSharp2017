@@ -46,6 +46,12 @@ namespace SmartWCFService
             }
         }
 
+        public List<FilmDTO> searchFilm(string reference,string type)
+        {
+            List<FilmDTO> tmp = fm.searchFilm(reference, type);
+            return tmp;
+        }
+
         public int CountFilm()
         {
             write("count film");

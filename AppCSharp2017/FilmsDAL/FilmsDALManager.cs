@@ -61,9 +61,20 @@ namespace FilmsDAL
         public List<FilmDTO> searchFilmTitle(string text)
         {
             List<FilmDTO> lh = new List<FilmDTO>();
+            List<Film> tmp = getList<Film>(xg => xg.title == text);
+            if (tmp == null)
+                return null;
+            foreach (Film flm in tmp)
+            {
+                lh.Add(new FilmDTO(flm.id, flm.title, flm.original_title, flm.runtime ?? 0, flm.posterpath, flm.url));
+            }
+            return lh;
+        }
 
-
-
+        public List<FilmDTO> searchFilmActeur(string text)
+        {
+            List<FilmDTO> lh = new List<FilmDTO>();
+            
             return lh;
         }
 

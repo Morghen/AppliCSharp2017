@@ -59,6 +59,19 @@ namespace FilmsBLL
             return Db.getFilm(offset, nbr);
         }
 
+        public List<FilmDTO> searchFilm(string reference, string type)
+        {
+            List<FilmDTO> tmp = new List<FilmDTO>();
+            if(type.Equals("Acteur"))
+            {
+                return Db.searchFilmActeur(reference);
+            }
+            else
+            {
+                return Db.searchFilmTitle(reference);
+            }
+        }
+
         public int CountFilm()
         {
             return Db.getCountFilm();
