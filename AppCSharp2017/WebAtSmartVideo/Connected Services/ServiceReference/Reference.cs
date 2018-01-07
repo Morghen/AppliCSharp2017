@@ -57,6 +57,12 @@ namespace WebAtSmartVideo.ServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISmartWcf/GetData", ReplyAction="http://tempuri.org/ISmartWcf/GetDataResponse")]
         System.Threading.Tasks.Task<string> GetDataAsync(int value);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISmartWcf/searchActor", ReplyAction="http://tempuri.org/ISmartWcf/searchActorResponse")]
+        FilmsDTO.ActorDTO[] searchActor(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISmartWcf/searchActor", ReplyAction="http://tempuri.org/ISmartWcf/searchActorResponse")]
+        System.Threading.Tasks.Task<FilmsDTO.ActorDTO[]> searchActorAsync(string name);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISmartWcf/GetDataUsingDataContract", ReplyAction="http://tempuri.org/ISmartWcf/GetDataUsingDataContractResponse")]
         SmartWCFService.CompositeType GetDataUsingDataContract(SmartWCFService.CompositeType composite);
         
@@ -145,6 +151,14 @@ namespace WebAtSmartVideo.ServiceReference {
         
         public System.Threading.Tasks.Task<string> GetDataAsync(int value) {
             return base.Channel.GetDataAsync(value);
+        }
+        
+        public FilmsDTO.ActorDTO[] searchActor(string name) {
+            return base.Channel.searchActor(name);
+        }
+        
+        public System.Threading.Tasks.Task<FilmsDTO.ActorDTO[]> searchActorAsync(string name) {
+            return base.Channel.searchActorAsync(name);
         }
         
         public SmartWCFService.CompositeType GetDataUsingDataContract(SmartWCFService.CompositeType composite) {

@@ -237,6 +237,7 @@
     <None Include="Connected Services\ServiceReference\SmartWcf3.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Properties\DataSources\FilmsDTO.ActorDTO.datasource" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Movies.aspx" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
