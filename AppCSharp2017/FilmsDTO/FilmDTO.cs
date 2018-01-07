@@ -78,11 +78,6 @@ namespace FilmsDTO
                 return PosterPath != "" ? "http://image.tmdb.org/t/p/w300"+PosterPath: "";
             }
         }
-        public Uri UriPoster
-        {
-            get { return new Uri(FullPosterPath, UriKind.Relative); }
-        }
-
 
         public Uri UriUrl
         {

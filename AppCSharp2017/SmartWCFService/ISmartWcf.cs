@@ -26,6 +26,9 @@ namespace SmartWCFService
         FilmDTO RefreshFilm(int idFilm);
 
         [OperationContract]
+        FilmDTO GetFilmDetails(int idfilm);
+
+        [OperationContract]
         string GetData(int value);
 
         [OperationContract]

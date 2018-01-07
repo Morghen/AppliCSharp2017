@@ -10,7 +10,8 @@
         <p>Video !</p>
     </div>
     <div>
-        <asp:Button runat="server" ID="rentButton" OnClick="rentButton_OnClick"/>
+        <asp:Button runat="server" ID="rentButton"  Text="Louez le Film" OnClick="rentButton_OnClick"/>
+        <asp:Label runat="server" ID="erreurRent"></asp:Label>
     </div>
     
     

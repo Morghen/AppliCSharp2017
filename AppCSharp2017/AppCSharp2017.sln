@@ -10,6 +10,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartStatService", "SmartStatService\SmartStatService.csproj", "{3D8102A0-A64A-47D7-9020-6E4D3C4C17FD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAtSmartVideo", "WebAtSmartVideo\WebAtSmartVideo.csproj", "{5D0B1AD9-79C3-425A-B62E-5C209B8BCEA8}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4B2383A9-BC51-488D-9AB0-F58763E47D48} = {4B2383A9-BC51-488D-9AB0-F58763E47D48}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FilmsDAL", "FilmsDAL\FilmsDAL.csproj", "{CEF0CDDC-DC1B-4017-B51A-43F15259B62C}"
 EndProject

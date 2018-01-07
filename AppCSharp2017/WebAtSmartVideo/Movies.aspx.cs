@@ -1,8 +1,9 @@
 ﻿using FilmsDTO;
-using FilmsGUI.ServiceReference;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.UI;
+using WebAtSmartVideo.ServiceReference;
 
 namespace WebAtSmartVideo
 {
@@ -73,6 +74,16 @@ namespace WebAtSmartVideo
             _filmList = new List<FilmDTO>(_cli.getFilmList(_offset, _nbfilm));
             grid.DataSource = _filmList;
             grid.DataBind();
+        }
+
+        protected void grid_RowCommand(object sender, System.Web.UI.WebControls.GridViewCommandEventArgs e)
+        {
+            if (e.CommandName.CompareTo("viewDetails") == 0)
+            {
+                int idFilm = (_filmList[Convert.ToInt32(e.CommandArgument)]).Id;
+                
+                Response.Redirect("Details.aspx?idfilm="+idFilm);
+            }
         }
     }
 }

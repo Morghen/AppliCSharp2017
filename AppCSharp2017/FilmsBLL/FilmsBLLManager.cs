@@ -34,6 +34,11 @@ namespace FilmsBLL
                 Db = new FilmsDALManager(@"(localdb)\ProjectsV13", "FilmDB");
         }
 
+        public FilmDTO getFilmDetails(int idfilm)
+        {
+            return _db.getFilm(idfilm);
+        }
+
         /*
         int cursorposition= 0;
         int pagesize = 10;
