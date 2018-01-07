@@ -50,6 +50,16 @@ namespace SmartVideoBLL
             return svDal.getUser().FindLast(dto => dto.Login == username);
         }
 
+        public List<StatistiqueDTO> getStatistique()
+        {
+            return new List<StatistiqueDTO>(svDal.getStatistique());
+        }
+
+        public List<StatistiqueDTO> getStatistique(DateTime date)
+        {
+            return new List<StatistiqueDTO>(svDal.getStatistique().Where(xg => xg.Date.Year == date.Year && xg.Date.Month == date.Month && xg.Date.Day == date.Day));
+        }
+
         public bool incHitFilm(int idFilm,string type)
         {
             HitDTO h = null;

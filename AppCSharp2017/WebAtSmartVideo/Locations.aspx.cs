@@ -11,7 +11,14 @@ namespace WebAtSmartVideo
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                
+            }
+            else
+            {
+                
+            }
         }
 
         protected void grid_RowCommand(object sender, GridViewCommandEventArgs e)
