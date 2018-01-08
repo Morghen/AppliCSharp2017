@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SmartVideoDTOLibrary
 {
-    public class LocationDTO
+    public class LocationDTO : IInterfaceDTO
     {
         private int id;
         private int filmId;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SmartVideoDTOLibrary
 {
-    public class StatistiqueDTO
+    public class StatistiqueDTO : IInterfaceDTO
     {
         private int id;
         private DateTime date;

@@ -2,7 +2,7 @@
 #pragma warning disable CS0659
 namespace FilmsDTO
 {
-    public class FilmGenreDTO
+    public class FilmGenreDTO : IInterfaceFilmDTO
     {
         private int id;
         private int id_film;

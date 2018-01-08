@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 #pragma warning disable 0659
 namespace FilmsDTO
 {
-    public class FilmDTO : INotifyPropertyChanged
+    public class FilmDTO : INotifyPropertyChanged, IInterfaceFilmDTO
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private int id;

@@ -23,14 +23,8 @@ namespace WebAtSmartVideo
             {
                 if(!(bool)Session["islogged"])
                     Response.Redirect("/Default.aspx");
-                if (!IsPostBack)
-                {
-                    llocation = new List<LocationDTO>(sv.getLocation((String)Session["username"]));
-                }
-                else
-                {
-                    llocation = new List<LocationDTO>(sv.getLocation((String)Session["username"]));
-                }
+                llocation = new List<LocationDTO>(sv.getLocation((String)Session["username"]));
+
                 grid.DataSource = llocation;
                 grid.DataBind();
             }
@@ -45,4 +39,6 @@ namespace WebAtSmartVideo
             throw new NotImplementedException();
         }
     }
+    
+    
 }

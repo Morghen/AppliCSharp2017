@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SmartVideoDTOLibrary
 {
-    public class UserDTO
+    public class UserDTO : IInterfaceDTO
     {
         #region variables
         private string login;

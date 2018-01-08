@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SmartVideoDTOLibrary
 {
-    public class HitDTO
+    public class HitDTO : IInterfaceDTO
     {
         private int id;
         private TypeEnum type;

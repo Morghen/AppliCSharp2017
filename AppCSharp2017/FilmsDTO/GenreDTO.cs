@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 #pragma warning disable 0659
 namespace FilmsDTO
 {
-    public class GenreDTO
+    public class GenreDTO : IInterfaceFilmDTO
     {
         private int id;
 
