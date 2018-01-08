@@ -81,18 +81,13 @@ namespace SmartStatService
 
         private void _toMidnightTimer_Elapsed(object sender, ElapsedEventArgs e)
         {
-<<<<<<< HEAD
-            _toMidnightTimer.Enabled = false;
-=======
->>>>>>> 88e66aa29f27795a4d0665af9be3f95205ec7129
             write("midnight timer stop");
             _db = new SmartVideoBLLManager();
             _dailyTimer = new Timer(86400000); // Correspond a 24h
             _dailyTimer.AutoReset = true;
             _dailyTimer.Elapsed += DailyTimer_Elapsed;
-            _dailyTimer.Start();
+            _dailyTimer.Enabled = true;
             write("daily timer start");
-            //_toMidnightTimer.Stop();
         }
 
         private void DailyTimer_Elapsed(object sender, ElapsedEventArgs e)
@@ -111,7 +106,7 @@ namespace SmartStatService
         protected override void OnStop()
         {
             write("service stoped");
-            _dailyTimer.Stop();
+            _dailyTimer.Enabled = false;
             _db = null;
             outputfile.Close();
         }
