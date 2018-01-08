@@ -5,6 +5,7 @@ using SmartVideoDAL;
 using SmartVideoDTOLibrary;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,9 +20,12 @@ namespace ProjetDebug
         {
             Console.WriteLine("=== Outil de test ===");
             SmartVideoBLLManager svBll = new SmartVideoBLLManager();
-            svBll.doStat(DateTime.Today.AddDays(-1));
-            Console.WriteLine("FINI");
+            StreamWriter outputfile = new StreamWriter(@"D:\Cours\csharp\StatService\log.txt");
+            //svBll.doStat(DateTime.Today.AddDays(-1));
+            Console.WriteLine("FINI"); 
+            outputfile.WriteLine("hello");
             Console.ReadKey();
+            outputfile.Close();
 
 
 

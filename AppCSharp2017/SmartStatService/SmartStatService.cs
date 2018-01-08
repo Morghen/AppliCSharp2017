@@ -57,7 +57,8 @@ namespace SmartStatService
         private Timer _toMidnightTimer;
         private Timer _dailyTimer;
         private SmartVideoBLLManager _db;
-        public StreamWriter outputfile;
+        public string pathfile = @"d:\Cours\csharp\StatService\log.txt";
+        public StreamWriter outputfile=null;
 
         public SmartStatService()
         {
@@ -66,21 +67,21 @@ namespace SmartStatService
 
         protected override void OnStart(string[] args)
         {
-            outputfile = new StreamWriter(@"D:\\Cours\\csharp\\StatService\\log.txt");
-            outputfile.AutoFlush = true;
-            write("service started");
             _toMidnightTimer = new Timer();
             _toMidnightTimer.AutoReset = false;
-            _toMidnightTimer.Elapsed += _toMidnightTimer_Elapsed;
+            _toMidnightTimer.Elapsed += new ElapsedEventHandler(_toMidnightTimer_Elapsed);
+
             TimeSpan delay = DateTime.Today.AddDays(1) - DateTime.Now;
             _toMidnightTimer.Interval = delay.TotalMilliseconds;
-            _toMidnightTimer.Start();
+            write("delay = "+_toMidnightTimer.Interval + "  --  " + delay);
+            //_toMidnightTimer.Start();
+            _toMidnightTimer.Enabled = true;
             write("midnight timer start");
         }
 
         private void _toMidnightTimer_Elapsed(object sender, ElapsedEventArgs e)
         {
-            _toMidnightTimer.Stop();
+            _toMidnightTimer.Enabled = false;
             write("midnight timer stop");
             _db = new SmartVideoBLLManager();
             _dailyTimer = new Timer(86400000); // Correspond a 24h
@@ -88,6 +89,7 @@ namespace SmartStatService
             _dailyTimer.Elapsed += DailyTimer_Elapsed;
             _dailyTimer.Start();
             write("daily timer start");
+            //_toMidnightTimer.Stop();
         }
 
         private void DailyTimer_Elapsed(object sender, ElapsedEventArgs e)
@@ -113,11 +115,14 @@ namespace SmartStatService
 
         public void write(string t)
         {
+            outputfile = File.AppendText(pathfile);
             if (outputfile != null)
             {
-                outputfile.WriteLine(DateTime.Now+" : "+t);   
+                outputfile.WriteLine(DateTime.Now + " : " + t);
                 outputfile.Flush();
+                outputfile.Close();
             }
+
             EventLog.WriteEntry(DateTime.Now + " : "+t, EventLogEntryType.Information);
         }
     }
