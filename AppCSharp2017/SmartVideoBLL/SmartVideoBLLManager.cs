@@ -79,6 +79,7 @@ namespace SmartVideoBLL
         {
             try
             {
+                //VERSION FONCTIONNEL!
                 List<HitDTO> lh = new List<HitDTO>(svDal.getHit(dt));
                 List<HitDTO> lhFilm = new List<HitDTO>(lh.Where(xg=>xg.Type==TypeEnum.Film));
                 lhFilm.Sort((a,b)=> a.Hit.CompareTo(b.Hit));
