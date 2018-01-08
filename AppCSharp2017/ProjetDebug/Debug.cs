@@ -19,7 +19,7 @@ namespace ProjetDebug
     {
         public static int VERSION = 2;
         
-        public SmartVideoBLLManager svBll = new SmartVideoBLLManager();
+        public static SmartVideoBLLManager svBll = new SmartVideoBLLManager();
         public static StreamWriter outputfile = new StreamWriter(@"D:\Cours\csharp\StatService\log.txt");
         public static Timer _toMidnightTimer;
         public static Timer _dailyTimer;
@@ -28,9 +28,9 @@ namespace ProjetDebug
         static void Main(string[] args)
         {
             Console.WriteLine("=== Outil de test ===");
-            //svBll.doStat(DateTime.Today.AddDays(-1));
+            svBll.doStat(DateTime.Today.AddDays(-1));
 
-            try
+            /*try
             {
                 _toMidnightTimer = new Timer();
                 _toMidnightTimer.AutoReset = false;
@@ -46,7 +46,8 @@ namespace ProjetDebug
             catch (Exception ex)
             {
                 Console.WriteLine(ex.GetType() + " - " + ex.Message);
-            }
+            }*/
+            
             Console.WriteLine("FINI");
             outputfile.WriteLine("hello");
             Console.ReadKey();

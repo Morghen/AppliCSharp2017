@@ -93,10 +93,21 @@ namespace SmartStatService
                     write(ex.GetType() + " - " + ex.Message);
                 }
                 _dailyTimer = new Timer(86400000); // Correspond a 24h
+                //_dailyTimer = new Timer(60000);
                 _dailyTimer.AutoReset = true;
                 _dailyTimer.Elapsed += DailyTimer_Elapsed;
-                _dailyTimer.Enabled = true;
                 write("daily timer start");
+                _db.doStat(DateTime.Today.AddDays(-1));
+                write("do stat OK");
+                /*if (_db.doStat(DateTime.Today.AddDays(-1)))
+                {
+                    write("do stat OK");
+                }
+                else
+                {
+                    write("do stat ERREUR");
+                }*/
+                _dailyTimer.Enabled = true;
             }
             catch (Exception ex)
             {

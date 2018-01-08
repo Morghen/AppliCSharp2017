@@ -85,17 +85,20 @@ namespace SmartVideoBLL
                 List<HitDTO> lhActeur = new List<HitDTO>(lh.Where(xg => xg.Type == TypeEnum.Actor));
                 lhActeur.Sort((a, b) => a.Hit.CompareTo(b.Hit));
 
-                svDal.addStatistique(new StatistiqueDTO(lhFilm[lhFilm.Count-1].Id, TypeEnum.Film, DateTime.Today,1));
-                svDal.addStatistique(new StatistiqueDTO(lhFilm[lhFilm.Count - 2].Id, TypeEnum.Film, DateTime.Today, 2));
-                svDal.addStatistique(new StatistiqueDTO(lhFilm[lhFilm.Count - 3].Id, TypeEnum.Film, DateTime.Today, 3));
+                svDal.addStatistique(new StatistiqueDTO(lhFilm[lhFilm.Count - 1].Id, TypeEnum.Film, dt,1));
+                svDal.addStatistique(new StatistiqueDTO(lhFilm[lhFilm.Count - 2].Id, TypeEnum.Film, dt, 2));
+                svDal.addStatistique(new StatistiqueDTO(lhFilm[lhFilm.Count - 3].Id, TypeEnum.Film, dt, 3));
+                svDal.commit();
 
-                svDal.addStatistique(new StatistiqueDTO(lhActeur[lhActeur.Count - 1].Id, TypeEnum.Actor, DateTime.Today, 1));
-                svDal.addStatistique(new StatistiqueDTO(lhActeur[lhActeur.Count - 2].Id, TypeEnum.Actor, DateTime.Today, 2));
-                svDal.addStatistique(new StatistiqueDTO(lhActeur[lhActeur.Count - 3].Id, TypeEnum.Actor, DateTime.Today, 3));
+                svDal.addStatistique(new StatistiqueDTO(lhActeur[lhActeur.Count - 1].Id, TypeEnum.Actor, dt, 1));
+                svDal.addStatistique(new StatistiqueDTO(lhActeur[lhActeur.Count - 2].Id, TypeEnum.Actor, dt, 2));
+                svDal.addStatistique(new StatistiqueDTO(lhActeur[lhActeur.Count - 3].Id, TypeEnum.Actor, dt, 3));
+                svDal.commit();
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                //Console.WriteLine(e);
+                throw;
             }
             return true;
         }

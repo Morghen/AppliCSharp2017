@@ -17,6 +17,12 @@ namespace SmartVideoDAL
     {
         public SmartVideoDBManagementDataContext dc = null;
         private static SmartVideoDALManager _instance;
+
+        public bool commit()
+        {
+            dc.SubmitChanges();
+            return true;
+        }
         
         public bool addHit(HitDTO h)
         {
@@ -52,14 +58,11 @@ namespace SmartVideoDAL
             List<HitDTO> lh = new List<HitDTO>();
             if (lt == null)
                 return null;
-            else
+            foreach (Hit h in lt)
             {
-                foreach (Hit h in lt)
-                {
-                    lh.Add(new HitDTO(h.id, (TypeEnum)h.type, h.date, h.hit));
-                }
-                return lh;
+                lh.Add(new HitDTO(h.id, (TypeEnum)h.type, h.date, h.hit));
             }
+            return lh;
         }
 
         public HitDTO getHit(int tid, TypeEnum tte, DateTime tdt)
