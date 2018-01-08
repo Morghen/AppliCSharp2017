@@ -81,7 +81,10 @@ namespace SmartStatService
 
         private void _toMidnightTimer_Elapsed(object sender, ElapsedEventArgs e)
         {
+<<<<<<< HEAD
             _toMidnightTimer.Enabled = false;
+=======
+>>>>>>> 88e66aa29f27795a4d0665af9be3f95205ec7129
             write("midnight timer stop");
             _db = new SmartVideoBLLManager();
             _dailyTimer = new Timer(86400000); // Correspond a 24h
