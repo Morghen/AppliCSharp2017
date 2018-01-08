@@ -56,6 +56,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SmartVideoBLL\SmartVideoBLL.csproj">
+      <Project>{9726D07E-6713-4055-A6F7-67F7C1B8DF39}</Project>
+      <Name>SmartVideoBLL</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
