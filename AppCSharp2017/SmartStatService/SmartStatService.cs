@@ -67,48 +67,83 @@ namespace SmartStatService
 
         protected override void OnStart(string[] args)
         {
-            _toMidnightTimer = new Timer();
-            _toMidnightTimer.AutoReset = false;
-            _toMidnightTimer.Elapsed += new ElapsedEventHandler(_toMidnightTimer_Elapsed);
+            try
+            {
+                _toMidnightTimer = new Timer();
+                _toMidnightTimer.AutoReset = false;
+                _toMidnightTimer.Elapsed += new ElapsedEventHandler(_toMidnightTimer_Elapsed);
 
-            TimeSpan delay = DateTime.Today.AddDays(1) - DateTime.Now;
-            _toMidnightTimer.Interval = delay.TotalMilliseconds;
-            write("delay = "+_toMidnightTimer.Interval + "  --  " + delay);
-            //_toMidnightTimer.Start();
-            _toMidnightTimer.Enabled = true;
-            write("midnight timer start");
+                TimeSpan delay = DateTime.Today.AddDays(1) - DateTime.Now;
+                _toMidnightTimer.Interval = delay.TotalMilliseconds;
+                write("delay = " + _toMidnightTimer.Interval + "  --  " + delay);
+                _toMidnightTimer.Start();
+                //_toMidnightTimer.Enabled = true;
+                write("midnight timer start");
+            }
+            catch (Exception ex)
+            {
+                write(ex.GetType()+" - "+ex.Message);
+            }
         }
 
         private void _toMidnightTimer_Elapsed(object sender, ElapsedEventArgs e)
         {
-            write("midnight timer stop");
-            _db = new SmartVideoBLLManager();
-            _dailyTimer = new Timer(86400000); // Correspond a 24h
-            _dailyTimer.AutoReset = true;
-            _dailyTimer.Elapsed += DailyTimer_Elapsed;
-            _dailyTimer.Enabled = true;
-            write("daily timer start");
+            try
+            {
+                write("midnight timer stop");
+                try
+                {
+                    _db = new SmartVideoBLLManager();
+                }
+                catch (Exception ex)
+                {
+                    write(ex.GetType() + " - " + ex.Message);
+                }
+                _dailyTimer = new Timer(86400000); // Correspond a 24h
+                _dailyTimer.AutoReset = true;
+                _dailyTimer.Elapsed += DailyTimer_Elapsed;
+                _dailyTimer.Enabled = true;
+                write("daily timer start");
+            }
+            catch (Exception ex)
+            {
+                write(ex.GetType() + " - " + ex.Message);
+            }
         }
 
         private void DailyTimer_Elapsed(object sender, ElapsedEventArgs e)
         {
-            write("time elapsed !");
-            if (_db.doStat(DateTime.Today.AddDays(-1)))
+            try
             {
-                write("do stat OK");
+                write("time elapsed !");
+                if (_db.doStat(DateTime.Today.AddDays(-1)))
+                {
+                    write("do stat OK");
+                }
+                else
+                {
+                    write("do stat ERREUR");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                write("do stat ERREUR");
+                write(ex.GetType()+" - "+ex.Message);
             }
         }
 
         protected override void OnStop()
         {
-            write("service stoped");
-            _dailyTimer.Enabled = false;
-            _db = null;
-            outputfile.Close();
+            try
+            {
+                write("service stoped");
+                _dailyTimer.Enabled = false;
+                _db = null;
+                outputfile.Close();
+            }
+            catch (Exception ex)
+            {
+                write(ex.GetType()+" - "+ex.Message);
+            }
         }
 
         public void write(string t)

@@ -5,10 +5,12 @@ using SmartVideoDAL;
 using SmartVideoDTOLibrary;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using SmartVideoBLL;
 
 namespace ProjetDebug
@@ -16,13 +18,36 @@ namespace ProjetDebug
     class Debug
     {
         public static int VERSION = 2;
+        
+        public SmartVideoBLLManager svBll = new SmartVideoBLLManager();
+        public static StreamWriter outputfile = new StreamWriter(@"D:\Cours\csharp\StatService\log.txt");
+        public static Timer _toMidnightTimer;
+        public static Timer _dailyTimer;
+        public static string pathfile = @"d:\Cours\csharp\StatService\log.txt";
+
         static void Main(string[] args)
         {
             Console.WriteLine("=== Outil de test ===");
-            SmartVideoBLLManager svBll = new SmartVideoBLLManager();
-            StreamWriter outputfile = new StreamWriter(@"D:\Cours\csharp\StatService\log.txt");
             //svBll.doStat(DateTime.Today.AddDays(-1));
-            Console.WriteLine("FINI"); 
+
+            try
+            {
+                _toMidnightTimer = new Timer();
+                _toMidnightTimer.AutoReset = false;
+                _toMidnightTimer.Elapsed += new ElapsedEventHandler(_toMidnightTimer_Elapsed);
+
+                TimeSpan delay = DateTime.Today.AddDays(1) - DateTime.Now;
+                _toMidnightTimer.Interval = delay.TotalMilliseconds;
+                Console.WriteLine("delay = " + _toMidnightTimer.Interval + "  --  " + delay);
+                _toMidnightTimer.Start();
+                //_toMidnightTimer.Enabled = true;
+                Console.WriteLine("midnight timer start");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.GetType() + " - " + ex.Message);
+            }
+            Console.WriteLine("FINI");
             outputfile.WriteLine("hello");
             Console.ReadKey();
             outputfile.Close();
@@ -128,6 +153,43 @@ namespace ProjetDebug
             Console.WriteLine("Fin programme !!!!");
             Console.ReadKey();
             */
+        }
+        private static void _toMidnightTimer_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            try
+            {
+                Console.WriteLine("midnight timer stop");
+                //_db = new SmartVideoBLLManager();
+                _dailyTimer = new Timer(86400000); // Correspond a 24h
+                _dailyTimer.AutoReset = true;
+                _dailyTimer.Elapsed += DailyTimer_Elapsed;
+                _dailyTimer.Enabled = true;
+                Console.WriteLine("daily timer start");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.GetType() + " - " + ex.Message);
+            }
+        }
+
+        private static void DailyTimer_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            try
+            {
+                Console.WriteLine("time elapsed !");
+                if (true)
+                {
+                    Console.WriteLine("do stat OK");
+                }
+                else
+                {
+                    Console.WriteLine("do stat ERREUR");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.GetType() + " - " + ex.Message);
+            }
         }
     }
 }
