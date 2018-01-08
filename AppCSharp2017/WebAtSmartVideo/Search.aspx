@@ -12,7 +12,7 @@
     </div>
     <div>
         <asp:GridView ID="gridSearch" runat="server" backcolor="White" bordercolor="#E7E7FF" borderstyle="None" borderwidth="1px" 
-        cellpadding="3" font-names="Calibri" font-size="Larger" gridlines="Horizontal" AutoGenerateColumns="False">
+        cellpadding="3" font-names="Calibri" font-size="Larger" gridlines="Horizontal" AutoGenerateColumns="False" OnRowCommand="grid_RowCommand">
 
         <AlternatingRowStyle BackColor="#F7F7F7" />
 
@@ -40,7 +40,7 @@
             <asp:BoundField ReadOnly="True" HeaderText="Runtime" InsertVisible="False" DataField="Runtime" SortExpression="Runtime"/>
             <asp:BoundField ReadOnly="True" HeaderText="Url" InsertVisible="False" DataField="Url" SortExpression="Url"/>
             <asp:BoundField ReadOnly="True" HeaderText="Poster Path" InsertVisible="False" DataField="FullPosterPath" SortExpression="FullPosterPath"/>
-        
+            <asp:ButtonField ButtonType="Button" CommandName="viewDetails" Text="Details" />
         </Columns>
 
         </asp:GridView>

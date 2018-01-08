@@ -27,7 +27,7 @@ namespace ProjetDebug
             // creation des objets de test
             UserDTO newu = new UserDTO("user", "user", "user");
             HitDTO newh = new HitDTO(11, TypeEnum.Film, DateTime.Today, 45);
-            LocationDTO newl = new LocationDTO(112, 11, "Star Wars episode IV", DateTime.Today, (DateTime.Today).AddDays(5), "user");
+            //LocationDTO newl = new LocationDTO(112, 11, "Star Wars episode IV", DateTime.Today, (DateTime.Today).AddDays(5), "user");
             StatistiqueDTO news = new StatistiqueDTO(11, TypeEnum.Film, DateTime.Today, 1);
 
             //recupere les objet dans la BD
@@ -61,10 +61,10 @@ namespace ProjetDebug
                         dbSV.addStatistique(news);
                         break;
                     case '3'://ajout location
-                        dbSV.addLocation(newl);
+                        //dbSV.addLocation(newl);
                         break;
                     case '4'://ajout hit
-                        svBll.incHitFilm(11);
+                        //svBll.incHitFilm(11);
                         break;
                     case '5'://list user
                         listUser = dbSV.getUser();
@@ -105,7 +105,7 @@ namespace ProjetDebug
                     case '9'://ajout all
                         dbSV.addUser(newu);
                         dbSV.addStatistique(news);
-                        dbSV.addLocation(newl);
+                        //dbSV.addLocation(newl);
                         break;
                 }
                 cki = Console.ReadKey();
