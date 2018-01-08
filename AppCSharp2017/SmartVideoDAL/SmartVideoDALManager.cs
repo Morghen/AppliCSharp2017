@@ -46,6 +46,22 @@ namespace SmartVideoDAL
             }
         }
 
+        public List<HitDTO> getHit(DateTime dt)
+        {
+            List<Hit> lt = getList<Hit>(xg => xg.date.Year == dt.Year && xg.date.Month == dt.Month && xg.date.Day == dt.Day);
+            List<HitDTO> lh = new List<HitDTO>();
+            if (lt == null)
+                return null;
+            else
+            {
+                foreach (Hit h in lt)
+                {
+                    lh.Add(new HitDTO(h.id, (TypeEnum)h.type, h.date, h.hit));
+                }
+                return lh;
+            }
+        }
+
         public HitDTO getHit(int tid, TypeEnum tte, DateTime tdt)
         {
             List<Hit> lt = getList<Hit>(xg => xg.Equals(new Hit() {id = tid, type = (int) tte, date = tdt, hit = 0}));
@@ -53,7 +69,7 @@ namespace SmartVideoDAL
             {
                 return null;
             }
-            Hit newh = lt.First();
+            Hit newh = lt.FirstOrDefault();
             if (newh == null)
             {
                 return null;

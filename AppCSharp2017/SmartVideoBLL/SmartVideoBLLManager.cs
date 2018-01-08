@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Schema;
@@ -72,6 +73,25 @@ namespace SmartVideoBLL
         public List<StatistiqueDTO> getStatistique(DateTime date)
         {
             return new List<StatistiqueDTO>(svDal.getStatistique().Where(xg => xg.Date.Year == date.Year && xg.Date.Month == date.Month && xg.Date.Day == date.Day));
+        }
+
+        public bool doStat(DateTime dt)
+        {
+            List<HitDTO> lh = new List<HitDTO>(svDal.getHit(dt));
+            List<HitDTO> lhFilm = new List<HitDTO>(lh.Where(xg=>xg.Type==TypeEnum.Film));
+            lhFilm.Sort((a,b)=> a.Hit.CompareTo(b.Id));
+            List<HitDTO> lhActeur = new List<HitDTO>(lh.Where(xg => xg.Type == TypeEnum.Actor));
+            lhActeur.Sort((a, b) => a.Hit.CompareTo(b.Id));
+
+            svDal.addStatistique(new StatistiqueDTO(lhFilm[lhFilm.Count-1].Id, TypeEnum.Film, DateTime.Today,1));
+            svDal.addStatistique(new StatistiqueDTO(lhFilm[lhFilm.Count - 2].Id, TypeEnum.Film, DateTime.Today, 2));
+            svDal.addStatistique(new StatistiqueDTO(lhFilm[lhFilm.Count - 3].Id, TypeEnum.Film, DateTime.Today, 3));
+
+            svDal.addStatistique(new StatistiqueDTO(lhActeur[lhActeur.Count - 1].Id, TypeEnum.Actor, DateTime.Today, 1));
+            svDal.addStatistique(new StatistiqueDTO(lhActeur[lhActeur.Count - 1].Id, TypeEnum.Actor, DateTime.Today, 2));
+            svDal.addStatistique(new StatistiqueDTO(lhActeur[lhActeur.Count - 1].Id, TypeEnum.Actor, DateTime.Today, 3));
+
+            return false;
         }
 
         public bool incHitFilm(int idFilm,string type)

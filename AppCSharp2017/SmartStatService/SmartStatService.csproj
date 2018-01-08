@@ -61,6 +61,10 @@
       <Project>{9726D07E-6713-4055-A6F7-67F7C1B8DF39}</Project>
       <Name>SmartVideoBLL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SmartVideoDTOLibrary\SmartVideoDTOLibrary.csproj">
+      <Project>{9a37e7ea-b518-4aad-9a8d-538d1544e135}</Project>
+      <Name>SmartVideoDTOLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
