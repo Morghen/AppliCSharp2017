@@ -66,7 +66,7 @@ namespace SmartStatService
 
         protected override void OnStart(string[] args)
         {
-            outputfile = new StreamWriter(@"D:\Cours\csharp\StatService\log.txt");
+            outputfile = new StreamWriter(@"D:\\Cours\\csharp\\StatService\\log.txt");
             outputfile.AutoFlush = true;
             write("service started");
             _toMidnightTimer = new Timer();
