@@ -91,13 +91,13 @@ namespace SmartVideoDAL
 
         public bool addLocation(LocationDTO h)
         {
-            Location newh = new Location { id = h.Id, film_id = h.FilmId, film_name = h.FilmName, datedebut = h.DateDebut, datefin = h.DateFin, user_id = h.UserId};
+            Location newh = new Location { id = h.Id, film_id = h.FilmId, film_name = h.FilmName, datedebut = h.DateDebut, datefin = h.DateFin, user_id = h.UserId, url = h.Url};
             return Add<Location>(newh, xg => xg.Equals(newh));
         }
 
         public bool updateLocation(LocationDTO h)
         {
-            Location newh = new Location { id = h.Id, film_id = h.FilmId, film_name = h.FilmName, datedebut = h.DateDebut, datefin = h.DateFin, user_id = h.UserId };
+            Location newh = new Location { id = h.Id, film_id = h.FilmId, film_name = h.FilmName, datedebut = h.DateDebut, datefin = h.DateFin, user_id = h.UserId, url = h.Url};
             return Update<Location>(newh, xg => xg.Equals(newh));
         }
 
@@ -111,7 +111,7 @@ namespace SmartVideoDAL
             {
                 foreach (Location h in result)
                 {
-                    lh.Add(new LocationDTO(h.id, h.film_id??0, h.film_name, h.datedebut.GetValueOrDefault(), h.datefin.GetValueOrDefault(), h.user_id));
+                    lh.Add(new LocationDTO(h.id, h.film_id??0, h.film_name, h.datedebut.GetValueOrDefault(), h.datefin.GetValueOrDefault(), h.user_id, h.url));
                 }
                 return lh;
             }

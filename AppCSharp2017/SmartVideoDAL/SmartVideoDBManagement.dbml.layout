@@ -8,12 +8,6 @@
         <elementListCompartment Id="f9ee75b0-1874-4db8-81fe-b61ac65130eb" absoluteBounds="0.765, 4.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="fee37212-01eb-4d95-a2ab-49196833f8b3" absoluteBounds="3.5, 0.875, 2, 1.9631982421875">
-      <DataClassMoniker Name="/SmartVideoDBManagementDataContext/Location" />
-      <nestedChildShapes>
-        <elementListCompartment Id="55abce8b-407a-4ac0-a3a9-b6145536a8c0" absoluteBounds="3.515, 1.335, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
     <classShape Id="6a01a815-fba1-4a08-a8be-b9fb84093cb3" absoluteBounds="3.75, 3.75, 2, 1.5785953776041666">
       <DataClassMoniker Name="/SmartVideoDBManagementDataContext/Statistique" />
       <nestedChildShapes>
@@ -26,11 +20,17 @@
         <elementListCompartment Id="9bd9addd-c30e-444d-9eb0-4e52424f43ae" absoluteBounds="0.765, 1.71, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(2.75 : 1.94314697265625); (3.5 : 1.94314697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <classShape Id="8d2ec813-c77f-4636-abfa-9aa99c895b65" absoluteBounds="4, 0.875, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/SmartVideoDBManagementDataContext/Location" />
+      <nestedChildShapes>
+        <elementListCompartment Id="748a5286-02fe-482b-b977-cbe86e6b0cbd" absoluteBounds="4.015, 1.335, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 1.94314697265625); (4 : 1.94314697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/SmartVideoDBManagementDataContext/User/User_Location" />
       <nodes>
         <classShapeMoniker Id="c8c6f5b5-558c-45bb-8c2b-fe6a8f561c0c" />
-        <classShapeMoniker Id="fee37212-01eb-4d95-a2ab-49196833f8b3" />
+        <classShapeMoniker Id="8d2ec813-c77f-4636-abfa-9aa99c895b65" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>

@@ -52,5 +52,23 @@ namespace WebAtSmartVideo
                 
             }
         }
+
+        protected void grid_RowCommand(object sender, System.Web.UI.WebControls.GridViewCommandEventArgs e)
+        {
+            if (dropMenu.Text.Equals("Acteur"))
+            {
+                _filmList = new List<FilmDTO>(_cli.searchFilm(searchBox.Text, "Acteur"));
+            }
+            else
+            {
+                _filmList = new List<FilmDTO>(_cli.searchFilm(searchBox.Text, "Film"));
+            }
+            if (e.CommandName.CompareTo("viewDetails") == 0)
+            {
+                int idFilm = (_filmList[Convert.ToInt32(e.CommandArgument)]).Id;
+
+                Response.Redirect("Details.aspx?idfilm=" + idFilm);
+            }
+        }
     }
 }

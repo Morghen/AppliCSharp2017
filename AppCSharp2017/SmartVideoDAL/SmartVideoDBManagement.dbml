@@ -8,17 +8,6 @@
       <Column Name="hit" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
-  <Table Name="dbo.Location" Member="Locations">
-    <Type Name="Location">
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="film_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="film_name" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="datedebut" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="datefin" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="user_id" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Association Name="User_Location" Member="User" ThisKey="user_id" OtherKey="login" Type="User" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.Statistiques" Member="Statistiques">
     <Type Name="Statistique">
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -33,6 +22,18 @@
       <Column Name="password" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
       <Column Name="prenom" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
       <Association Name="User_Location" Member="Locations" ThisKey="login" OtherKey="user_id" Type="Location" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Location" Member="Locations">
+    <Type Name="Location">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="film_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="film_name" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="datedebut" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="datefin" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="user_id" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="url" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Association Name="User_Location" Member="User" ThisKey="user_id" OtherKey="login" Type="User" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>
