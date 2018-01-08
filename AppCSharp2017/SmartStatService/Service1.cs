@@ -49,7 +49,7 @@ namespace SmartStatService
         {
             if (_db.doStat(DateTime.Today.AddDays(-1)))
             {
-                
+
             }
         }
 
