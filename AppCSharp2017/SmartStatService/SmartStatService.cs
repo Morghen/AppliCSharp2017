@@ -2,8 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration.Install;
 using System.Data;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.ServiceProcess;
 using System.Text;
@@ -54,6 +56,7 @@ namespace SmartStatService
         private Timer _toMidnightTimer;
         private Timer _dailyTimer;
         private SmartVideoBLLManager _db;
+        public StreamWriter outputfile;
 
         public SmartStatService()
         {
@@ -62,36 +65,59 @@ namespace SmartStatService
 
         protected override void OnStart(string[] args)
         {
+            outputfile = new StreamWriter(@"D:\Cours\csharp\StatService\log.txt");
+            outputfile.AutoFlush = true;
+            write("service started");
             _toMidnightTimer = new Timer();
             _toMidnightTimer.AutoReset = false;
             _toMidnightTimer.Elapsed += _toMidnightTimer_Elapsed;
             TimeSpan delay = DateTime.Today.AddDays(1) - DateTime.Now;
             _toMidnightTimer.Interval = delay.TotalMilliseconds;
             _toMidnightTimer.Start();
+            write("midnight timer start");
         }
 
         private void _toMidnightTimer_Elapsed(object sender, ElapsedEventArgs e)
         {
             _toMidnightTimer.Stop();
+            write("midnight timer stop");
             _db = new SmartVideoBLLManager();
             _dailyTimer = new Timer(86400000); // Correspond a 24h
             _dailyTimer.AutoReset = true;
             _dailyTimer.Elapsed += DailyTimer_Elapsed;
             _dailyTimer.Start();
+            write("daily timer start");
         }
 
         private void DailyTimer_Elapsed(object sender, ElapsedEventArgs e)
         {
+            write("time elapsed !");
             if (_db.doStat(DateTime.Today.AddDays(-1)))
             {
-
+                write("do stat OK");
+            }
+            else
+            {
+                write("do stat ERREUR");
             }
         }
 
         protected override void OnStop()
         {
+            write("service stoped");
             _dailyTimer.Stop();
             _db = null;
+            outputfile.Close();
+        }
+
+        public void write(string t)
+        {
+            if (outputfile != null)
+            {
+                outputfile.WriteLine(DateTime.Now+" : "+t);   
+                outputfile.Flush();
+            }
+            EventLog.WriteEntry(DateTime.Now + " : "+t, EventLogEntryType.Information);
         }
     }
 }

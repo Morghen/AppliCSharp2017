@@ -91,7 +91,7 @@ namespace SmartVideoBLL
             svDal.addStatistique(new StatistiqueDTO(lhActeur[lhActeur.Count - 1].Id, TypeEnum.Actor, DateTime.Today, 2));
             svDal.addStatistique(new StatistiqueDTO(lhActeur[lhActeur.Count - 1].Id, TypeEnum.Actor, DateTime.Today, 3));
 
-            return false;
+            return true;
         }
 
         public bool incHitFilm(int idFilm,string type)
