@@ -9,9 +9,45 @@ using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
+using System.Configuration.Install;
 
 namespace SmartStatService
 {
+    [RunInstaller(true)]
+    public class SmartStatServiceInstaller : Installer
+    {
+        private ServiceInstaller serviceInstaller;
+        private ServiceProcessInstaller processInstaller;
+
+        public SmartStatServiceInstaller() : base()
+        {
+            processInstaller = new ServiceProcessInstaller();
+            serviceInstaller = new ServiceInstaller();
+
+            processInstaller.Account = ServiceAccount.LocalSystem;
+
+            serviceInstaller.StartType = ServiceStartMode.Manual;
+
+            serviceInstaller.ServiceName = "SmartStatService";
+
+            Installers.Add(serviceInstaller);
+            Installers.Add(processInstaller);
+        }
+
+        public override void Install(System.Collections.IDictionary stateSaver)
+        {
+            base.Install(stateSaver);
+
+            EventLog.WriteEntry("SmartStatService","Installation de mon service", EventLogEntryType.Information);
+        }
+
+        public override void Uninstall(System.Collections.IDictionary savedState)
+        {
+            base.Uninstall(savedState);
+            EventLog.WriteEntry("SmartStatService","Désinstallation de mon service", EventLogEntryType.Information);
+        }
+    }
+
     public partial class SmartStatService : ServiceBase
     {
         private Timer _toMidnightTimer;
