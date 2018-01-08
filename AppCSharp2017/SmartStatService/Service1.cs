@@ -41,7 +41,6 @@ namespace SmartStatService
             _dailyTimer.AutoReset = true;
             _dailyTimer.Elapsed += DailyTimer_Elapsed;
             _dailyTimer.Start();
-
         }
 
         private void DailyTimer_Elapsed(object sender, ElapsedEventArgs e)
