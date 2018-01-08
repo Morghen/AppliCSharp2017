@@ -14,6 +14,7 @@ namespace SmartStatService
 {
     public partial class Service1 : ServiceBase
     {
+        private Timer _toMidnightTimer;
         private Timer _dailyTimer;
         private SmartVideoBLLManager _db;
 
@@ -24,11 +25,23 @@ namespace SmartStatService
 
         protected override void OnStart(string[] args)
         {
+            _toMidnightTimer = new Timer();
+            _toMidnightTimer.AutoReset = false;
+            _toMidnightTimer.Elapsed += _toMidnightTimer_Elapsed;
+            TimeSpan delay = DateTime.Today.AddDays(1) - DateTime.Now;
+            _toMidnightTimer.Interval = delay.TotalMilliseconds;
+            _toMidnightTimer.Start();
+        }
+
+        private void _toMidnightTimer_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            _toMidnightTimer.Stop();
             _db = new SmartVideoBLLManager();
             _dailyTimer = new Timer(86400000); // Correspond a 24h
             _dailyTimer.AutoReset = true;
             _dailyTimer.Elapsed += DailyTimer_Elapsed;
             _dailyTimer.Start();
+
         }
 
         private void DailyTimer_Elapsed(object sender, ElapsedEventArgs e)
