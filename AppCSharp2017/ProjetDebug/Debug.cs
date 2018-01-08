@@ -18,7 +18,14 @@ namespace ProjetDebug
         static void Main(string[] args)
         {
             Console.WriteLine("=== Outil de test ===");
+            SmartVideoBLLManager svBll = new SmartVideoBLLManager();
+            svBll.doStat(DateTime.Today.AddDays(-1));
+            Console.WriteLine("FINI");
+            Console.ReadKey();
 
+
+
+            /*
             Console.WriteLine("+++Test de Hit+++ "+Environment.MachineName);
             SmartVideoBLLManager svBll = new SmartVideoBLLManager();
             SmartVideoDALManager dbSV = svBll.svDal;
@@ -39,15 +46,19 @@ namespace ProjetDebug
             Console.WriteLine("Liste Film");
 
             FilmsBLLManager bll = new FilmsBLLManager();
-            /*FilmDTO testF = dbF.getFilm(11);
+            */
+
+            /*
+             * FilmDTO testF = dbF.getFilm(11);
 
             List<string> info = bll.getFilmInfos(testF);
             foreach(String str in info)
             {
                 Console.WriteLine(str);
-            }*/
+            }
+            */
 
-
+            /*
             ConsoleKeyInfo cki = Console.ReadKey();
             while (cki.KeyChar != 'q')
             {
@@ -112,6 +123,7 @@ namespace ProjetDebug
             }
             Console.WriteLine("Fin programme !!!!");
             Console.ReadKey();
+            */
         }
     }
 }
