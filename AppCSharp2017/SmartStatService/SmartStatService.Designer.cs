@@ -1,6 +1,6 @@
 ﻿namespace SmartStatService
 {
-    partial class Service1
+    partial class SmartStatService
     {
         /// <summary> 
         /// Required designer variable.

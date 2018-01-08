@@ -12,13 +12,13 @@ using System.Timers;
 
 namespace SmartStatService
 {
-    public partial class Service1 : ServiceBase
+    public partial class SmartStatService : ServiceBase
     {
         private Timer _toMidnightTimer;
         private Timer _dailyTimer;
         private SmartVideoBLLManager _db;
 
-        public Service1()
+        public SmartStatService()
         {
             InitializeComponent();
         }
