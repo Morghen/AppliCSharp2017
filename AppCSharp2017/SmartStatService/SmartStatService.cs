@@ -21,7 +21,7 @@ namespace SmartStatService
             processInstaller = new ServiceProcessInstaller();
             serviceInstaller = new ServiceInstaller();
 
-            processInstaller.Account = ServiceAccount.LocalSystem;
+            processInstaller.Account = ServiceAccount.User;
 
             serviceInstaller.StartType = ServiceStartMode.Manual;
 
