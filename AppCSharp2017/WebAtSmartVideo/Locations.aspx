@@ -24,5 +24,7 @@
     <SortedDescendingCellStyle BackColor="#D8D8F0" />
 
     <SortedDescendingHeaderStyle BackColor="#3E3277" />
+        <Columns>
+        </Columns>
     </asp:gridview>
 </asp:Content>

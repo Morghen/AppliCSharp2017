@@ -46,6 +46,7 @@
     <Compile Include="FilmGenreDTO.cs" />
     <Compile Include="FilmRealisateurDTO.cs" />
     <Compile Include="GenreDTO.cs" />
+    <Compile Include="IInterfaceFilmDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RealisateurDTO.cs" />
   </ItemGroup>
