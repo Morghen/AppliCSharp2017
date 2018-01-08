@@ -31,5 +31,32 @@ namespace WebAtSmartVideo
             grid.DataSource = lStat;
             grid.DataBind();
         }
+
+        protected void searchButton_Click(object sender, EventArgs e)
+        {
+            if (dropMenu.Text.Equals("Today"))
+            {
+                lStat = sv.getStatistique(DateTime.Today);
+            }
+            if (dropMenu.Text.Equals("Hier"))
+            {
+                lStat = sv.getStatistique(DateTime.Today.AddDays(-1));
+            }
+            if (dropMenu.Text.Equals("Tous"))
+            {
+                lStat = sv.getStatistique();
+            }
+            if (lStat != null)
+            {
+                grid.DataSource = lStat;
+                grid.DataBind();
+            }
+            else
+            {
+                lStat = new List<StatistiqueDTO>();
+                grid.DataSource = lStat;
+                grid.DataBind();
+            }
+        }
     }
 }

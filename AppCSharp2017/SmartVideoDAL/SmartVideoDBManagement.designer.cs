@@ -120,7 +120,8 @@ namespace SmartVideoDAL
 		private System.DateTime _date;
 		
 		private int _hit;
-		
+        
+
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);

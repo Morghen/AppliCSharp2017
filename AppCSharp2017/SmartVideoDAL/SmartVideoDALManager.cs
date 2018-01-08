@@ -21,13 +21,13 @@ namespace SmartVideoDAL
         public bool addHit(HitDTO h)
         {
             Hit newh = new Hit{ id = h.Id,  type = (int)h.Type, date = h.Date, hit = h.Hit };
-            return Add<Hit>(newh, xg => xg.Equals(newh));
+            return Add<Hit>(newh, xg => xg.id == newh.id && xg.type == newh.type && xg.date == newh.date);
         }
 
         public bool updateHit(HitDTO h)
         {
             Hit newh = new Hit { id = h.Id, type = (int)h.Type, date = h.Date, hit = h.Hit };
-            return Update<Hit>(newh, xg => xg.Equals(newh));
+            return Update<Hit>(newh, xg => xg.id == newh.id && xg.type == newh.type && xg.date == newh.date);
         }
 
         public List<HitDTO> getHit()
@@ -46,14 +46,31 @@ namespace SmartVideoDAL
             }
         }
 
+        public List<HitDTO> getHit(DateTime dt)
+        {
+            List<Hit> lt = getList<Hit>(xg => xg.date.Year == dt.Year && xg.date.Month == dt.Month && xg.date.Day == dt.Day);
+            List<HitDTO> lh = new List<HitDTO>();
+            if (lt == null)
+                return null;
+            else
+            {
+                foreach (Hit h in lt)
+                {
+                    lh.Add(new HitDTO(h.id, (TypeEnum)h.type, h.date, h.hit));
+                }
+                return lh;
+            }
+        }
+
         public HitDTO getHit(int tid, TypeEnum tte, DateTime tdt)
         {
-            List<Hit> lt = getList<Hit>(xg => xg.Equals(new Hit() {id = tid, type = (int) tte, date = tdt, hit = 0}));
+            Hit newhit = new Hit() {id = tid, type = (int) tte, date = tdt, hit = 0};
+            List<Hit> lt = getList<Hit>(xg => xg.id == newhit.id && xg.type == newhit.type && xg.date == newhit.date);
             if (lt.Count < 1)
             {
                 return null;
             }
-            Hit newh = lt.First();
+            Hit newh = lt.FirstOrDefault();
             if (newh == null)
             {
                 return null;
@@ -64,13 +81,13 @@ namespace SmartVideoDAL
         public bool addUser(UserDTO h)
         {
             User newh = new User { login = h.Login, password = h.Password, prenom = h.Prenom };
-            return Add<User>(newh, xg => xg.Equals(newh));
+            return Add<User>(newh, xg => xg.login == newh.login);
         }
 
         public bool updateUser(UserDTO h)
         {
             User newh = new User { login = h.Login, password = h.Password, prenom = h.Prenom };
-            return Update<User>(newh, xg => xg.Equals(newh));
+            return Update<User>(newh, xg => xg.login == newh.login);
         }
 
         public List<UserDTO> getUser()
@@ -92,13 +109,13 @@ namespace SmartVideoDAL
         public bool addLocation(LocationDTO h)
         {
             Location newh = new Location { id = h.Id, film_id = h.FilmId, film_name = h.FilmName, datedebut = h.DateDebut, datefin = h.DateFin, user_id = h.UserId, url = h.Url};
-            return Add<Location>(newh, xg => xg.Equals(newh));
+            return Add<Location>(newh, xg => xg.id == newh.id);
         }
 
         public bool updateLocation(LocationDTO h)
         {
             Location newh = new Location { id = h.Id, film_id = h.FilmId, film_name = h.FilmName, datedebut = h.DateDebut, datefin = h.DateFin, user_id = h.UserId, url = h.Url};
-            return Update<Location>(newh, xg => xg.Equals(newh));
+            return Update<Location>(newh, xg => xg.id == newh.id);
         }
 
         public List<LocationDTO> getLocation()
@@ -120,13 +137,13 @@ namespace SmartVideoDAL
         public bool addStatistique(StatistiqueDTO h)
         {
             Statistique newh = new Statistique { id = h.Id, date = h.Date, type = (int)h.Type, position = h.Position };
-            return Add<Statistique>(newh, xg => xg.Equals(newh));
+            return Add<Statistique>(newh, xg => xg.id == newh.id && xg.type == newh.type && xg.date == newh.date);
         }
 
         public bool updateStatistique(StatistiqueDTO h)
         {
             Statistique newh = new Statistique { id = h.Id, date = h.Date, type = (int)h.Type, position = h.Position };
-            return Update<Statistique>(newh, xg => xg.Equals(newh));
+            return Update<Statistique>(newh, xg => xg.id == newh.id && xg.type == newh.type && xg.date == newh.date);
         }
 
         public List<StatistiqueDTO> getStatistique()

@@ -9,7 +9,8 @@ using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
-using System.Configuration.Install;
+using SmartVideoDTOLibrary;
+
 
 namespace SmartStatService
 {
@@ -81,7 +82,10 @@ namespace SmartStatService
 
         private void DailyTimer_Elapsed(object sender, ElapsedEventArgs e)
         {
-            throw new NotImplementedException();
+            if (_db.doStat(DateTime.Today.AddDays(-1)))
+            {
+
+            }
         }
 
         protected override void OnStop()
