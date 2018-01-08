@@ -21,7 +21,10 @@ namespace SmartStatService
             processInstaller = new ServiceProcessInstaller();
             serviceInstaller = new ServiceInstaller();
 
-            processInstaller.Account = ServiceAccount.LocalSystem;
+            //login : Toine\'Toine
+            //mdp : mon mot de passe windows
+            //confirmer mdp
+            processInstaller.Account = ServiceAccount.User;
 
             serviceInstaller.StartType = ServiceStartMode.Manual;
 
