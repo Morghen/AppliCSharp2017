@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.ServiceProcess;
+using System.Configuration.Install;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
@@ -65,7 +66,7 @@ namespace SmartStatService
 
         protected override void OnStart(string[] args)
         {
-            outputfile = new StreamWriter(@"D:\Cours\csharp\StatService\log.txt");
+            outputfile = new StreamWriter(@"D:\\Cours\\csharp\\StatService\\log.txt");
             outputfile.AutoFlush = true;
             write("service started");
             _toMidnightTimer = new Timer();
