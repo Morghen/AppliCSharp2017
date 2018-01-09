@@ -25,7 +25,7 @@
         </div>
         
         <div>
-            <p>Video !</p>
+            <asp:Label runat="server" ID="video"></asp:Label>
         </div>
     </div>
     <div>

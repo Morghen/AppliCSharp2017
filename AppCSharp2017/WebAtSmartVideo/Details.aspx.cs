@@ -28,7 +28,9 @@ namespace WebAtSmartVideo
                 filmName.Text = "Title : " + film.Title;
                 filmOriginalName.Text = "Original title : " + film.OriginalTitle;
                 posterPath.Text = "PosterPath : " + film.FullPosterPath;
-                trailerPath.Text = "Trailer url : " + film.Url;
+                trailerPath.Text = "Trailer url : " + film.Url+" " ;
+                video.Text = "<a runat =\"Server\" href=\"" + film.Url + "\">lien url</a>";
+                //<a runat="server" href="~/">Home</a>
                 id.Text = "id : "+film.Id.ToString();
                 runtime.Text = "Durées : " + film.Runtime.ToString()+" minutes";
                 image.ImageUrl = film.FullPosterPath;
