@@ -46,7 +46,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <img id="imageLogo" alt="" src="logo.png" height="32" width="32"/>
+                    <img id="imageLogo" alt="" src="logo.png" height="50" width="50"/>
                     <a class="navbar-brand" runat="server" href="~/">Web@SmartVideo</a>
                 </div>
                 <div class="navbar-collapse collapse">
@@ -82,7 +82,7 @@
                         <ul class="nav navbar-nav navbar-right">
                             <li><a runat="server" href="~/Account/Manage" title="Manage your account">Hello, <%: Session["username"]  %> !</a></li>
                             <li>
-                                <asp:Button runat="server" href="LoggingOut" Text="Logout" />
+                                <asp:Button runat="server" href="LoggingOut" Text="Logout" OnCommand="LoggingOut" />
                             </li>
                         </ul>
                     <%

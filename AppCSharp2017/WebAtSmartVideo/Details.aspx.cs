@@ -26,10 +26,11 @@ namespace WebAtSmartVideo
                 idFilm = film.Id;
                 FilmDetails.Text = " ";
                 filmName.Text = "Title : " + film.Title;
+                filmOriginalName.Text = "Original title : " + film.OriginalTitle;
                 posterPath.Text = "PosterPath : " + film.FullPosterPath;
                 trailerPath.Text = "Trailer url : " + film.Url;
                 id.Text = "id : "+film.Id.ToString();
-                runtime.Text = "Durée : " + film.Runtime.ToString()+"minutes";
+                runtime.Text = "Durées : " + film.Runtime.ToString()+" minutes";
                 image.ImageUrl = film.FullPosterPath;
             }
             catch (Exception ex)

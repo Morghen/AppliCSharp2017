@@ -24,7 +24,6 @@ namespace WebAtSmartVideo
                 if(!(bool)Session["islogged"])
                     Response.Redirect("/Default.aspx");
                 llocation = new List<LocationDTO>(sv.getLocation((String)Session["username"]));
-
                 grid.DataSource = llocation;
                 grid.DataBind();
             }
@@ -36,7 +35,12 @@ namespace WebAtSmartVideo
 
         protected void grid_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            throw new NotImplementedException();
+            if (e.CommandName.CompareTo("viewDetails") == 0)
+            {
+                int idFilm = (llocation[Convert.ToInt32(e.CommandArgument)]).FilmId;
+
+                Response.Redirect("Details.aspx?idfilm=" + idFilm);
+            }
         }
     }
     

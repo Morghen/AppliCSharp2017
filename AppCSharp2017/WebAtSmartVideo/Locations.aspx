@@ -3,7 +3,7 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <h3>List des locations</h3>
     <asp:gridview id="grid" runat="server" backcolor="White" bordercolor="#E7E7FF" borderstyle="None" borderwidth="1px" 
-        cellpadding="3" font-names="Calibri" font-size="Larger" gridlines="Horizontal" AutoGenerateColumns="True" OnRowCommand="grid_RowCommand">
+        cellpadding="3" font-names="Calibri" font-size="Larger" gridlines="Horizontal" AutoGenerateColumns="false" OnRowCommand="grid_RowCommand">
 
     <AlternatingRowStyle BackColor="#F7F7F7" />
 
@@ -25,6 +25,11 @@
 
     <SortedDescendingHeaderStyle BackColor="#3E3277" />
         <Columns>
+            <asp:BoundField ReadOnly="True" HeaderText="Title" InsertVisible="False" DataField="FilmName" SortExpression="FilmName"/>
+            <asp:BoundField ReadOnly="True" HeaderText="Date Debut" InsertVisible="False" DataField="DateDebut" SortExpression="DateDebut"/>
+            <asp:BoundField ReadOnly="True" HeaderText="DateFin" InsertVisible="False" DataField="DateFin" SortExpression="DateFin"/>
+            <asp:BoundField ReadOnly="True" HeaderText="Url" InsertVisible="False" DataField="Url" SortExpression="Url"/>
+            <asp:ButtonField ButtonType="Button" CommandName="viewDetails" Text="Details" />
         </Columns>
     </asp:gridview>
 </asp:Content>

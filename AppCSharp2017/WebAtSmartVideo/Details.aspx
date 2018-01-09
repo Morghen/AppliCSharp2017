@@ -12,6 +12,9 @@
             <asp:Label runat="server" ID="filmName"></asp:Label>
         </div>
         <div>
+            <asp:Label runat="server" ID="filmOriginalName"></asp:Label>
+        </div>
+        <div>
             <asp:Label runat="server" ID="runtime"></asp:Label>
         </div>
         <div>
@@ -26,7 +29,7 @@
         </div>
     </div>
     <div>
-        <asp:Image runat="server" ID="image" Height="220px" Width="110px"/>
+        <asp:Image runat="server" ID="image"/>
     </div>
     <div>
         

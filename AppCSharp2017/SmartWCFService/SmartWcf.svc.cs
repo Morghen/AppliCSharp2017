@@ -49,6 +49,8 @@ namespace SmartWCFService
         public List<FilmDTO> searchFilm(string reference,string type)
         {
             List<FilmDTO> tmp = fm.searchFilm(reference, type);
+            if (tmp.Count > 100)
+                throw new Exception("too much data please use a more specific keywords");
             return tmp;
         }
 

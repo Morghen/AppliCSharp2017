@@ -16,20 +16,19 @@ namespace WebAtSmartVideo
         private SmartWcfClient _cli = new SmartWcfClient();
         private SmartVideoBLLManager sv = new SmartVideoBLLManager();
         private List<FilmDTO> _filmList;
+
         private List<StatistiqueDTO> lStat;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (lStat != null)
             {
-                lStat = sv.getStatistique(DateTime.Today);
+                lStat.Sort((a, b) => a.Position.CompareTo(b.Position));
+                lStat.Sort((a, b) => a.Type.CompareTo(b.Type));
+
+                grid.DataSource = lStat;
+                grid.DataBind();
             }
-            else
-            {
-                lStat = sv.getStatistique(DateTime.Today);
-            }
-            grid.DataSource = lStat;
-            grid.DataBind();
         }
 
         protected void searchButton_Click(object sender, EventArgs e)
@@ -48,6 +47,9 @@ namespace WebAtSmartVideo
             }
             if (lStat != null)
             {
+                lStat.Sort((a, b) => a.Position.CompareTo(b.Position));
+                lStat.Sort((a, b) => a.Type.CompareTo(b.Type));
+                
                 grid.DataSource = lStat;
                 grid.DataBind();
             }
@@ -56,6 +58,19 @@ namespace WebAtSmartVideo
                 lStat = new List<StatistiqueDTO>();
                 grid.DataSource = lStat;
                 grid.DataBind();
+            }
+        }
+        protected void grid_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            searchButton_Click(this, new EventArgs());
+            if (e.CommandName.CompareTo("viewDetails") == 0)
+            {
+                if (lStat[Convert.ToInt32(e.CommandArgument)].Type == TypeEnum.Film)
+                {
+                    int idFilm = (lStat[Convert.ToInt32(e.CommandArgument)]).Id;
+
+                    Response.Redirect("Details.aspx?idfilm=" + idFilm);
+                }
             }
         }
     }

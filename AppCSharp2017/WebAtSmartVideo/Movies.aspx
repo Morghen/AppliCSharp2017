@@ -29,12 +29,9 @@
 
     <SortedDescendingHeaderStyle BackColor="#3E3277" />
     <Columns>
-        <asp:BoundField ReadOnly="True" HeaderText="id" InsertVisible="False" DataField="id" SortExpression="id"/>
         <asp:BoundField ReadOnly="True" HeaderText="Title" InsertVisible="False" DataField="Title" SortExpression="Title"/>
         <asp:BoundField ReadOnly="True" HeaderText="Original Title" InsertVisible="False" DataField="OriginalTitle" SortExpression="OriginalTitle"/>
         <asp:BoundField ReadOnly="True" HeaderText="Runtime" InsertVisible="False" DataField="Runtime" SortExpression="Runtime"/>
-        <asp:BoundField ReadOnly="True" HeaderText="Url" InsertVisible="False" DataField="Url" SortExpression="Url"/>
-        <asp:BoundField ReadOnly="True" HeaderText="Poster Path" InsertVisible="False" DataField="FullPosterPath" SortExpression="FullPosterPath"/>
         <asp:ButtonField ButtonType="Button" CommandName="viewDetails" Text="Details" />
     </Columns>
     </asp:gridview>
