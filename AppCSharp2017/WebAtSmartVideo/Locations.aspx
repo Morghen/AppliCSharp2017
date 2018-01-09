@@ -26,8 +26,8 @@
     <SortedDescendingHeaderStyle BackColor="#3E3277" />
         <Columns>
             <asp:BoundField ReadOnly="True" HeaderText="Title" InsertVisible="False" DataField="FilmName" SortExpression="FilmName"/>
-            <asp:BoundField ReadOnly="True" HeaderText="Date Debut" InsertVisible="False" DataField="DateDebut" SortExpression="DateDebut"/>
-            <asp:BoundField ReadOnly="True" HeaderText="DateFin" InsertVisible="False" DataField="DateFin" SortExpression="DateFin"/>
+            <asp:BoundField ReadOnly="True" HeaderText="Date Debut" InsertVisible="False" DataField="DateDebut" SortExpression="DateDebut" DataFormatString="{0:dd-MM-yyyy}"/>
+            <asp:BoundField ReadOnly="True" HeaderText="DateFin" InsertVisible="False" DataField="DateFin" SortExpression="DateFin" DataFormatString="{0:dd-MM-yyyy}"/>
             <asp:BoundField ReadOnly="True" HeaderText="Url" InsertVisible="False" DataField="Url" SortExpression="Url"/>
             <asp:ButtonField ButtonType="Button" CommandName="viewDetails" Text="Details" />
         </Columns>

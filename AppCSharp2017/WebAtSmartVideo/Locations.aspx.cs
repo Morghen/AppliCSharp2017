@@ -29,7 +29,8 @@ namespace WebAtSmartVideo
             }
             catch (Exception ex)
             {
-                Response.Redirect("/Default.aspx");
+                //Response.Redirect("/Default.aspx");
+                throw;
             }
         }
 

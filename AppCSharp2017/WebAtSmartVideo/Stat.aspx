@@ -11,7 +11,7 @@
         <asp:Button ID="searchButton" runat="server" Text="obtenir" OnClick="searchButton_Click"/>
     </div>
     <asp:gridview id="grid" runat="server" backcolor="White" bordercolor="#E7E7FF" borderstyle="None" borderwidth="1px" 
-        cellpadding="3" font-names="Calibri" font-size="Larger" gridlines="Horizontal" AutoGenerateColumns="true" OnRowCommand="grid_RowCommand" >
+        cellpadding="3" font-names="Calibri" font-size="Larger" gridlines="Horizontal" AutoGenerateColumns="false" OnRowCommand="grid_RowCommand" >
 
     <AlternatingRowStyle BackColor="#F7F7F7" />
 
@@ -33,7 +33,10 @@
 
     <SortedDescendingHeaderStyle BackColor="#3E3277" />
         <Columns>
-            
+            <asp:BoundField ReadOnly="True" HeaderText="Position" InsertVisible="False" DataField="Position" SortExpression="Position"/>
+            <asp:BoundField ReadOnly="True" HeaderText="Type" InsertVisible="False" DataField="Type" SortExpression="Type"/>
+            <asp:BoundField ReadOnly="True" HeaderText="Date" InsertVisible="False" DataField="Date" SortExpression="Date" DataFormatString="{0:dd-MM-yyyy}"/>
+            <asp:BoundField ReadOnly="True" HeaderText="Id" InsertVisible="False" DataField="Id" SortExpression="Id"/>
             <asp:ButtonField ButtonType="Button" CommandName="viewDetails" Text="Details" />
             
         </Columns>
